@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   00_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 16:30:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/27 16:50:21 by feralves         ###   ########.fr       */
+/*   Created: 2023/06/20 16:46:09 by feralves          #+#    #+#             */
+/*   Updated: 2023/06/27 16:30:33 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char *argv[])
+int	ft_error(char *str)
 {
-	if (check_args(argc, argv))
-		return (1);
-	//begin struct
-	//open file
-	//check map
-	//check info for each element
-	//check if map is closed
-	//check if map is valid
-	open_window();
-	
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(str, 2);
+	return (1);
 }

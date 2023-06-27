@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_errors.c                                        :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 16:46:09 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/20 16:46:24 by feralves         ###   ########.fr       */
+/*   Created: 2023/06/27 16:30:10 by feralves          #+#    #+#             */
+/*   Updated: 2023/06/27 16:50:17 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "cub3d.h"
 
-int	ft_error(char *str)
+void	open_window(void)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(str, 2);
-	return (1);
+	ft_printf("open window\n");
 }

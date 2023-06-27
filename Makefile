@@ -45,13 +45,18 @@ PROGRESS			=	0
 ##                                DIRECTORIES                                 ##
 ################################################################################
 
-#scr functions
-MANDATORY_FILES =	sources/00_errors.c			\
-					sources/01_check_args.c		\
-					main.c						\
+#src paths
+CHECKS_PATH =		checks
+MLX_PATH =			mlx_util
+
+#src functions
+MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
+					${CHECKS_PATH}/01_check_args.c		\
+					main.c								\
+					${MLX_PATH}/window.c				\
 
 #headers
-HEADER =			header/cub3d.h		\
+HEADER =			header/cub3d.h						\
 
 #directories
 OBJPATH =			temps
@@ -60,7 +65,7 @@ LIBFT_PATH =		./libft
 LIBFT =				$(LIBFT_PATH)/libft.a
 
 #header to libft.h
-INCLUDE =	-I ./ -I $(LIBFT_PATH)
+INCLUDE =	-I ./header -I $(LIBFT_PATH)
 ################################################################################
 ##                                    RULES                                   ##
 ################################################################################

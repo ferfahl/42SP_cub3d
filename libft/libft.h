@@ -85,5 +85,6 @@ char		*ft_strtrim_mod(char *s1, char const *set);
 void		ft_free_int(int **array);
 long int	ft_atoi_mod(char *nptr);
 int			ft_isdigit_mod(char *string);
+char		*ft_strjoin_free(char *s1, char *s2);
 
 #endif

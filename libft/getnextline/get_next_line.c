@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 06:49:03 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/20 17:25:31 by feralves         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:39:43 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*reading(int fd)
 {
 	char	*reader;
 	int		size;
-	
+
 	reader = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!reader)
 		return (NULL);
@@ -30,7 +30,6 @@ char	*reading(int fd)
 	else
 		reader[size] = '\0';
 	return (reader);
-	
 }
 
 char	*get_till_break(char *str)
@@ -82,17 +81,15 @@ char	*get_rest(char *str)
 
 char	*ft_return_line(int fd)
 {
-	char	*was_read;
-	char	*reader;
-	char	*full_line;
-	const char	*remains;
+	char		*was_read;
+	char		*reader;
+	char		*full_line;
+	static char	*remains;
 
 	if (!remains)
 		remains = NULL;
 	reader = reading(fd);
-	full_line = ft_strjoin(remains, reader);
-	free(reader);
-	free(remains);
+	full_line = ft_strjoin_free(remains, reader);
 	if (ft_strlen(full_line) == 0)
 	{
 		free(full_line);

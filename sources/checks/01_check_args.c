@@ -6,11 +6,11 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:44:31 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/20 16:52:15 by feralves         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:30:37 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "cub3d.h"
 
 int	check_extension(char *str)
 {
