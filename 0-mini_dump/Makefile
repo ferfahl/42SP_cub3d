@@ -66,8 +66,6 @@ OBJPATH =			temps
 VPATH =				sources
 LIBFT_PATH =		./libft
 LIBFT =				$(LIBFT_PATH)/libft.a
-MLX_PATH =		./minilibx-linux
-MLX	 = $(MLX_PATH)/libmlx.a
 
 #header to libft.h
 INCLUDE =	-I ./header -I $(LIBFT_PATH)
@@ -90,13 +88,9 @@ $(OBJPATH):
 $(LIBFT):
 		@make -C $(LIBFT_PATH) --no-print-directory
 
-#make mlx
-$(MLX):
-		make -C $(MLX_PATH)
-
 ##rule name - make cub3D
-$(NAME): $(LIBFT) $(MLX) $(OBJ_MANDATORY)
-		@cc $(FLAGS) -o $(NAME) $(OBJ_MANDATORY) $(LIBFT) $(MLX) $(MLXFLAGS)
+$(NAME): $(LIBFT) $(OBJ_MANDATORY)
+		@cc $(FLAGS) -o $(NAME) $(OBJ_MANDATORY) $(LIBFT)
 		@$(LOG_SUC) "$(NAME) succesfully compiled!"
 
 ##compile MANDATORY
