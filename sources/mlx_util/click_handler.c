@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 17:24:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/27 17:44:46 by feralves         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:58:24 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	click_hook(void)
 {
-	ft_printf("click\n");
+	ft_printf("end click\n");
+	ft_exit(0);
 	return (0);
 }

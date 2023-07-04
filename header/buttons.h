@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:44:17 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/27 17:38:27 by feralves         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:58:53 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define D_KEY				100
 # define SPACE				32
 # define SHIFT				65505
-# define V_RIGHT			46
-# define V_LEFT				44
+# define V_RIGHT			101
+# define V_LEFT				113
 # define KEY_PRESS_EVENT	02
 # define CLICK_EVENT		17
 
