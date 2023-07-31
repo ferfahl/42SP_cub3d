@@ -53,10 +53,11 @@ WIND =			mlx_util
 #src functions
 MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${CHECKS_PATH}/01_check_args.c		\
-					main.c								\
 					${WIND}/window.c					\
 					${WIND}/click_handler.c				\
 					${WIND}/key_handler.c				\
+					mainfer.c								\
+					# main.c								\
 
 #headers
 HEADER =			header/cub3d.h						\

@@ -6,14 +6,13 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/27 17:45:37 by feralves         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:59:03 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "buttons.h"
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
@@ -27,6 +26,17 @@
 
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
+
+typedef struct	s_map
+{
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
+	char	*floor;
+	char	*ceiling;
+	char	**map;
+}				t_map;
 
 //main.c
 void	if_error(char *str);

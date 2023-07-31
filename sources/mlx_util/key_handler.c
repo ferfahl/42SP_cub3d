@@ -6,11 +6,12 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 17:24:27 by feralves          #+#    #+#             */
-/*   Updated: 2023/07/04 13:58:59 by feralves         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:56:58 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "buttons.h"
 
 int	key_hook(int keycode)
 {

@@ -6,11 +6,12 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:30:10 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/27 17:45:01 by feralves         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:57:07 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "buttons.h"
 
 void	open_window(void)
 {
