@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:44:31 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/09 20:45:40 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:12:16 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,24 @@ int	check_extension(char *str)
 
 int	check_args(int argc, char *argv[])
 {
+	int	fd;
+
 	if (argc != 2)
 		return (ft_error("Wrong number of arguments\n"));
 	if (check_extension(argv[1]))
 		return (ft_error("Wrong file extension\n"));
-	return (0);
+	fd = open_file(argv[1]);
+	if (fd < 0)
+		return(ft_error("File does not have permission"));
+	return (fd);
+}
+
+int	open_file(char *file_name)
+{
+	int	fd;
+
+	fd = open(file_name, O_RDONLY);
+	return(fd);
 }
 //check if file exists
 //open? now or later?
