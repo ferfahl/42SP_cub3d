@@ -57,6 +57,7 @@ MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${WIND}/click_handler.c				\
 					${WIND}/key_handler.c				\
 					${WIND}/image.c						\
+					${WIND}/draw.c						\
 					mainfer.c							\
 					# main.c							\
 

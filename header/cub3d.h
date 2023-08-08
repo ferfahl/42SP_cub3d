@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 18:36:55 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:06:57 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,8 @@ int		click_hook(t_vars *vars);
 
 //sources/mlx_util/image.c
 t_image	create_image(void *addr);
+
+//sources/mlx_util/draw.c
+void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 
 #endif
