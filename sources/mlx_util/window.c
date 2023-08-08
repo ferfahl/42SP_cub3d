@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:30:10 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 19:30:03 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:38:31 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,29 @@ void	fill_img(t_vars *vars)
 		count_w = -1;
 		while (++count_w < W_WIDTH)
 		{
-			if (count_w % 2)
-				vars->img.data[count_h * W_WIDTH + count_w] = 0xF4FFFF;
-				// my_mlx_pixel_put(&vars->img, count_h, count_w, 0xFFFFFF);
-			else
-				vars->img.data[count_h * W_WIDTH + count_w] = 0;
+			vars->img.data[count_h * W_WIDTH + count_w] = 0;
 		}
 	}
 }
 
-// void	creating_img(t_vars *vars)
-// {
-// 	vars->img.data[0] = 255;
-// 	vars->img.data[1] = 255;
-// 	vars->img.data[2] = 255;
-// 	vars->img.data[3] = 255;
-// }
+void	creating_img(t_vars *vars)
+{
+	int		count_w;
+	int		count_h;
+
+	count_h = -1;
+	while (++count_h < W_HEIGHT)
+	{
+		count_w = -1;
+		while (++count_w < W_WIDTH)
+		{
+			if (count_w % 2)
+				my_mlx_pixel_put(&vars->img, count_w, count_h, 0x0000FF);
+			else
+				my_mlx_pixel_put(&vars->img, count_w, count_h, 0xFF0000);
+		}
+	}
+}
 
 void	open_window(t_map *map)
 {
@@ -58,7 +65,7 @@ void	open_window(t_map *map)
 		if_error("Mlx vars->window error");
 	vars->img = create_image(vars->mlx);
 	fill_img(vars);
-	// creating_img(vars);
+	creating_img(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.ptr, 0, 0);
 	mlx_hook(vars->win, KEY_PRESS_EVENT, (1L << 0), key_hook, vars);
 	mlx_hook(vars->win, CLICK_EVENT, (1L << 2), click_hook, vars);
