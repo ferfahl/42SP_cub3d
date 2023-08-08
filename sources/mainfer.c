@@ -6,13 +6,13 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 17:28:26 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:50:12 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	exit_program(t_map	*map)
+void	clear_map(t_map	*map)
 {
 	int	i;
 
@@ -37,8 +37,9 @@ void	ft_exit(int status, t_vars *vars)
 	if (vars)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_image(vars->mlx, vars->img.ptr);
 		mlx_destroy_display(vars->mlx);
-		exit_program(vars->fullmap);
+		clear_map(vars->fullmap);
 		free(vars->mlx);
 		free(vars);
 	}
@@ -91,13 +92,5 @@ int main(void)
 	// int	i = 0;
 
 	map = map_maker();
-	// mini_map();
-	// ft_printf("\tmap:\n");
-	// while (strcmp(map->map[i], "\0"))
-	// {
-	// 	ft_printf("%s\n", map->map[i]);
-	// 	i++;
-	// }
 	open_window(map);
-	// exit_program(map);
 }
