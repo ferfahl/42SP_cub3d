@@ -6,14 +6,14 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 17:24:27 by feralves          #+#    #+#             */
-/*   Updated: 2023/07/31 11:56:58 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:23:54 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "buttons.h"
 
-int	key_hook(int keycode)
+int	key_hook(int keycode, t_vars *vars)
 {
 	// ft_printf("keycode: %d\n", keycode);
 	if (keycode == W_KEY)
@@ -37,6 +37,6 @@ int	key_hook(int keycode)
 	if (keycode == LEFT || keycode == V_LEFT)
 		ft_printf("view left\n");
 	if (keycode == ESC)
-		ft_exit(0);
+		ft_exit(0, vars);
 	return (0);
 }

@@ -6,11 +6,54 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/07/31 12:09:33 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:28:26 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	exit_program(t_map	*map)
+{
+	int	i;
+
+	i = 0;
+	while (i <= 11)
+	{
+		free(map->map[i]);
+		i++;
+	}
+	free(map->map);
+	free(map->ceiling);
+	free(map->floor);
+	free(map->east);
+	free(map->west);
+	free(map->north);
+	free(map->south);
+	free(map);
+}
+
+void	ft_exit(int status, t_vars *vars)
+{
+	if (vars)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_display(vars->mlx);
+		exit_program(vars->fullmap);
+		free(vars->mlx);
+		free(vars);
+	}
+	if (status == 0)
+		ft_printf("Exit Success\n");
+	else
+		ft_printf("Exit Failure\n");
+	exit(status);
+}
+
+void	if_error(char *str)
+{
+	ft_printf("error\n%s\n", str);
+	exit(1);
+}
 
 t_map	*map_maker(void)
 {
@@ -19,32 +62,42 @@ t_map	*map_maker(void)
 
 	i = 0;
 	mapped = malloc(sizeof(t_map));
-	mapped->ceiling = ft_strdup("220,100,0");
-	mapped->floor = ft_strdup("220,100,0");
-	mapped->east = ft_strdup("225,30,0");
-	mapped->west = ft_strdup("225,30,0");
-	mapped->north = ft_strdup("225,30,0");
-	mapped->south = ft_strdup("225,30,0");
+	mapped->ceiling = ft_strdup("0xFF444444");
+	mapped->floor = ft_strdup("0xFF000000");
+	mapped->east = ft_strdup("0xFFFF0000");
+	mapped->west = ft_strdup("0xFF00FF00");
+	mapped->north = ft_strdup("0xFF0000FF");
+	mapped->south = ft_strdup("0xFFFFFFFF");
 	mapped->map = malloc(sizeof(char *) * (11 + 1));
 	while (i < 11)
 	{
-		if (i == 0 || i == 11)
-			mapped->map[i] = ft_strdup("11111111111");
+		if (i == 0 || i == 10)
+			mapped->map[i] = ft_strdup("111111111111111");
 		else if (i % 2 != 0)
-			mapped->map[i] = ft_strdup("10000000011");
+			mapped->map[i] = ft_strdup("100000000000011");
+		else if (i == 4)
+			mapped->map[i] = ft_strdup("10011111N000101");
 		else
-			mapped->map[i] = ft_strdup("10010000101");
+			mapped->map[i] = ft_strdup("100111110000101");
 		i++;
 	}
-	mapped[i] = NULL;
+	mapped->map[i] = ft_strdup("\0");
 	return(mapped);
 }
 
 int main(void)
 {
 	t_map *map;
+	// int	i = 0;
 
 	map = map_maker();
-	mini_map();
-	open_window();
+	// mini_map();
+	// ft_printf("\tmap:\n");
+	// while (strcmp(map->map[i], "\0"))
+	// {
+	// 	ft_printf("%s\n", map->map[i]);
+	// 	i++;
+	// }
+	open_window(map);
+	// exit_program(map);
 }

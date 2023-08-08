@@ -107,8 +107,8 @@ $(OBJPATH)/%.o: $(VPATH)/%.c $(HEADER)
 		@echo -n "$(YELLOW)Compiling ${NAME} $(WHITE)$$(( $(PROGRESS) * 100 / $(NUMBER_OF_FILES)))%\r"
 		$(eval PROGRESS=$(shell echo $$(($(PROGRESS)+1))))
 
-#make mem -> mcheck
-mem:
+#make val -> mcheck
+val:
 		$(VAL) ./$(NAME)
 
 #make clean -> remove objects
