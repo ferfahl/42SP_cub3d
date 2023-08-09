@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 20:36:07 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/09 20:50:52 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,29 @@
 # include <fcntl.h>
 # include <errno.h>
 
-typedef struct	s_image
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	float	width;
+	float	height;
+	int		turn_direction; //-1 for left, +1 for right
+	int		walk_direction; //-1 for back, +1 for front
+	float	rotation_angle;
+	float	walk_speed;
+	float	turn_speed;
+}				t_player;
+
+typedef struct s_image
 {
 	void	*ptr;
 	int		*data;
-	//items to start the img on mlx
 	int		bpp;
 	int		line_len;
 	int		endian;
 }				t_image;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	*north;
 	char	*south;
@@ -74,7 +86,7 @@ int		key_hook(int keycode, t_vars *vars);
 int		click_hook(t_vars *vars);
 
 //sources/mlx_util/image.c
-t_image	create_image(void *addr);
+t_image	create_var_image(void *addr);
 
 //sources/mlx_util/draw.c
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);

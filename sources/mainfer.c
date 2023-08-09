@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 18:50:12 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/09 20:44:06 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,12 @@ t_map	*map_maker(void)
 		i++;
 	}
 	mapped->map[i] = ft_strdup("\0");
-	return(mapped);
+	return (mapped);
 }
 
-int main(void)
+int	main(void)
 {
-	t_map *map;
-	// int	i = 0;
+	t_map	*map;
 
 	map = map_maker();
 	open_window(map);
