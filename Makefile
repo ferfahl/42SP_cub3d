@@ -63,6 +63,8 @@ MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 
 #headers
 HEADER =			header/cub3d.h						\
+					header/defs.h						\
+					header/buttons.h					\
 
 #directories
 OBJPATH =			temps

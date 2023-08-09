@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 19:02:43 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/08 20:39:18 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # define TRUE 1
 # define FALSE 0
 
-# define PIXEL_SIZE 64
+# define TILE_SIZE 80
 
 #endif
