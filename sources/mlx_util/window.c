@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:30:10 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 18:51:30 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/08 20:39:01 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,42 @@
 
 void	fill_img(t_vars *vars)
 {
-	int		count_w;
-	int		count_h;
+	int		x;
+	int		y;
 
-	count_h = -1;
-	while (++count_h < W_HEIGHT)
+	y = -1;
+	while (++y < W_HEIGHT)
 	{
-		count_w = -1;
-		while (++count_w < W_WIDTH)
+		x = -1;
+		while (++x < W_WIDTH)
 		{
-			if (count_w % 2)
-				vars->img.data[count_h * W_WIDTH + count_w] = 0xFFFFFF;
-			else
-				vars->img.data[count_h * W_WIDTH + count_w] = 0;
+			vars->img.data[y * W_WIDTH + x] = 0;
 		}
+	}
+}
+
+void	creating_img(t_vars *vars)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < W_HEIGHT)
+	{
+		x = 0;
+		while (x < W_WIDTH)
+		{
+			if (x % 160 && y % 160)
+				print_tile(&vars->img, x, y, 0xFF0000);
+			else if (!(x % 160) && y % 160)
+				print_tile(&vars->img, x, y, 0xFFFF00);
+			else if (x % 160 && !(y % 160))
+				print_tile(&vars->img, x, y, 0x00FF00);
+			else if (!(x % 160) && !(y % 160))
+				print_tile(&vars->img, x, y, 0x000000);
+			x += TILE_SIZE;
+		}
+		y += TILE_SIZE;
 	}
 }
 
@@ -49,6 +71,7 @@ void	open_window(t_map *map)
 		if_error("Mlx vars->window error");
 	vars->img = create_image(vars->mlx);
 	fill_img(vars);
+	creating_img(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.ptr, 0, 0);
 	mlx_hook(vars->win, KEY_PRESS_EVENT, (1L << 0), key_hook, vars);
 	mlx_hook(vars->win, CLICK_EVENT, (1L << 2), click_hook, vars);
