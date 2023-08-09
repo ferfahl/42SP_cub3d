@@ -56,8 +56,9 @@ MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${WIND}/window.c					\
 					${WIND}/click_handler.c				\
 					${WIND}/key_handler.c				\
-					mainfer.c								\
-					# main.c								\
+					${WIND}/image.c						\
+					mainfer.c							\
+					# main.c							\
 
 #headers
 HEADER =			header/cub3d.h						\

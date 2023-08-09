@@ -6,13 +6,14 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 17:24:43 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:36:55 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "defs.h"
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
@@ -24,8 +25,15 @@
 # include <fcntl.h>
 # include <errno.h>
 
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 720
+typedef struct	s_image
+{
+	void	*ptr;
+	int		*data;
+	//items to start the img on mlx
+	int		bpp;
+	int		line_len;
+	int		endian;
+}				t_image;
 
 typedef struct	s_map
 {
@@ -43,6 +51,7 @@ typedef struct s_vars
 	void	*mlx;
 	void	*win;
 	t_map	*fullmap;
+	t_image	img;
 }				t_vars;
 
 //main.c
@@ -63,5 +72,8 @@ int		key_hook(int keycode, t_vars *vars);
 
 //sources/mlx_util/click_handler.c
 int		click_hook(t_vars *vars);
+
+//sources/mlx_util/image.c
+t_image	create_image(void *addr);
 
 #endif
