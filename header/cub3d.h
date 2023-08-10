@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/09 20:50:52 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/09 20:58:36 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ typedef struct s_player
 {
 	float	x;
 	float	y;
-	float	width;
-	float	height;
+	int		size;
 	int		turn_direction; //-1 for left, +1 for right
 	int		walk_direction; //-1 for back, +1 for front
 	float	rotation_angle;
