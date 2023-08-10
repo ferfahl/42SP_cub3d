@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:44:31 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/27 17:44:34 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/09 20:45:40 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_args(int argc, char *argv[])
 		return (ft_error("Wrong number of arguments\n"));
 	if (check_extension(argv[1]))
 		return (ft_error("Wrong file extension\n"));
-	//check if file exists
-	//open? now or later?
 	return (0);
 }
+//check if file exists
+//open? now or later?

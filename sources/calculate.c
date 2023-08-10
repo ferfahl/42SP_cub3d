@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   calculate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 17:57:01 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/09 20:45:08 by feralves         ###   ########.fr       */
+/*   Created: 2023/08/09 20:39:44 by feralves          #+#    #+#             */
+/*   Updated: 2023/08/09 20:43:46 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_image	create_var_image(void *addr)
+float	normalize_angle(float angle)
 {
-	t_image	image;
+	angle = remainder(angle, TWO_PI);
+	if (angle < 0)
+		angle = TWO_PI + angle;
+	return (angle);
+}
 
-	image.ptr = mlx_new_image(addr, W_WIDTH, W_HEIGHT);
-	image.data = (int *)mlx_get_data_addr(image.ptr, &image.bpp,
-			&image.line_len, &image.endian);
-	return (image);
+float	distance_between_points(float x1, float y1, float x2, float y2)
+{
+	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }

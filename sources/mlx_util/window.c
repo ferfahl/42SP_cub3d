@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:30:10 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 20:39:01 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/09 20:45:03 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,13 @@ void	open_window(t_map *map)
 	if (vars == NULL)
 		if_error("Calloc error");
 	vars->fullmap = map;
-	// vars->img = create_image(vars->mlx);
 	vars->mlx = mlx_init();
 	if (vars->mlx == NULL)
 		if_error("Mlx init error");
 	vars->win = mlx_new_window(vars->mlx, W_WIDTH, W_HEIGHT, "cub3D");
 	if (vars->win == NULL)
 		if_error("Mlx vars->window error");
-	vars->img = create_image(vars->mlx);
+	vars->img = create_var_image(vars->mlx);
 	fill_img(vars);
 	creating_img(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.ptr, 0, 0);
