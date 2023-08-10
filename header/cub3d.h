@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/09 20:58:36 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:21:40 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,18 @@ typedef struct s_map
 	char	*west;
 	char	*floor;
 	char	*ceiling;
-	char	**map;
+	float	x_len;
+	float	y_len;
+	int		**map;
 }				t_map;
 
 typedef struct s_vars
 {
-	void	*mlx;
-	void	*win;
-	t_map	*fullmap;
-	t_image	img;
+	void		*mlx;
+	void		*win;
+	t_map		*fullmap;
+	t_image		img;
+	t_player	*player;
 }				t_vars;
 
 //main.c
@@ -76,7 +79,7 @@ int		ft_error(char *str);
 int		check_args(int argc, char *argv[]);
 
 //sources/mlx_util/window.c
-void	open_window(t_map *map);
+void	open_window(t_map *map, t_player *player);
 
 //sources/mlx_util/key_handler.c
 int		key_hook(int keycode, t_vars *vars);

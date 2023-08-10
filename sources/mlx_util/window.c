@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:30:10 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/09 20:45:03 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:21:16 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	creating_img(t_vars *vars)
 	}
 }
 
-void	open_window(t_map *map)
+void	open_window(t_map *map, t_player *p1)
 {
 	t_vars	*vars;
 
@@ -62,6 +62,7 @@ void	open_window(t_map *map)
 	if (vars == NULL)
 		if_error("Calloc error");
 	vars->fullmap = map;
+	vars->player = p1;
 	vars->mlx = mlx_init();
 	if (vars->mlx == NULL)
 		if_error("Mlx init error");

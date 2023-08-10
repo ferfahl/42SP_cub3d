@@ -6,23 +6,30 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/09 20:44:06 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:20:37 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int *temp_map[13] = {
+	(int[20]){1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ,1, 1, 1, 1, 1, 1, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
+	(int[20]){1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
+	(int[20]){1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+};
+
 void	clear_map(t_map	*map)
 {
-	int	i;
-
-	i = 0;
-	while (i <= 11)
-	{
-		free(map->map[i]);
-		i++;
-	}
-	free(map->map);
 	free(map->ceiling);
 	free(map->floor);
 	free(map->east);
@@ -59,7 +66,7 @@ void	if_error(char *str)
 t_map	*map_maker(void)
 {
 	t_map	*mapped;
-	int		i;
+	int	i;
 
 	i = 0;
 	mapped = malloc(sizeof(t_map));
@@ -69,27 +76,43 @@ t_map	*map_maker(void)
 	mapped->west = ft_strdup("0xFF00FF00");
 	mapped->north = ft_strdup("0xFF0000FF");
 	mapped->south = ft_strdup("0xFFFFFFFF");
-	mapped->map = malloc(sizeof(char *) * (11 + 1));
-	while (i < 11)
+	mapped->x_len = 20;
+	mapped->y_len = 13;
+	mapped->map = temp_map;
+	while (i < (int)mapped->y_len)
 	{
-		if (i == 0 || i == 10)
-			mapped->map[i] = ft_strdup("111111111111111");
-		else if (i % 2 != 0)
-			mapped->map[i] = ft_strdup("100000000000011");
-		else if (i == 4)
-			mapped->map[i] = ft_strdup("10011111N000101");
-		else
-			mapped->map[i] = ft_strdup("100111110000101");
+		for (int j = 0; j < (int)mapped->x_len; j++)
+		{
+			ft_printf("%d ", mapped->map[i][j]);
+		}
+		ft_printf("\n");
 		i++;
 	}
-	mapped->map[i] = ft_strdup("\0");
 	return (mapped);
+}
+
+t_player	*start_player(t_map *map)
+{
+	t_player	*p1;
+
+	p1 = malloc(sizeof(t_player));
+	p1->x = map->x_len / 2;
+	p1->y = map->y_len / 2;
+	p1->size = 1;
+	p1->turn_direction = 0;
+	p1->walk_direction = 0;
+	p1->rotation_angle = PI / 2;
+	p1->turn_speed = 45 * (PI / 180);
+	p1->walk_speed = 100;
+	return (p1);
 }
 
 int	main(void)
 {
-	t_map	*map;
+	t_map		*map;
+	t_player	*p1;
 
 	map = map_maker();
-	open_window(map);
+	p1 = start_player(map);
+	open_window(map, p1);
 }
