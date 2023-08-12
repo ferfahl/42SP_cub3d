@@ -59,9 +59,9 @@ MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${WIND}/image.c						\
 					${WIND}/draw.c						\
 					${WIND}/temp.c						\
-					mainfer.c							\
-					exit.c								\
 					start_cub.c							\
+					exit.c								\
+					mainfer.c							\
 					# main.c							\
 
 #headers
