@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   start_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 16:30:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/11 22:08:04 by feralves         ###   ########.fr       */
+/*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
+/*   Updated: 2023/08/12 11:01:07 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_exit(int status)
+void	start_game(t_map *map, t_player *p1)
 {
-	if (status == 0)
-		ft_printf("Exit Success\n");
-	else
-		ft_printf("Exit Failure\n");
-	exit(status);
-}
+	t_vars	*vars;
 
-void	if_error(char *str)
-{
-	ft_printf("error\n%s\n", str);
-	exit(1);
+	vars = (t_vars *)ft_calloc(1, sizeof(t_vars));
+	if (vars == NULL)
+		if_error("Calloc error");
+	open_window(vars);
+	vars->fullmap = map;
+	vars->player = p1;
+	mlx_hooks(vars);
 }
-
-int	main(int argc, char *argv[])
-{
-	if (check_args(argc, argv))
-		return (1);
-	start_game();
-}
-	//begin struct
-	//open file
-	//check map
-	//check info for each element
-	//check if map is closed
-	//check if map is valid

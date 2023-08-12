@@ -49,6 +49,7 @@ PROGRESS			=	0
 #src paths
 CHECKS_PATH =		checks
 WIND =			mlx_util
+EXIT =			exit
 
 #src functions
 MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
@@ -58,6 +59,9 @@ MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${WIND}/key_handler.c				\
 					${WIND}/image.c						\
 					${WIND}/draw.c						\
+					${WIND}/temp.c						\
+					${EXIT}/exit.c						\
+					start_cub.c							\
 					mainfer.c							\
 					# main.c							\
 
