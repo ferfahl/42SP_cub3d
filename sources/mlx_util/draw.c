@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:53:38 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 14:54:18 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 17:58:07 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,26 @@ void	print_tile(t_image *image, size_t x, size_t y, int color)
 			j++;
 		}
 		i++;
+	}
+}
+
+void	print_circle(t_image *image, int xc, int yc, int r)
+{
+	int	x;
+	int	y;
+
+	x = xc - r;
+	y = yc - r;
+	my_mlx_pixel_put(image, xc, yc, 0xFF0000);
+	while (x <= xc + r)
+	{
+		y = yc - r;
+		while (y <= yc + r)
+		{
+			if ((x - xc) * (x - xc) + (y - yc) * (y - yc) < r * r)
+				my_mlx_pixel_put(image, x, y, 0xFF0000);
+			y++;
+		}
+		x++;
 	}
 }

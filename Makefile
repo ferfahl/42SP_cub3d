@@ -63,11 +63,13 @@ MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${WIND}/key_handler.c				\
 					${WIND}/image.c						\
 					${WIND}/draw.c						\
+					${WIND}/draw_line.c					\
 					${WIND}/temp.c						\
 					${EXIT}/exit.c						\
+					calculate.c							\
 					start_cub.c							\
 					mainfer.c							\
-					# main.c							\
+					# main.c								\
 
 #headers
 HEADER =			header/cub3d.h						\
@@ -152,7 +154,8 @@ git:
 
 norm:
 		clear
-		@norminette ${addprefix ${VPATH}/, ${MANDATORY_FILES}} | grep -v "OK!" || echo "All files ok!"
+		@norminette ${VPATH} | grep -v "OK!" || echo "All srcs ok!"
+		@norminette ${HEADER} | grep -v "OK!" || echo "All headers ok!"
 
 norm_CI:
 		norminette ${addprefix ${VPATH}/, ${MANDATORY_FILES}}

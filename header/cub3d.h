@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 15:20:18 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 19:48:57 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,20 @@
 # include <fcntl.h>
 # include <errno.h>
 
-// int		turn_direction; //-1 for left, +1 for right
-// int		walk_direction; //-1 for back, +1 for front
-
-typedef struct s_player
+typedef struct s_pos
 {
 	int		x;
 	int		y;
+}				t_pos;
+
+typedef struct s_player
+{
+	float	x;
+	float	y;
 	int		size;
 	int		turn_direction;
 	int		walk_direction;
-	float	rotation_angle;
-	float	walk_speed;
-	float	turn_speed;
+	float	angle;
 }				t_player;
 
 typedef struct s_image
@@ -75,6 +76,10 @@ typedef struct s_vars
 void	if_error(char *str);
 void	ft_exit(int status, t_vars *vars);
 
+//calculate.c
+float	normalize_angle(float angle);
+double	radians(double degree);
+
 //start_cub.c
 void	start_game(t_map *map, t_player *p1);
 
@@ -102,17 +107,23 @@ int		render(t_vars *vars);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 void	print_tile(t_image *image, size_t x, size_t y, int color);
 void	print_square(t_image *image, size_t x, size_t y, int size);
+void	print_circle(t_image *image, int xc, int yc, int r);
+
+//sources/mlx_util/draw_line.c
+void	print_line(t_image *image, t_pos a, t_pos b);
 
 //sources/mlx_util/temp.c
 void	draw_background(t_vars *vars);
 void	creating_img(t_vars *vars);
 
 //sources/player/player_moves.c
-void	move_player(t_map *mapped, t_player *p1);
+// void	move_player(float deta_time, t_map *mapped, t_player *p1);
 void	change_player_pos(int keycode, t_vars *vars);
 void	turn_player(int keycode, t_vars *vars);
 
 //sources/map_handle.c
 int		map_wall(t_map *mapped, float x, float y);
+
+void	print_map(t_map *mapped);
 
 #endif
