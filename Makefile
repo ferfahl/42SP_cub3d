@@ -60,7 +60,7 @@ MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${WIND}/image.c						\
 					${WIND}/draw.c						\
 					${WIND}/temp.c						\
-					${EXIT}exit.c						\
+					${EXIT}/exit.c						\
 					start_cub.c							\
 					mainfer.c							\
 					# main.c							\
