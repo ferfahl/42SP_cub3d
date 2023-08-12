@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 13:56:37 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 14:54:08 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int		render(t_vars *vars);
 //sources/mlx_util/draw.c
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 void	print_tile(t_image *image, size_t x, size_t y, int color);
+void	print_square(t_image *image, size_t x, size_t y, int size);
 
 //sources/mlx_util/temp.c
 void	draw_background(t_vars *vars);

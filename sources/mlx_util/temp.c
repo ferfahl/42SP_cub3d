@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:14 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 13:58:56 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 14:55:19 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	creating_img(t_vars *vars)
 
 	gettimeofday(&time01, NULL);
 	if (time01.tv_sec % 2 == 1)
-		color = 0xFF0000;
+		color = 0xFFFF00;
 	if (time01.tv_sec % 2 == 0)
 		color = 0x00FF00;
 	y = 0;
@@ -68,6 +68,8 @@ void	creating_img(t_vars *vars)
 						print_tile(&vars->img, x, y, 0xFFFFFF);
 				}
 			}
+			if (map_y == vars->player->y && map_x == vars->player->x)
+				print_square(&vars->img, x, y, vars->player->size);
 			map_x++;
 			x += TILE_SIZE;
 		}
