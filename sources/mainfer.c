@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/11 22:00:09 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/11 22:08:04 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,5 @@ int	main(void)
 
 	map = map_maker();
 	p1 = start_player(map);
-	open_window(map, p1);
+	start_game(map, p1);
 }

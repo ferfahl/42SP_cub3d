@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/11 21:56:44 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 11:03:23 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ typedef struct s_vars
 void	if_error(char *str);
 void	ft_exit(int status, t_vars *vars);
 
+//start_cub.c
+void	start_game(t_map *map, t_player *p1);
+
 //sources/00_errors.c
 int		ft_error(char *str);
 
@@ -82,7 +85,8 @@ int		ft_error(char *str);
 int		check_args(int argc, char *argv[]);
 
 //sources/mlx_util/window.c
-void	open_window(t_map *map, t_player *player);
+void	open_window(t_vars	*vars);
+void	mlx_hooks(t_vars *vars);
 
 //sources/mlx_util/key_handler.c
 int		key_hook(int keycode, t_vars *vars);
@@ -92,9 +96,14 @@ int		click_hook(t_vars *vars);
 
 //sources/mlx_util/image.c
 t_image	create_var_image(void *addr);
+int		render(t_vars *vars);
 
 //sources/mlx_util/draw.c
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 void	print_tile(t_image *image, size_t x, size_t y, int color);
+
+//sources/mlx_util/temp.c
+void	draw_background(t_vars *vars);
+void	creating_img(t_vars *vars);
 
 #endif
