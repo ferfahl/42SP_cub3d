@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/11 18:56:12 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/11 21:56:44 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,16 @@
 # include <fcntl.h>
 # include <errno.h>
 
+// int		turn_direction; //-1 for left, +1 for right
+// int		walk_direction; //-1 for back, +1 for front
+
 typedef struct s_player
 {
-	float	x;
-	float	y;
+	int		x;
+	int		y;
 	int		size;
-	int		turn_direction; //-1 for left, +1 for right
-	int		walk_direction; //-1 for back, +1 for front
+	int		turn_direction;
+	int		walk_direction;
 	float	rotation_angle;
 	float	walk_speed;
 	float	turn_speed;
@@ -68,7 +71,7 @@ typedef struct s_vars
 	t_player	*player;
 }				t_vars;
 
-//main.c
+//exit.c
 void	if_error(char *str);
 void	ft_exit(int status, t_vars *vars);
 
