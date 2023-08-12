@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 11:03:23 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 13:56:37 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ typedef struct s_image
 
 typedef struct s_map
 {
-	char	*north;
-	char	*south;
-	char	*east;
-	char	*west;
-	char	*floor;
-	char	*ceiling;
+	int		north;
+	int		south;
+	int		east;
+	int		west;
+	int		floor;
+	int		ceiling;
 	int		x_len;
 	int		y_len;
 	int		**map;
