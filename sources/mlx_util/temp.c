@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:14 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 14:55:19 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 14:58:18 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,7 @@ void	creating_img(t_vars *vars)
 	int		y;
 	int		map_x;
 	int		map_y;
-	struct timeval	time01;
-	int	color;
 
-	gettimeofday(&time01, NULL);
-	if (time01.tv_sec % 2 == 1)
-		color = 0xFFFF00;
-	if (time01.tv_sec % 2 == 0)
-		color = 0x00FF00;
 	y = 0;
 	map_y = 0;
 	while (y < W_HEIGHT)
@@ -63,7 +56,7 @@ void	creating_img(t_vars *vars)
 				if (map_x < vars->fullmap->x_len)
 				{
 					if (vars->fullmap->map[map_y][map_x] == 0)
-						print_tile(&vars->img, x, y, color);
+						print_tile(&vars->img, x, y, 0x000000);
 					else if (vars->fullmap->map[map_y][map_x] == 1)
 						print_tile(&vars->img, x, y, 0xFFFFFF);
 				}

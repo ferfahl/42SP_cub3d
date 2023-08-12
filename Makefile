@@ -50,10 +50,14 @@ PROGRESS			=	0
 CHECKS_PATH =		checks
 WIND =			mlx_util
 EXIT =			exit
+PLAYER =		player_handle
+MAP =			map_handle
 
 #src functions
 MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${CHECKS_PATH}/01_check_args.c		\
+					${PLAYER}/player_moves.c			\
+					${MAP}/mini_map.c					\
 					${WIND}/window.c					\
 					${WIND}/click_handler.c				\
 					${WIND}/key_handler.c				\

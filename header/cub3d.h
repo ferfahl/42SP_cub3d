@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 14:54:08 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:15:22 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,12 @@ void	print_square(t_image *image, size_t x, size_t y, int size);
 //sources/mlx_util/temp.c
 void	draw_background(t_vars *vars);
 void	creating_img(t_vars *vars);
+
+//sources/player/player_moves.c
+void	move_player(t_map *mapped, t_player *p1);
+void	change_player_pos(int keycode, t_vars *vars);
+
+//sources/map_handle.c
+int		map_wall(t_map *mapped, float x, float y);
 
 #endif
