@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:14 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 11:56:26 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 13:58:56 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,24 @@
 
 void	draw_background(t_vars *vars)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
+	int	ceiling;
+	int	floor;
 
-	y = -1;
-	while (++y < W_HEIGHT)
+	y = 0;
+	floor = vars->fullmap->floor;
+	ceiling = vars->fullmap->ceiling;
+	while (y < W_HEIGHT / 2)
 	{
-		x = -1;
-		while (++x < W_WIDTH)
+		x = 0;
+		while (x < W_WIDTH)
 		{
-			vars->img.data[y * W_WIDTH + x] = 0;
+			my_mlx_pixel_put(&vars->img, x, y, ceiling);
+			my_mlx_pixel_put(&vars->img, x, y + W_HEIGHT / 2, floor);
+			x++;
 		}
+		y++;
 	}
 }
 

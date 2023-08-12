@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 21:53:14 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/11 21:55:49 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 13:55:49 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 //temporary
 void	clear_map(t_map	*map)
 {
-	free(map->ceiling);
-	free(map->floor);
-	free(map->east);
-	free(map->west);
-	free(map->north);
-	free(map->south);
 	free(map);
 }
 
