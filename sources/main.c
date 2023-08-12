@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:30:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/11 22:08:04 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:13:15 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ int	main(int argc, char *argv[])
 {
 	if (check_args(argc, argv))
 		return (1);
-	start_game();
+
+	open_window();
 }
-	//begin struct
-	//open file
-	//check map
-	//check info for each element
-	//check if map is closed
-	//check if map is valid
