@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:53:38 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 17:58:07 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 13:36:59 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	print_square(t_image *image, size_t x, size_t y, int size)
+void	print_square(t_image *image, t_pos id, int size, int color)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
-	i = x;
-	while (i < size + x)
+	i = id.x;
+	while (i < size + id.x)
 	{
-		j = y;
-		while (j < size + y)
+		j = id.y;
+		while (j < size + id.y)
 		{
-			my_mlx_pixel_put(image, i, j, 0xFF0000);
+			my_mlx_pixel_put(image, i, j, color);
 			j++;
 		}
 		i++;

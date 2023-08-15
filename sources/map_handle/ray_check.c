@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   ray_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 17:57:01 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 13:21:19 by feralves         ###   ########.fr       */
+/*   Created: 2023/08/15 13:48:33 by feralves          #+#    #+#             */
+/*   Updated: 2023/08/15 13:50:40 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	render(t_vars *vars)
+int	is_facing_down(float angle)
 {
-	draw_background(vars);
-	creating_img(vars);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.ptr, 0, 0);
-	return (0);
+	if (angle > 0 && angle < 180)
+		return (TRUE);
+	return (FALSE);
 }
 
-t_image	create_var_image(void *addr)
+int	is_facing_up(float angle)
 {
-	t_image	image;
+	if (angle > 180)
+		return (TRUE);
+	return (FALSE);
+}
 
-	image.ptr = mlx_new_image(addr, W_WIDTH, W_HEIGHT);
-	image.data = (int *)mlx_get_data_addr(image.ptr, &image.bpp,
-			&image.line_len, &image.endian);
-	return (image);
+int	is_facing_right(float angle)
+{
+	if (angle < 90 || angle > 270)
+		return (TRUE);
+	return (FALSE);
+}
+
+int	is_facing_left(float angle)
+{
+	if (angle > 90 || angle < 270)
+		return (TRUE);
+	return (FALSE);
 }

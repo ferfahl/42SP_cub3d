@@ -57,7 +57,8 @@ MAP =			map_handle
 MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${CHECKS_PATH}/01_check_args.c		\
 					${PLAYER}/player_moves.c			\
-					${MAP}/mini_map.c					\
+					${MAP}/map_limit.c					\
+					${MAP}/draw_minimap.c				\
 					${WIND}/window.c					\
 					${WIND}/click_handler.c				\
 					${WIND}/key_handler.c				\

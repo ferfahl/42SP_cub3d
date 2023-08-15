@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 18:12:13 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 13:47:14 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@
 # define FALSE 0
 
 # define TILE_SIZE 40
+# define FOV 60
 
 # define PI 3.14159265
 # define TWO_PI 6.28318530
 
 # define WALK_SPEED 0.25
 # define TURN_SPEED 1
+
+# define P_SIZE 3
+# define MAP_SCALE 8
 
 #endif
