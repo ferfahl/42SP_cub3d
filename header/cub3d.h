@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 13:42:07 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:13:06 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ typedef struct s_pos
 	int		y;
 }				t_pos;
 
+typedef struct s_point
+{
+	float	x;
+	float	y;
+}				t_point;
+
 typedef struct s_player
 {
 	float	x;
@@ -39,6 +45,14 @@ typedef struct s_player
 	int		walk_direction;
 	float	angle;
 }				t_player;
+
+typedef struct s_rays
+{
+	int		angle;
+	float	dist;
+	t_point	init;
+	t_point	wall_hit;
+}				t_rays;
 
 typedef struct s_image
 {
@@ -124,6 +138,7 @@ void	turn_player(int keycode, t_vars *vars);
 //sources/map_handle.c
 int		map_wall(t_map *mapped, float x, float y);
 
+//bonus minimap
 void	print_map(t_map *mapped);
 
 #endif
