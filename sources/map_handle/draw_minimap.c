@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 15:20:25 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:58:38 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ void	draw_player(t_vars *vars)
 	t_pos	a;
 	t_pos	b;
 
-	next_x = vars->player->x * MAP_SCALE + cos(radians(vars->player->angle))
-		* 50;
-	next_y = vars->player->y * MAP_SCALE + sin(radians(vars->player->angle))
-		* 50;
+	next_x = vars->player->x * MAP_SCALE + cos(vars->player->angle)
+		* 10;
+	next_y = vars->player->y * MAP_SCALE + sin(vars->player->angle)
+		* 10;
 	a.x = floor(vars->player->x * MAP_SCALE);
 	a.y = floor(vars->player->y * MAP_SCALE);
 	b.x = floor(next_x);
 	b.y = floor(next_y);
 	print_circle(&vars->img, a.x, a.y, P_SIZE);
-	print_line(&vars->img, a, b);
+	print_line(&vars->img, a, b, 0xFF0000);
 	draw_rays(vars);
 }
 

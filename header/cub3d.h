@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 15:19:24 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:59:03 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,21 @@ typedef struct s_point
 
 typedef struct s_player
 {
+	float	angle;
 	float	x;
 	float	y;
+	float	rotate;
 	int		turn_direction;
 	int		walk_direction;
-	float	angle;
 }				t_player;
 
 typedef struct s_rays
 {
-	int		angle;
+	int		facing_down;
+	int		facing_up;
+	int		facing_right;
+	int		facing_left;
+	float	angle;
 	float	dist;
 	t_point	init;
 	t_point	wall_hit;
@@ -78,9 +83,11 @@ typedef struct s_map
 
 typedef struct s_vars
 {
+	int			nbr_rays;
 	void		*mlx;
 	void		*win;
 	t_map		*fullmap;
+	t_rays		*rays;
 	t_image		img;
 	t_player	*player;
 }				t_vars;
@@ -123,7 +130,7 @@ void	print_square(t_image *image, t_pos id, int size, int color);
 void	print_circle(t_image *image, int xc, int yc, int r);
 
 //sources/mlx_util/draw_line.c
-void	print_line(t_image *image, t_pos a, t_pos b);
+void	print_line(t_image *image, t_pos a, t_pos b, int color);
 
 //sources/mlx_util/temp.c
 void	draw_background(t_vars *vars);

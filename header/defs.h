@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 13:47:14 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:45:53 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define TWO_PI 6.28318530
 
 # define WALK_SPEED 0.25
-# define TURN_SPEED 1
+# define TURN_SPEED 45 * (PI / 180) / 4
 
 # define P_SIZE 3
 # define MAP_SCALE 8
