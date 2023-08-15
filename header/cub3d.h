@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 17:59:03 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 20:12:23 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_rays
 	int		facing_up;
 	int		facing_right;
 	int		facing_left;
+	int		was_hit_vert;
 	float	angle;
 	float	dist;
 	t_point	init;
@@ -99,6 +100,7 @@ void	ft_exit(int status, t_vars *vars);
 //calculate.c
 float	normalize_angle(float angle);
 double	radians(double degree);
+float	dist_points(float x1, float y1, float x2, float y2);
 
 //start_cub.c
 void	start_game(t_map *map, t_player *p1);
@@ -138,11 +140,25 @@ void	creating_img(t_vars *vars);
 void	draw_mini_map(t_vars *vars, t_map *map);
 
 //sources/player/player_moves.c
-// void	move_player(float deta_time, t_map *mapped, t_player *p1);
 void	change_player_pos(int keycode, t_vars *vars);
 void	turn_player(int keycode, t_vars *vars);
 
 //sources/map_handle.c
 int		map_wall(t_map *mapped, float x, float y);
+
+//sources/player_handle/cast_rays.c
+void	cast_all_rays(t_vars *vars);
+
+//sources/mao_handle/ray_check.c
+int		is_facing_down(float angle);
+int		is_facing_up(float angle);
+int		is_facing_right(float angle);
+int		is_facing_left(float angle);
+
+//sources/player_handle/find_hit_horz.c
+t_point	get_horz_hit(t_vars *vars, t_rays ray);
+
+//sources/player_handle/find_hit_horz.c
+t_point	get_vert_hit(t_vars *vars, t_rays ray);
 
 #endif
