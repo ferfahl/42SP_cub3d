@@ -6,12 +6,11 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:14 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 13:58:56 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/12 19:50:57 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <sys/time.h>
 
 void	draw_background(t_vars *vars)
 {
@@ -36,42 +35,49 @@ void	draw_background(t_vars *vars)
 	}
 }
 
+void	draw_player(t_vars *vars)
+{
+	int		next_x;
+	int		next_y;
+	t_pos	a;
+	t_pos	b;
+
+	next_x = vars->player->x * TILE_SIZE + cos(radians(vars->player->angle))
+		* 50;
+	next_y = vars->player->y * TILE_SIZE + sin(radians(vars->player->angle))
+		* 50;
+	a.x = floor(vars->player->x * TILE_SIZE);
+	a.y = floor(vars->player->y * TILE_SIZE);
+	b.x = floor(next_x);
+	b.y = floor(next_y);
+	print_circle(&vars->img, a.x, a.y, vars->player->size);
+	print_line(&vars->img, a, b);
+}
+
 void	creating_img(t_vars *vars)
 {
 	int		x;
 	int		y;
-	int		map_x;
-	int		map_y;
-	struct timeval	time01;
-	int	color;
 
-	gettimeofday(&time01, NULL);
-	if (time01.tv_sec % 2 == 1)
-		color = 0xFF0000;
-	if (time01.tv_sec % 2 == 0)
-		color = 0x00FF00;
 	y = 0;
-	map_y = 0;
 	while (y < W_HEIGHT)
 	{
 		x = 0;
-		map_x = 0;
 		while (x < W_WIDTH)
 		{
-			if (map_y < vars->fullmap->y_len)
+			if ((y / TILE_SIZE) <= vars->fullmap->y_len)
 			{
-				if (map_x < vars->fullmap->x_len)
+				if ((x / TILE_SIZE) <= vars->fullmap->x_len)
 				{
-					if (vars->fullmap->map[map_y][map_x] == 0)
-						print_tile(&vars->img, x, y, color);
-					else if (vars->fullmap->map[map_y][map_x] == 1)
+					if (vars->fullmap->map[y / TILE_SIZE][x / TILE_SIZE] == 0)
+						print_tile(&vars->img, x, y, 0x000000);
+					else
 						print_tile(&vars->img, x, y, 0xFFFFFF);
 				}
 			}
-			map_x++;
 			x += TILE_SIZE;
 		}
-		map_y++;
 		y += TILE_SIZE;
 	}
+	draw_player(vars);
 }
