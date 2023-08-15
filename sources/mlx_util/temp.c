@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:14 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 13:29:54 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:19:44 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void	draw_background(t_vars *vars)
 	}
 }
 
-
 void	creating_img(t_vars *vars)
 {
-	draw_mini_map(vars);
+	draw_mini_map(vars, vars->fullmap);
 }

@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 15:13:06 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:19:24 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	print_line(t_image *image, t_pos a, t_pos b);
 //sources/mlx_util/temp.c
 void	draw_background(t_vars *vars);
 void	creating_img(t_vars *vars);
-void	draw_mini_map(t_vars *vars);
+void	draw_mini_map(t_vars *vars, t_map *map);
 
 //sources/player/player_moves.c
 // void	move_player(float deta_time, t_map *mapped, t_player *p1);
@@ -137,8 +137,5 @@ void	turn_player(int keycode, t_vars *vars);
 
 //sources/map_handle.c
 int		map_wall(t_map *mapped, float x, float y);
-
-//bonus minimap
-void	print_map(t_map *mapped);
 
 #endif

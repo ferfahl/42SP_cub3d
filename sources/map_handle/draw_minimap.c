@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 15:12:23 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:20:25 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	draw_rays(t_vars *vars)
 
 	player.x = floor(vars->player->x * MAP_SCALE);
 	player.y = floor(vars->player->y * MAP_SCALE);
-	
 }
 
 void	draw_player(t_vars *vars)
@@ -41,7 +40,7 @@ void	draw_player(t_vars *vars)
 	draw_rays(vars);
 }
 
-void	draw_mini_map(t_vars *vars)
+void	draw_mini_map(t_vars *vars, t_map *map)
 {
 	t_pos	id;
 
@@ -51,19 +50,19 @@ void	draw_mini_map(t_vars *vars)
 		id.x = 0;
 		while (id.x < W_WIDTH)
 		{
-			if ((id.y / (MAP_SCALE)) <= vars->fullmap->y_len)
+			if ((id.y / MAP_SCALE) <= map->y_len)
 			{
-				if ((id.x / (MAP_SCALE)) <= vars->fullmap->x_len)
+				if ((id.x / MAP_SCALE) <= map->x_len)
 				{
-					if (vars->fullmap->map[id.y / (MAP_SCALE)][id.x / (MAP_SCALE)] == 0)
+					if (map->map[id.y / MAP_SCALE][id.x / MAP_SCALE] == 0)
 						print_square(&vars->img, id, MAP_SCALE, 0x000000);
 					else
 						print_square(&vars->img, id, MAP_SCALE, 0xFFFFFF);
 				}
 			}
-			id.x += (MAP_SCALE);
+			id.x += MAP_SCALE;
 		}
-		id.y += (MAP_SCALE);
+		id.y += MAP_SCALE;
 	}
 	draw_player(vars);
 }
