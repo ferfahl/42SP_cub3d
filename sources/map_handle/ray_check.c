@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_cub.c                                        :+:      :+:    :+:   */
+/*   ray_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 16:51:26 by feralves         ###   ########.fr       */
+/*   Created: 2023/08/15 13:48:33 by feralves          #+#    #+#             */
+/*   Updated: 2023/08/15 15:20:40 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	start_game(t_map *map, t_player *p1)
+int	is_facing_down(float angle)
 {
-	t_vars	*vars;
-	t_rays	ray[W_WIDTH];
+	if (angle > 0 && angle < 180)
+		return (TRUE);
+	return (FALSE);
+}
 
-	vars = (t_vars *)ft_calloc(1, sizeof(t_vars));
-	if (vars == NULL)
-		if_error("Calloc error");
-	open_window(vars);
-	vars->fullmap = map;
-	vars->player = p1;
-	vars->nbr_rays = W_WIDTH;
-	vars->rays = ray;
-	mlx_hooks(vars);
+int	is_facing_up(float angle)
+{
+	if (angle > 180)
+		return (TRUE);
+	return (FALSE);
+}
+
+int	is_facing_right(float angle)
+{
+	if (angle < 90 || angle > 270)
+		return (TRUE);
+	return (FALSE);
+}
+
+int	is_facing_left(float angle)
+{
+	if (angle > 90 || angle < 270)
+		return (TRUE);
+	return (FALSE);
 }

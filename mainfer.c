@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 19:51:51 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:24:16 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,9 @@ t_player	*start_player(t_map *map)
 	p1 = malloc(sizeof(t_player));
 	p1->x = map->x_len / 2;
 	p1->y = map->y_len / 2;
-	p1->size = 5;
 	p1->turn_direction = 0;
 	p1->walk_direction = 0;
-	p1->angle = 270;
+	p1->angle = PI / 2;
 	return (p1);
 }
 

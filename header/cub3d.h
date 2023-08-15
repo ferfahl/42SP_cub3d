@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/12 19:48:57 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 20:12:23 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,34 @@ typedef struct s_pos
 	int		y;
 }				t_pos;
 
-typedef struct s_player
+typedef struct s_point
 {
 	float	x;
 	float	y;
-	int		size;
+}				t_point;
+
+typedef struct s_player
+{
+	float	angle;
+	float	x;
+	float	y;
+	float	rotate;
 	int		turn_direction;
 	int		walk_direction;
-	float	angle;
 }				t_player;
+
+typedef struct s_rays
+{
+	int		facing_down;
+	int		facing_up;
+	int		facing_right;
+	int		facing_left;
+	int		was_hit_vert;
+	float	angle;
+	float	dist;
+	t_point	init;
+	t_point	wall_hit;
+}				t_rays;
 
 typedef struct s_image
 {
@@ -65,9 +84,11 @@ typedef struct s_map
 
 typedef struct s_vars
 {
+	int			nbr_rays;
 	void		*mlx;
 	void		*win;
 	t_map		*fullmap;
+	t_rays		*rays;
 	t_image		img;
 	t_player	*player;
 }				t_vars;
@@ -79,6 +100,7 @@ void	ft_exit(int status, t_vars *vars);
 //calculate.c
 float	normalize_angle(float angle);
 double	radians(double degree);
+float	dist_points(float x1, float y1, float x2, float y2);
 
 //start_cub.c
 void	start_game(t_map *map, t_player *p1);
@@ -106,24 +128,37 @@ int		render(t_vars *vars);
 //sources/mlx_util/draw.c
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 void	print_tile(t_image *image, size_t x, size_t y, int color);
-void	print_square(t_image *image, size_t x, size_t y, int size);
+void	print_square(t_image *image, t_pos id, int size, int color);
 void	print_circle(t_image *image, int xc, int yc, int r);
 
 //sources/mlx_util/draw_line.c
-void	print_line(t_image *image, t_pos a, t_pos b);
+void	print_line(t_image *image, t_pos a, t_pos b, int color);
 
 //sources/mlx_util/temp.c
 void	draw_background(t_vars *vars);
 void	creating_img(t_vars *vars);
+void	draw_mini_map(t_vars *vars, t_map *map);
 
 //sources/player/player_moves.c
-// void	move_player(float deta_time, t_map *mapped, t_player *p1);
 void	change_player_pos(int keycode, t_vars *vars);
 void	turn_player(int keycode, t_vars *vars);
 
 //sources/map_handle.c
 int		map_wall(t_map *mapped, float x, float y);
 
-void	print_map(t_map *mapped);
+//sources/player_handle/cast_rays.c
+void	cast_all_rays(t_vars *vars);
+
+//sources/mao_handle/ray_check.c
+int		is_facing_down(float angle);
+int		is_facing_up(float angle);
+int		is_facing_right(float angle);
+int		is_facing_left(float angle);
+
+//sources/player_handle/find_hit_horz.c
+t_point	get_horz_hit(t_vars *vars, t_rays ray);
+
+//sources/player_handle/find_hit_horz.c
+t_point	get_vert_hit(t_vars *vars, t_rays ray);
 
 #endif
