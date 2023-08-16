@@ -6,15 +6,16 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 15:04:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 20:47:26 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 20:59:51 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
 
-void	start_ray(t_rays *ray, t_player *player)
+void	start_ray(t_rays *ray, t_player *player, float angle)
 {
+	ray->angle = angle;
 	ray->facing_down = is_facing_down(ray->angle);
 	ray->facing_up = is_facing_up(ray->angle);
 	ray->facing_left = is_facing_left(ray->angle);
@@ -72,6 +73,7 @@ void	cast_all_rays(t_vars *vars)
 	int		col;
 	float	dist_proj;
 	float	map_w;
+	float	angle;
 
 	col = 0;
 	map_w = (vars->fullmap->x_len) / 2;
@@ -79,9 +81,8 @@ void	cast_all_rays(t_vars *vars)
 	// single_ray(vars, vars->rays[col], col);
 	while (col < vars->nbr_rays)
 	{
-		vars->rays[col].angle = vars->player->angle + atan((col
-					- vars->nbr_rays/2) / dist_proj);
-		start_ray(&vars->rays[col], vars->player);
+		angle = vars->player->angle + atan((col - vars->nbr_rays / 2) / dist_proj);
+		start_ray(&vars->rays[col], vars->player, angle);
 		single_ray(vars, vars->rays[col]);
 		col++;
 	}

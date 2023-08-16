@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 20:12:04 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 20:53:05 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define FALSE 0
 
 # define TILE_SIZE 40
-# define FOV 60
+# define FOV (60 * (PI / 180))
 
 # define PI 3.14159265
 # define TWO_PI 6.28318530

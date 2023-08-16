@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:48:33 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 20:36:46 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:03:24 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ int	is_facing_down(float angle)
 
 int	is_facing_up(float angle)
 {
-	if (angle >= 180)
+	if (!is_facing_down(angle))
 		return (TRUE);
 	return (FALSE);
 }
 
 int	is_facing_right(float angle)
 {
-	if (angle < 90 || angle >= 270)
+	if (angle <= 90 || angle >= 270)
 		return (TRUE);
 	return (FALSE);
 }
 
 int	is_facing_left(float angle)
 {
-	if (angle >= 90 || angle < 270)
+	if (!is_facing_right(angle))
 		return (TRUE);
 	return (FALSE);
 }

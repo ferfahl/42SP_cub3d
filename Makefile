@@ -52,24 +52,25 @@ WIND =			mlx_util
 EXIT =			exit
 PLAYER =		player_handle
 MAP =			map_handle
+RAY =			rays
 
 #src functions
 MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
 					${CHECKS_PATH}/01_check_args.c		\
 					${PLAYER}/player_moves.c			\
-					${PLAYER}/cast_rays.c				\
-					${PLAYER}/find_hit_horz.c			\
-					${PLAYER}/find_hit_vert.c			\
-					${MAP}/map_limit.c					\
+					${RAY}/cast_rays.c					\
+					${RAY}/find_hit_horz.c				\
+					${RAY}/find_hit_vert.c				\
+					${RAY}/ray_check.c					\
 					${MAP}/draw_minimap.c				\
-					${MAP}/ray_check.c					\
-					${WIND}/window.c					\
+					${MAP}/map_limit.c					\
 					${WIND}/click_handler.c				\
-					${WIND}/key_handler.c				\
-					${WIND}/image.c						\
 					${WIND}/draw.c						\
 					${WIND}/draw_line.c					\
+					${WIND}/image.c						\
+					${WIND}/key_handler.c				\
 					${WIND}/temp.c						\
+					${WIND}/window.c					\
 					${EXIT}/exit.c						\
 					calculate.c							\
 					start_cub.c							\
