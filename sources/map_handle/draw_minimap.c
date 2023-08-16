@@ -6,19 +6,19 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 17:58:38 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/16 11:39:57 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_rays(t_vars *vars)
-{
-	t_pos	player;
+// void	draw_rays(t_vars *vars)
+// {
+// 	t_pos	player;
 
-	player.x = floor(vars->player->x * MAP_SCALE);
-	player.y = floor(vars->player->y * MAP_SCALE);
-}
+// 	player.x = floor(vars->player->x * MAP_SCALE);
+// 	player.y = floor(vars->player->y * MAP_SCALE);
+// }
 
 void	draw_player(t_vars *vars)
 {
@@ -37,7 +37,7 @@ void	draw_player(t_vars *vars)
 	b.y = floor(next_y);
 	print_circle(&vars->img, a.x, a.y, P_SIZE);
 	print_line(&vars->img, a, b, 0xFF0000);
-	draw_rays(vars);
+	// draw_rays(vars);
 }
 
 void	draw_mini_map(t_vars *vars, t_map *map)
