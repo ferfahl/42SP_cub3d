@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 15:04:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 20:59:51 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:02:10 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ void	cast_all_rays(t_vars *vars)
 	float	map_w;
 	float	angle;
 
-	col = 0;
-	map_w = (vars->fullmap->x_len) / 2;
+	col = 1;
+	map_w = ((vars->fullmap->x_len + 1) * TILE_SIZE) / 2;
 	dist_proj = map_w / tan(FOV / 2);
-	// single_ray(vars, vars->rays[col], col);
 	while (col < vars->nbr_rays)
 	{
 		angle = vars->player->angle + atan((col - vars->nbr_rays / 2) / dist_proj);
