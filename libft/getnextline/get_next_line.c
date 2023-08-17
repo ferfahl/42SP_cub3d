@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 06:49:03 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 21:17:17 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/17 18:26:47 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*reading(int fd)
 		return (NULL);
 	reader[0] = '\0';
 	size = read(fd, reader, BUFFER_SIZE);
-	if (size == 0)
+	if (size <= 0)
 	{
 		free(reader);
 		return (NULL);
@@ -90,12 +90,15 @@ char	*ft_return_line(int fd)
 		remains = NULL;
 	reader = reading(fd);
 	full_line = ft_strjoin_free(remains, reader);
+	free(reader);
 	if (ft_strlen(full_line) == 0)
 	{
 		free(full_line);
 		return (NULL);
 	}
 	was_read = get_till_break(full_line);
+	if (remains)
+		free(remains);
 	remains = get_rest(full_line);
 	free(full_line);
 	return (was_read);
