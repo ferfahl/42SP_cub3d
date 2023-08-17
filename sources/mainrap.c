@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:22:57 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/17 17:53:45 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/17 18:02:29 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	free_all(t_map_line *map_line, t_input *input, int **map)
 	size_t	i;
 
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
 		free (map[i]);
 		i++;
@@ -160,10 +160,7 @@ int	**get_map(t_map_line *start, t_input *input)
 			else
 				map[counter][iterator] = get_tile(start->line[iterator]);
 			if (map[counter][iterator] == -1)
-			{
 				free_all(start, input, map);
-				return (NULL);
-			}
 			iterator++;
 		}
 		start = start->next;
