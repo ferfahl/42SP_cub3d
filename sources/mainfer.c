@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 15:48:17 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 16:18:31 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_map	*map_maker(void)
 	mapped->y_len = 13 * MAP_RAY;
 	mapped->x_len = 20 * MAP_RAY;
 	mapped->map = temp_map;
+	mapped->depth = (W_WIDTH /2) / tan (HALF_FOV);
+
 	return (mapped);
 }
 

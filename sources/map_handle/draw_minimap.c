@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 16:03:35 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 16:04:29 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	draw_mini_map(t_vars *vars, t_map *map)
 		id.x = 0;
 		while (id.x < map->x_len * MAP_SCALE)
 		{
-			if (map_wall(vars->fullmap, id.x/MAP_SCALE, id.y/MAP_SCALE))
+			if (map_wall(vars->fullmap, id.x / MAP_SCALE, id.y / MAP_SCALE))
 				draw_square(&vars->img, id, MAP_SCALE, 0xFFFFFF);
 			else
 				draw_square(&vars->img, id, MAP_SCALE, 0x000000);

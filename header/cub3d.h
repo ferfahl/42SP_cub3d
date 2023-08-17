@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 15:55:17 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 16:10:48 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_map
 	int		x_len;
 	int		y_len;
 	int		**map;
+	int		depth;
 }				t_map;
 
 typedef struct s_vars
