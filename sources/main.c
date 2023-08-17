@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:30:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 18:13:15 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/17 16:53:58 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ int	main(int argc, char *argv[])
 {
 	if (check_args(argc, argv))
 		return (1);
-
 	open_window();
 }

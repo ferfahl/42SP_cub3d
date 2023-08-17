@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 16:23:34 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 18:01:22 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@
 # define PI 3.14159265
 # define TWO_PI 6.28318530
 
-# define WALK_SPEED 0.25
+# define WALK_SPEED 8
 # define TURN_SPEED 0.196349541
 
 # define P_SIZE 3
-# define MAP_SCALE 15
-# define MAP_RAY 2
+# define MAP_SCALE 0.2
 
 # define RED_RGB 65536
 # define GREEN_RGB 256

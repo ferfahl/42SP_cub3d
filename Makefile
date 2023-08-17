@@ -64,6 +64,7 @@ MANDATORY_FILES =	${CHECKS}/00_errors.c				\
 					${RAY}/find_hit_horz.c				\
 					${RAY}/find_hit_vert.c				\
 					${RAY}/ray_check.c					\
+					${RAY}/ray_utils.c					\
 					${MAP}/draw_minimap.c				\
 					${MAP}/map_limit.c					\
 					${WIND}/click_handler.c				\

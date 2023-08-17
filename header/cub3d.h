@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 16:10:48 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 18:03:30 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,17 +168,21 @@ int		map_wall(t_map *mapped, float x, float y);
 //sources/player_handle/cast_rays.c
 void	cast_all_rays(t_vars *vars);
 
-//sources/mao_handle/ray_check.c
+//sources/rays/ray_check.c
 int		is_facing_down(float angle);
 int		is_facing_up(float angle);
 int		is_facing_right(float angle);
 int		is_facing_left(float angle);
 
-//sources/player_handle/find_hit_horz.c
+//sources/rays/find_hit_horz.c
 t_point	get_horz_hit(t_vars *vars, t_rays ray);
 
-//sources/player_handle/find_hit_horz.c
+//sources/rays/find_hit_horz.c
 t_point	get_vert_hit(t_vars *vars, t_rays ray);
+
+//sources/ray/ray_utils.c
+void	start_ray(t_rays *ray, t_player *player, float angle);
+float	get_dist(t_player *player, t_point ref);
 
 //sources/checks/02_check_textures.c
 int		check_no(char *line, t_input *input);
