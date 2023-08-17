@@ -6,12 +6,13 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 20:06:58 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:31:44 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+//find the closest horizontal grid intersection (x, y)
 t_point	h_intercept(t_vars *vars, t_rays ray)
 {
 	t_point	intercept;
@@ -24,6 +25,7 @@ t_point	h_intercept(t_vars *vars, t_rays ray)
 	return (intercept);
 }
 
+//calculate the increment xstep and ystep (delta)
 t_point	h_steped(t_rays ray)
 {
 	t_point	step;
@@ -53,9 +55,10 @@ t_point	get_horz_hit(t_vars *vars, t_rays ray)
 		&& horz.y <= vars->fullmap->y_len)
 	{
 		check.x = horz.x;
-		check.y = horz.y;
 		if (ray.facing_up)
-			check.y *= -1;
+			check.y = horz.y - 1;
+		else
+			check.y = horz.y;
 		if (map_wall(vars->fullmap, check.x, check.y))
 			break ;
 		else

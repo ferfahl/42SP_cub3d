@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 15:04:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 12:02:10 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:06:18 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	start_ray(t_rays *ray, t_player *player, float angle)
 {
-	ray->angle = angle;
+	ray->angle = normalize_angle(angle);
 	ray->facing_down = is_facing_down(ray->angle);
 	ray->facing_up = is_facing_up(ray->angle);
 	ray->facing_left = is_facing_left(ray->angle);
