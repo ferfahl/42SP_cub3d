@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:44:31 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 18:31:31 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/16 20:43:53 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_args(int argc, char *argv[])
 		return (ft_error("Wrong file extension\n"));
 	fd = open_file(argv[1]);
 	if (fd < 0)
-		ft_error(strerror(errno));
+		return (ft_error(strerror(errno)));
 	return (fd);
 }
 
@@ -41,5 +41,5 @@ int	open_file(char *file_name)
 	int	fd;
 
 	fd = open(file_name, O_RDONLY);
-	return(fd);
+	return (fd);
 }
