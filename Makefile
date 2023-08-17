@@ -47,7 +47,7 @@ PROGRESS			=	0
 ################################################################################
 
 #src paths
-CHECKS_PATH =		checks
+CHECKS =		checks
 WIND =			mlx_util
 EXIT =			exit
 PLAYER =		player_handle
@@ -55,8 +55,10 @@ MAP =			map_handle
 RAY =			rays
 
 #src functions
-MANDATORY_FILES =	${CHECKS_PATH}/00_errors.c			\
-					${CHECKS_PATH}/01_check_args.c		\
+MANDATORY_FILES =	${CHECKS}/00_errors.c				\
+					${CHECKS}/01_check_args.c			\
+					${CHECKS}/02_check_textures.c		\
+					${CHECKS}/03_check_colors.c			\
 					${PLAYER}/player_moves.c			\
 					${RAY}/cast_rays.c					\
 					${RAY}/find_hit_horz.c				\

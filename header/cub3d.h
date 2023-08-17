@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 18:26:06 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/16 20:39:28 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,23 @@
 # include <string.h>
 # include <fcntl.h>
 # include <errno.h>
+
+typedef struct s_input
+{
+	int		has_no;
+	int		has_so;
+	int		has_we;
+	int		has_ea;
+	int		has_f;
+	int		has_c;
+	int		no_fd;
+	int		so_fd;
+	int		we_fd;
+	int		ea_fd;
+	int		f;
+	int		c;
+	int		**map;
+}				t_input;
 
 typedef struct s_pos
 {
@@ -161,5 +178,17 @@ t_point	get_horz_hit(t_vars *vars, t_rays ray);
 
 //sources/player_handle/find_hit_horz.c
 t_point	get_vert_hit(t_vars *vars, t_rays ray);
+
+//sources/checks/02_check_textures.c
+int		check_no(char *line, t_input *input);
+int		check_so(char *line, t_input *input);
+int		check_we(char *line, t_input *input);
+int		check_ea(char *line, t_input *input);
+
+//sources/checks/03_check_colors.c
+int		check_c(char *line, t_input *input);
+int		check_f(char *line, t_input *input);
+
+void	check_all(char *line, t_input *input);
 
 #endif

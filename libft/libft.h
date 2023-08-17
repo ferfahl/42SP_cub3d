@@ -20,6 +20,9 @@
 # include "getnextline/get_next_line.h"
 # include "printf/ft_printf.h"
 
+# define TRUE 1
+# define FALSE 0
+
 //Struct
 
 typedef struct s_list
@@ -84,7 +87,8 @@ void		ft_free_array(char **array);
 char		*ft_strtrim_mod(char *s1, char const *set);
 void		ft_free_int(int **array);
 long int	ft_atoi_mod(char *nptr);
-int			ft_isdigit_mod(char *string);
+int			ft_strisdigit(const char *string);
 char		*ft_strjoin_free(char *s1, char *s2);
+char		*ft_strtrim_whitespaces(const char *str);
 
 #endif
