@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 18:09:31 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 19:38:53 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,8 @@ t_point	h_steped(t_rays ray)
 t_point	increment_horz(t_map *map, t_rays ray, t_point intercept, t_point step)
 {
 	t_point	check;
-	t_point	control;
 	t_point	horz;
-	int		checking;
 
-	checking = FALSE;
-	control.x = 0;
-	control.y = 0;
 	horz = intercept;
 	while (horz.x >= 0 && horz.x <= map->x_len && horz.y >= 0
 		&& horz.y <= map->y_len)
@@ -60,20 +55,16 @@ t_point	increment_horz(t_map *map, t_rays ray, t_point intercept, t_point step)
 		else
 			check.y = horz.y;
 		if (map_wall(map, check.x, check.y))
-		{
-			checking = TRUE;
-			break ;
-		}
+			return(horz);
 		else
 		{
 			horz.x += step.x;
 			horz.y += step.y;
 		}
 	}
-	if (checking)
-		return (horz);
-	else
-		return (control);
+	horz.x = 0;
+	horz.y = 0;
+	return (horz);
 }
 
 t_point	get_horz_hit(t_vars *vars, t_rays ray)
