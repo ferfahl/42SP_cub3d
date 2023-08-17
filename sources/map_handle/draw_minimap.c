@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 20:17:38 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:27:14 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	draw_rays(t_vars *vars, t_rays *rays)
 	int		col;
 
 	col = 0;
-	// while (col < W_WIDTH)
-	// {
+	while (col < W_WIDTH)
+	{
 		test.x = floor(rays[col].init.x * MAP_SCALE);
 		test.y = floor(rays[col].init.y * MAP_SCALE);
 		hit_test.x = floor(rays[col].wall_hit.x * MAP_SCALE);
 		hit_test.y = floor(rays[col].wall_hit.y * MAP_SCALE);
 		draw_line(&vars->img, test, hit_test, 0x0000FF);
-	// 	col++;
-	// }
+		col++;
+	}
 }
 
 void	draw_player(t_vars *vars)

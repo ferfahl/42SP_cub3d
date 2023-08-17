@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 15:04:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 20:23:39 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:27:52 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	cast_all_rays(t_vars *vars)
 	pixel_col = 0;
 	step = FOV / vars->nbr_rays;
 	angle = vars->player->angle - HALF_FOV;
-	// while (pixel_col < vars->nbr_rays)
-	// {
+	while (pixel_col < vars->nbr_rays)
+	{
 		angle = normalize_angle(angle);
 		start_ray(&vars->rays[pixel_col], vars->player, angle);
 		find_hit(vars, vars->player, &vars->rays[pixel_col]);
 		angle += step;
-	// 	pixel_col++;
-	// }
+		pixel_col++;
+	}
 }

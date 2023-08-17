@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 19:38:53 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:27:35 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_point	increment_horz(t_map *map, t_rays ray, t_point intercept, t_point step)
 		else
 			check.y = horz.y;
 		if (map_wall(map, check.x, check.y))
-			return(horz);
+			return (horz);
 		else
 		{
 			horz.x += step.x;
