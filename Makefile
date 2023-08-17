@@ -76,8 +76,8 @@ MANDATORY_FILES =	${CHECKS}/00_errors.c				\
 					${EXIT}/exit.c						\
 					calculate.c							\
 					start_cub.c							\
-					mainrap.c							\
-					# mainfer.c							\
+					mainfer.c							\
+					# mainrap.c							\
 					# main.c								\
 
 #headers
