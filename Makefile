@@ -62,6 +62,7 @@ MANDATORY_FILES =	$(3D)/render_walls.c				\
 					${CHECKS}/01_check_args.c			\
 					${CHECKS}/02_check_textures.c		\
 					${CHECKS}/03_check_colors.c			\
+					${CHECKS}/gnl.c			 			\
 					${PLAYER}/player_moves.c			\
 					${RAY}/cast_rays.c					\
 					${RAY}/find_hit_horz.c				\

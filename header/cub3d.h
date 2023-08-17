@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 15:42:35 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:22:53 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,104 @@
 # include <fcntl.h>
 # include <errno.h>
 
-typedef struct s_input	t_input;
-typedef struct s_pos	t_pos;
-typedef struct s_hit	t_hit;
-typedef struct s_player	t_player;
-typedef struct s_rays	t_rays;
-typedef struct s_image	t_image;
-typedef struct s_map	t_map;
-typedef struct s_cub	t_cub;
+typedef struct s_map_line
+{
+	char				*line;
+	struct s_map_line	*next;
+}				t_map_line;
+
+typedef struct s_list_gnl
+{
+	char				*str;
+	struct s_list_gnl	*next;
+}				t_list_gnl;
+
+typedef struct s_input
+{
+	int		has_no;
+	int		has_so;
+	int		has_we;
+	int		has_ea;
+	int		has_f;
+	int		has_c;
+	int		no_fd;
+	int		so_fd;
+	int		we_fd;
+	int		ea_fd;
+	int		f;
+	int		c;
+	size_t	map_height;
+	size_t	map_width;
+	int		**map;
+}				t_input;
+
+typedef struct s_pos
+{
+	int		x;
+	int		y;
+}				t_pos;
+
+typedef struct s_point
+{
+	float	x;
+	float	y;
+}				t_point;
+
+typedef struct s_player
+{
+	float	angle;
+	float	x;
+	float	y;
+	float	rotate;
+	int		turn_direction;
+	int		walk_direction;
+}				t_player;
+
+typedef struct s_rays
+{
+	int		facing_down;
+	int		facing_up;
+	int		facing_right;
+	int		facing_left;
+	int		was_hit_vert;
+	float	angle;
+	float	dist;
+	t_point	init;
+	t_point	wall_hit;
+}				t_rays;
+
+typedef struct s_image
+{
+	void	*ptr;
+	int		*data;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}				t_image;
+
+typedef struct s_map
+{
+	int		north;
+	int		south;
+	int		east;
+	int		west;
+	int		floor;
+	int		ceiling;
+	int		x_len;
+	int		y_len;
+	int		**map;
+}				t_map;
+
+typedef struct s_vars
+{
+	int			nbr_rays;
+	void		*mlx;
+	void		*win;
+	t_map		*fullmap;
+	t_rays		*rays;
+	t_image		img;
+	t_player	*player;
+}				t_vars;
 
 //exit.c
 void	if_error(char *str);
@@ -119,6 +209,7 @@ int		check_c(char *line, t_input *input);
 int		check_f(char *line, t_input *input);
 
 void	check_all(char *line, t_input *input);
+char	*gnl(int fd);
 
 void	generate_projection(t_cub *cub);
 int		wall_strip(t_cub *cub, int x);
