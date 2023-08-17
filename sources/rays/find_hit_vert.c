@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 23:32:52 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 00:31:39 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_point	v_steped(t_rays ray)
 	t_point	step;
 
 	step.x = 1;
-	if (ray.facing_left)
-		step.x *= -1;
+	// if (ray.facing_left)
+	// 	step.x *= -1;
 	step.y = 1 * tan(ray.angle);
 	// if (ray.facing_up && step.x > 0)
 	// 	step.x *= -1;
@@ -46,7 +46,12 @@ t_point	get_vert_hit(t_vars *vars, t_rays ray)
 	t_point	vert;
 	t_point	intercept;
 	t_point	step;
+	t_point	control;
+	int		checking;
 
+	checking = FALSE;
+	control.x = 0;
+	control.y = 0;
 	intercept = v_intercept(vars, ray);
 	step = v_steped(ray);
 	vert = intercept;
@@ -55,15 +60,21 @@ t_point	get_vert_hit(t_vars *vars, t_rays ray)
 	{
 		check.x = vert.x;
 		check.y = vert.y;
-		if (ray.facing_up)
-			check.y *= -1;
+		// if (ray.facing_up)
+		// 	check.y *= -1;
 		if (map_wall(vars->fullmap, check.x, check.y))
+		{
+			checking = TRUE;
 			break ;
+		}
 		else
 		{
 			vert.x += step.x;
 			vert.y += step.y;
 		}
 	}
-	return (vert);
+	if (checking)
+		return (vert);
+	else
+		return (control);
 }

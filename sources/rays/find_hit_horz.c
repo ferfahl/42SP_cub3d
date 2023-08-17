@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 23:32:09 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 00:32:12 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_point	h_steped(t_rays ray)
 	t_point	step;
 
 	step.y = 1;
-	if (ray.facing_up)
-		step.y *= -1;
+	// if (ray.facing_up)
+	// 	step.y *= -1;
 	step.x = 1 / tan(ray.angle);
 	// if (ray.facing_left && step.x > 0)
 	// 	step.x *= -1;
@@ -48,7 +48,12 @@ t_point	get_horz_hit(t_vars *vars, t_rays ray)
 	t_point	horz;
 	t_point	intercept;
 	t_point	step;
+	t_point	control;
+	int		checking;
 
+	checking = FALSE;
+	control.x = 0;
+	control.y = 0;
 	intercept = h_intercept(vars, ray);
 	step = h_steped(ray);
 	horz = intercept;
@@ -56,17 +61,23 @@ t_point	get_horz_hit(t_vars *vars, t_rays ray)
 		&& horz.y <= vars->fullmap->y_len)
 	{
 		check.x = horz.x;
-		if (ray.facing_up)
-			check.y = horz.y - 1;
-		else
-			check.y = horz.y;
+		check.y = horz.y;
+		// if (ray.facing_up)
+		// 	check.y = horz.y - 1;
+		// else
 		if (map_wall(vars->fullmap, check.x, check.y))
+		{
+			checking = TRUE;
 			break ;
+		}
 		else
 		{
 			horz.x += step.x;
 			horz.y += step.y;
 		}
 	}
-	return (horz);
+	if (checking)
+		return (horz);
+	else
+		return (control);
 }

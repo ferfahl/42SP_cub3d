@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 15:04:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 12:06:18 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 00:30:39 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,14 @@ void	find_hit(t_vars *vars, t_rays *ray)
 
 	horz = get_horz_hit(vars, *ray);
 	vert = get_vert_hit(vars, *ray);
-	dist_horz = dist_points(vars->player->x, horz.x, vars->player->y, horz.y);
-	dist_vert = dist_points(vars->player->x, vert.x, vars->player->y, vert.y);
+	if (horz.x == 0 && horz.y == 0)
+		dist_horz = 2000000;
+	else
+		dist_horz = dist_points(vars->player->x, horz.x, vars->player->y, horz.y);
+	if (vert.x == 0 && vert.y == 0)
+		dist_vert = 2000000;
+	else
+		dist_vert = dist_points(vars->player->x, vert.x, vars->player->y, vert.y);
 	if (dist_horz > dist_vert)
 	{
 		ray->dist = dist_vert;
@@ -65,7 +71,8 @@ void	single_ray(t_vars *vars, t_rays ray)
 	test.y = floor(ray.init.y * MAP_SCALE);
 	hit_test.x = floor(ray.wall_hit.x * MAP_SCALE);
 	hit_test.y = floor(ray.wall_hit.y * MAP_SCALE);
-	print_line(&vars->img, test, hit_test, 0x00FF00);
+	// printf("player [%d,%d]\twallhit [%d,%d]\n", test.x, test.y, hit_test.x, hit_test.y);
+	draw_line(&vars->img, test, hit_test, 0x00FF00);
 }
 
 void	cast_all_rays(t_vars *vars)
@@ -78,11 +85,12 @@ void	cast_all_rays(t_vars *vars)
 	col = 1;
 	map_w = ((vars->fullmap->x_len + 1) * TILE_SIZE) / 2;
 	dist_proj = map_w / tan(FOV / 2);
-	while (col < vars->nbr_rays)
-	{
+	// while (col < vars->nbr_rays)
+	// {
 		angle = vars->player->angle + atan((col - vars->nbr_rays / 2) / dist_proj);
+		// angle = FOV / 2 - vars->player->angle;
 		start_ray(&vars->rays[col], vars->player, angle);
 		single_ray(vars, vars->rays[col]);
-		col++;
-	}
+		// col++;
+	// }
 }

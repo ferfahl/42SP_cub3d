@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 11:39:57 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 00:22:47 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_player(t_vars *vars)
 	b.x = floor(next_x);
 	b.y = floor(next_y);
 	print_circle(&vars->img, a.x, a.y, P_SIZE);
-	print_line(&vars->img, a, b, 0xFF0000);
+	draw_line(&vars->img, a, b, 0xFF0000);
 	// draw_rays(vars);
 }
 

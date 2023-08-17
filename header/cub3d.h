@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 20:39:28 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/17 00:22:47 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void	print_square(t_image *image, t_pos id, int size, int color);
 void	print_circle(t_image *image, int xc, int yc, int r);
 
 //sources/mlx_util/draw_line.c
-void	print_line(t_image *image, t_pos a, t_pos b, int color);
+void	draw_line(t_image *image, t_pos a, t_pos b, int color);
 
 //sources/mlx_util/temp.c
 void	draw_background(t_vars *vars);
