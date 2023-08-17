@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 16:22:53 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:23:31 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct s_input
 	int		c;
 	size_t	map_height;
 	size_t	map_width;
-	int		**map;
 }				t_input;
 
 typedef struct s_pos

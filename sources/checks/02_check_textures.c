@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:27:59 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/16 22:23:29 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/17 17:04:31 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	check_no(char *line, t_input *input)
 		input->has_no = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
 		fd = open_file(trimmed);
+		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid NO texture"));
 		input->no_fd = fd;
@@ -43,6 +44,7 @@ int	check_so(char *line, t_input *input)
 		input->has_so = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
 		fd = open_file(trimmed);
+		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid SO texture"));
 		input->so_fd = fd;
@@ -62,6 +64,7 @@ int	check_we(char *line, t_input *input)
 		input->has_we = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
 		fd = open_file(trimmed);
+		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid WE texture"));
 		input->we_fd = fd;
@@ -81,6 +84,7 @@ int	check_ea(char *line, t_input *input)
 		input->has_ea = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
 		fd = open_file(trimmed);
+		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid EA texture"));
 		input->ea_fd = fd;

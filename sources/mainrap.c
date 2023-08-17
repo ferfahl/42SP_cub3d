@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:22:57 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/17 13:58:46 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/17 17:53:45 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	verify_map(t_map_line *map, t_input *input, int inside_map)
 		trimmed = ft_strtrim_whitespaces(map->line);
 		if (trimmed == NULL || trimmed[0] == 0)
 		{
-			free(trimmed);
 			if (inside_map == TRUE)
 				inside_map = FALSE;
 		}
@@ -65,6 +64,7 @@ int	verify_map(t_map_line *map, t_input *input, int inside_map)
 				input->map_width = ft_strlen(trimmed);
 			input->map_height++;
 		}
+		free(trimmed);
 		map = map->next;
 	}
 	return (0);
@@ -82,10 +82,63 @@ t_map_line	*skip_empty_lines(t_map_line *start)
 		if (line[0] != 0)
 			break ;
 		temp = start->next;
+		free(start->line);
 		free(start);
 		start = temp;
+		free(line);
 	}
+	free(line);
 	return (start);
+}
+
+int	get_tile(char c)
+{
+	if (c == '0')
+		return (0);
+	if (c == '1')
+		return (1);
+	if (c == 'N')
+		return (2);
+	if (c == 'S')
+		return (3);
+	if (c == 'W')
+		return (4);
+	if (c == 'E')
+		return (5);
+	if (c == ' ')
+		return (9);
+	ft_error("Invalid character inside map");
+	return (-1);
+}
+
+void	free_stuff(t_map_line *map_line, t_input *input)
+{
+	t_map_line	*aux;
+
+	while (map_line->next)
+	{
+		aux = map_line;
+		map_line = map_line->next;
+		free(aux->line);
+		free(aux);
+	}
+	free(map_line->line);
+	free(map_line);
+	free(input);
+}
+
+void	free_all(t_map_line *map_line, t_input *input, int **map)
+{
+	size_t	i;
+
+	i = 0;
+	while(map[i])
+	{
+		free (map[i]);
+		i++;
+	}
+	free(map);
+	free_stuff(map_line, input);
 }
 
 int	**get_map(t_map_line *start, t_input *input)
@@ -102,23 +155,15 @@ int	**get_map(t_map_line *start, t_input *input)
 		map[counter] = (int *)malloc(sizeof(int) * input->map_width);
 		while (iterator < input->map_width)
 		{
-			if (iterator + 1 >= ft_strlen(start->line)
-				|| start->line[iterator] == '0')
-				map[counter][iterator] = 0;
-			else if (start->line[iterator] == '1')
-				map[counter][iterator] = 1;
-			else if (start->line[iterator] == 'N')
-				map[counter][iterator] = 2;
-			else if (start->line[iterator] == 'S')
-				map[counter][iterator] = 3;
-			else if (start->line[iterator] == 'W')
-				map[counter][iterator] = 4;
-			else if (start->line[iterator] == 'E')
-				map[counter][iterator] = 5;
-			else if (start->line[iterator] == ' ')
-				map[counter][iterator] = 9;
+			if (iterator + 1 >= ft_strlen(start->line))
+				map[counter][iterator] = get_tile('0');
 			else
-				ft_error("Invalid character inside map");
+				map[counter][iterator] = get_tile(start->line[iterator]);
+			if (map[counter][iterator] == -1)
+			{
+				free_all(start, input, map);
+				return (NULL);
+			}
 			iterator++;
 		}
 		start = start->next;
@@ -149,6 +194,7 @@ int	**read_map(int fd, t_input *input)
 	if (verify_map(start, input, TRUE) == -1)
 		ft_error("Invalid map");
 	map = get_map(start, input);
+	free_stuff(start, input);
 	return (map);
 }
 
@@ -156,6 +202,7 @@ int	main(void)
 {
 	int			fd;
 	t_input		*input;
+	int			**final_map;
 	char		**map;
 	char		*line;
 	char		*trimmed;
@@ -181,19 +228,27 @@ int	main(void)
 		line = get_next_line(fd);
 	}
 	free(line);
-	input->map = read_map(fd, input);
+	final_map = read_map(fd, input);
+	close(fd);
 	i = 0;
-	while (i < input->map_height)
+	while (i < 16)
 	{
 		j = 0;
-		printf("line %ld: \t", i);
-		while (j < input->map_width)
+		while (j < 33)
 		{
-			printf("%d", input->map[i][j]);
+			printf("%d", final_map[i][j]);
 			j++;
 		}
 		printf("\n");
+		free(final_map[i]);
 		i++;
 	}
+	free(final_map);
+	free(map[0]);
+	free(map[1]);
+	free(map[2]);
+	free(map);
+	i = 0;
+	// free(final_map, )
 	// return (input);
 }
