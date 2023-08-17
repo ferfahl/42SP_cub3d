@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 00:22:47 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 16:03:35 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	draw_player(t_vars *vars)
 	a.y = floor(vars->player->y * MAP_SCALE);
 	b.x = floor(next_x);
 	b.y = floor(next_y);
-	print_circle(&vars->img, a.x, a.y, P_SIZE);
+	draw_circle(&vars->img, a.x, a.y, P_SIZE);
 	draw_line(&vars->img, a, b, 0xFF0000);
 	// draw_rays(vars);
 }
@@ -45,21 +45,15 @@ void	draw_mini_map(t_vars *vars, t_map *map)
 	t_pos	id;
 
 	id.y = 0;
-	while (id.y < W_HEIGHT)
+	while (id.y < map->y_len * MAP_SCALE)
 	{
 		id.x = 0;
-		while (id.x < W_WIDTH)
+		while (id.x < map->x_len * MAP_SCALE)
 		{
-			if ((id.y / MAP_SCALE) <= map->y_len)
-			{
-				if ((id.x / MAP_SCALE) <= map->x_len)
-				{
-					if (map->map[id.y / MAP_SCALE][id.x / MAP_SCALE] == 0)
-						print_square(&vars->img, id, MAP_SCALE, 0x000000);
-					else
-						print_square(&vars->img, id, MAP_SCALE, 0xFFFFFF);
-				}
-			}
+			if (map_wall(vars->fullmap, id.x/MAP_SCALE, id.y/MAP_SCALE))
+				draw_square(&vars->img, id, MAP_SCALE, 0xFFFFFF);
+			else
+				draw_square(&vars->img, id, MAP_SCALE, 0x000000);
 			id.x += MAP_SCALE;
 		}
 		id.y += MAP_SCALE;

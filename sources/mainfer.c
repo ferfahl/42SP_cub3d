@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 00:16:18 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 15:48:17 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ t_map	*map_maker(void)
 	mapped->west = 0xFF00FF00;
 	mapped->north = 0xFF0000FF;
 	mapped->south = 0xFFFFFFFF;
-	mapped->y_len = 12;
-	mapped->x_len = 19;
+	mapped->y_len = 13 * MAP_RAY;
+	mapped->x_len = 20 * MAP_RAY;
 	mapped->map = temp_map;
 	return (mapped);
 }

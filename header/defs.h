@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 20:25:57 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/17 15:20:58 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 
 # define P_SIZE 3
 # define MAP_SCALE 8
+# define MAP_RAY 2
 
 # define RED_RGB 65536
 # define GREEN_RGB 256

@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:53:38 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 15:12:23 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 15:55:17 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	print_square(t_image *image, t_pos id, int size, int color)
+void	draw_square(t_image *image, t_pos id, int size, int color)
 {
 	int	i;
 	int	j;
@@ -58,7 +58,7 @@ void	print_tile(t_image *image, size_t x, size_t y, int color)
 	}
 }
 
-void	print_circle(t_image *image, int xc, int yc, int r)
+void	draw_circle(t_image *image, int xc, int yc, int r)
 {
 	int	x;
 	int	y;
