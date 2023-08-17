@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 15:04:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 00:30:39 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 02:39:31 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	find_hit(t_vars *vars, t_rays *ray)
 
 	horz = get_horz_hit(vars, *ray);
 	vert = get_vert_hit(vars, *ray);
+	// printf("horz [%f,%f]\tvert [%f,%f]\n", horz.x, horz.y, vert.x, vert.y);
 	if (horz.x == 0 && horz.y == 0)
 		dist_horz = 2000000;
 	else
@@ -85,12 +86,12 @@ void	cast_all_rays(t_vars *vars)
 	col = 1;
 	map_w = ((vars->fullmap->x_len + 1) * TILE_SIZE) / 2;
 	dist_proj = map_w / tan(FOV / 2);
-	// while (col < vars->nbr_rays)
-	// {
+	while (col < vars->nbr_rays)
+	{
 		angle = vars->player->angle + atan((col - vars->nbr_rays / 2) / dist_proj);
 		// angle = FOV / 2 - vars->player->angle;
 		start_ray(&vars->rays[col], vars->player, angle);
 		single_ray(vars, vars->rays[col]);
-		// col++;
-	// }
+		col++;
+	}
 }
