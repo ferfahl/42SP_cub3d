@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 20:12:23 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:26:06 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int		ft_error(char *str);
 
 //sources/01_check_args.c
 int		check_args(int argc, char *argv[]);
+int		open_file(char *file_name);
 
 //sources/mlx_util/window.c
 void	open_window(t_vars	*vars);

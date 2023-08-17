@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_errors.c                                        :+:      :+:    :+:   */
+/*   mainrap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 16:46:09 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 18:28:33 by rarobert         ###   ########.fr       */
+/*   Created: 2023/08/16 18:22:57 by rarobert          #+#    #+#             */
+/*   Updated: 2023/08/16 18:28:03 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_error(char *str)
+int main(void)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putendl_fd(str, 2);
-	return (1);
+	int	fd;
+
+	fd = open_file("test");
+	if (fd < 0)
+		return(ft_error(strerror(errno)));
 }
