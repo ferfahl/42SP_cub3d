@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 20:07:43 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:14:44 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,47 @@ t_point	v_steped(t_rays ray)
 	if (ray.facing_left)
 		step.x *= -1;
 	step.y = TILE_SIZE * tan(ray.angle);
-	if (ray.facing_up && step.x > 0)
-		step.x *= -1;
-	else if (ray.facing_down && step.x < 0)
-		step.x *= -1;
+	if (ray.facing_up && step.y > 0)
+		step.y *= -1;
+	else if (ray.facing_down && step.y < 0)
+		step.y *= -1;
 	return (step);
 }
 
-t_point	get_vert_hit(t_vars *vars, t_rays ray)
+t_point	increment_vert(t_map *map, t_rays ray, t_point intercept, t_point step)
 {
 	t_point	check;
 	t_point	vert;
-	t_point	intercept;
-	t_point	step;
 
-	intercept = v_intercept(vars, ray);
-	step = v_steped(ray);
 	vert = intercept;
-	while (vert.x >= 0 && vert.x <= vars->fullmap->x_len && vert.y >= 0
-		&& vert.y <= vars->fullmap->y_len)
+	while (vert.x >= 0 && vert.x <= map->x_len && vert.y >= 0
+		&& vert.y <= map->y_len)
 	{
 		check.x = vert.x;
 		check.y = vert.y;
 		if (ray.facing_up)
-			check.y *= -1;
-		if (map_wall(vars->fullmap, check.x, check.y))
-			break ;
+			check.y -= 1;
+		if (map_wall(map, check.x, check.y))
+			return (vert);
 		else
 		{
 			vert.x += step.x;
 			vert.y += step.y;
 		}
 	}
+	vert.x = 0;
+	vert.y = 0;
+	return (vert);
+}
+
+t_point	get_vert_hit(t_vars *vars, t_rays ray)
+{
+	t_point	intercept;
+	t_point	step;
+	t_point	vert;
+
+	intercept = v_intercept(vars, ray);
+	step = v_steped(ray);
+	vert = increment_vert(vars->fullmap, ray, intercept, step);
 	return (vert);
 }

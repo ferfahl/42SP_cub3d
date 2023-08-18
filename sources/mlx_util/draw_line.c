@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:54:32 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 17:59:13 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 00:22:47 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	draw_line_util_2(t_image *image, t_pos a, t_pos b, int color)
 	free(delta);
 }
 
-void	print_line(t_image *image, t_pos a, t_pos b, int color)
+void	draw_line(t_image *image, t_pos a, t_pos b, int color)
 {
 	int	delta_x;
 	int	delta_y;

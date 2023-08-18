@@ -6,24 +6,25 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 20:06:58 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:27:35 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_point	h_intercept(t_vars *vars, t_rays ray)
+//find the closest horizontal grid intersection (x, y)
+t_point	h_intercept(t_player *player, t_rays ray)
 {
 	t_point	intercept;
 
-	intercept.y = floor(vars->player->y / TILE_SIZE) * TILE_SIZE;
+	intercept.y = floor(player->y / TILE_SIZE) * TILE_SIZE;
 	if (ray.facing_down)
 		intercept.y += TILE_SIZE;
-	intercept.x = vars->player->x + (intercept.y
-			- vars->player->y) / tan(ray.angle);
+	intercept.x = player->x + (intercept.y - player->y) / tan(ray.angle);
 	return (intercept);
 }
 
+//calculate the increment xstep and ystep (delta)
 t_point	h_steped(t_rays ray)
 {
 	t_point	step;
@@ -39,30 +40,41 @@ t_point	h_steped(t_rays ray)
 	return (step);
 }
 
-t_point	get_horz_hit(t_vars *vars, t_rays ray)
+t_point	increment_horz(t_map *map, t_rays ray, t_point intercept, t_point step)
 {
 	t_point	check;
 	t_point	horz;
-	t_point	intercept;
-	t_point	step;
 
-	intercept = h_intercept(vars, ray);
-	step = h_steped(ray);
 	horz = intercept;
-	while (horz.x >= 0 && horz.x <= vars->fullmap->x_len && horz.y >= 0
-		&& horz.y <= vars->fullmap->y_len)
+	while (horz.x >= 0 && horz.x <= map->x_len && horz.y >= 0
+		&& horz.y <= map->y_len)
 	{
 		check.x = horz.x;
-		check.y = horz.y;
 		if (ray.facing_up)
-			check.y *= -1;
-		if (map_wall(vars->fullmap, check.x, check.y))
-			break ;
+			check.y = horz.y - 1;
+		else
+			check.y = horz.y;
+		if (map_wall(map, check.x, check.y))
+			return (horz);
 		else
 		{
 			horz.x += step.x;
 			horz.y += step.y;
 		}
 	}
+	horz.x = 0;
+	horz.y = 0;
+	return (horz);
+}
+
+t_point	get_horz_hit(t_vars *vars, t_rays ray)
+{
+	t_point	intercept;
+	t_point	step;
+	t_point	horz;
+
+	intercept = h_intercept(vars->player, ray);
+	step = h_steped(ray);
+	horz = increment_horz(vars->fullmap, ray, intercept, step);
 	return (horz);
 }

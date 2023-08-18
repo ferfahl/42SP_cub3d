@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/16 20:39:28 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/17 18:03:30 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_map
 	int		x_len;
 	int		y_len;
 	int		**map;
+	int		depth;
 }				t_map;
 
 typedef struct s_vars
@@ -146,11 +147,11 @@ int		render(t_vars *vars);
 //sources/mlx_util/draw.c
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 void	print_tile(t_image *image, size_t x, size_t y, int color);
-void	print_square(t_image *image, t_pos id, int size, int color);
-void	print_circle(t_image *image, int xc, int yc, int r);
+void	draw_square(t_image *image, t_pos id, int size, int color);
+void	draw_circle(t_image *image, int xc, int yc, int r);
 
 //sources/mlx_util/draw_line.c
-void	print_line(t_image *image, t_pos a, t_pos b, int color);
+void	draw_line(t_image *image, t_pos a, t_pos b, int color);
 
 //sources/mlx_util/temp.c
 void	draw_background(t_vars *vars);
@@ -167,17 +168,21 @@ int		map_wall(t_map *mapped, float x, float y);
 //sources/player_handle/cast_rays.c
 void	cast_all_rays(t_vars *vars);
 
-//sources/mao_handle/ray_check.c
+//sources/rays/ray_check.c
 int		is_facing_down(float angle);
 int		is_facing_up(float angle);
 int		is_facing_right(float angle);
 int		is_facing_left(float angle);
 
-//sources/player_handle/find_hit_horz.c
+//sources/rays/find_hit_horz.c
 t_point	get_horz_hit(t_vars *vars, t_rays ray);
 
-//sources/player_handle/find_hit_horz.c
+//sources/rays/find_hit_horz.c
 t_point	get_vert_hit(t_vars *vars, t_rays ray);
+
+//sources/ray/ray_utils.c
+void	start_ray(t_rays *ray, t_player *player, float angle);
+float	get_dist(t_player *player, t_point ref);
 
 //sources/checks/02_check_textures.c
 int		check_no(char *line, t_input *input);

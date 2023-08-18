@@ -6,13 +6,12 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:58:52 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 17:46:38 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:24:39 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "buttons.h"
-#include <stdio.h>
 
 void	move_player(t_vars *vars, int walk, int control)
 {
