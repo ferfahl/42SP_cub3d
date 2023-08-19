@@ -6,13 +6,13 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:14 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 16:34:04 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:44:58 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_background(t_vars *vars)
+void	draw_background(t_cub *cub)
 {
 	int	x;
 	int	y;
@@ -20,23 +20,23 @@ void	draw_background(t_vars *vars)
 	int	floor;
 
 	y = 0;
-	floor = vars->fullmap->floor;
-	ceiling = vars->fullmap->ceiling;
+	floor = cub->fullmap->floor;
+	ceiling = cub->fullmap->ceiling;
 	while (y < W_HEIGHT / 2)
 	{
 		x = 0;
 		while (x < W_WIDTH)
 		{
-			my_mlx_pixel_put(&vars->img, x, y, ceiling);
-			my_mlx_pixel_put(&vars->img, x, y + W_HEIGHT / 2, floor);
+			my_mlx_pixel_put(&cub->img, x, y, ceiling);
+			my_mlx_pixel_put(&cub->img, x, y + W_HEIGHT / 2, floor);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	creating_img(t_vars *vars)
+void	creating_img(t_cub *cub)
 {
-	cast_all_rays(vars);
-	draw_mini_map(vars, vars->fullmap);
+	cast_all_rays(cub);
+	draw_mini_map(cub, cub->fullmap);
 }

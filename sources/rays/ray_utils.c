@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:01:40 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 13:09:44 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 14:25:08 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ void	start_ray(t_rays *ray, t_player *player, float angle)
 	ray->facing_up = is_facing_up(ray->angle);
 	ray->facing_left = is_facing_left(ray->angle);
 	ray->facing_right = is_facing_right(ray->angle);
-	ray->init.x = player->x;
-	ray->init.y = player->y;
+	ray->init[X] = player->pos[X];
+	ray->init[Y] = player->pos[Y];
 	ray->dist = 0;
-	ray->wall_hit.x = 0;
-	ray->wall_hit.y = 0;
+	ray->wall_hit[X] = 0;
+	ray->wall_hit[Y] = 0;
 	ray->was_hit_vert = FALSE;
 }
 
-float	get_dist(t_player *player, t_point ref)
+float	get_dist(float player[2], float ref[2])
 {
-	if (ref.x == 0 && ref.y == 0)
+	if (ref[X] == 0 && ref[Y] == 0)
 		return (MAX_FLT);
 	else
-		return (dist_points(player->x, player->y, ref.x, ref.y));
+		return (dist_points(player[X], player[Y], ref[X], ref[Y]));
 }

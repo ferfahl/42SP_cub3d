@@ -6,76 +6,75 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 13:13:45 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 14:28:11 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 //find the closest horizontal grid intersection (x, y)
-t_point	h_intercept(t_player *player, t_rays ray)
+void	h_intercept(t_player *player, t_rays ray, t_hit *horz)
 {
-	t_point	intercept;
+	float	y_diff;
 
-	intercept.y = floor(player->y / TILE_SIZE) * TILE_SIZE;
+	horz->intercept[Y] = floor(player->pos[Y] / TILE_SIZE) * TILE_SIZE;
 	if (ray.facing_up)
-		intercept.y -= 0.0001;
+		horz->intercept[Y] -= 0.0001;
 	if (ray.facing_down)
-		intercept.y += TILE_SIZE;
-	intercept.x = player->x + (intercept.y - player->y) / tan(ray.angle);
-	return (intercept);
+		horz->intercept[Y] += TILE_SIZE;
+	y_diff = horz->intercept[Y] - player->pos[Y];
+	horz->intercept[X] = player->pos[X] + (y_diff) / tan(ray.angle);
 }
 
 //calculate the increment xstep and ystep (delta)
-t_point	h_steped(t_rays ray)
+void	h_steped(t_rays ray, t_hit *horz)
 {
-	t_point	step;
-
-	step.y = TILE_SIZE;
+	horz->step[Y] = TILE_SIZE;
 	if (ray.facing_up)
-		step.y *= -1;
-	step.x = TILE_SIZE / tan(ray.angle);
-	if (ray.facing_left && step.x > 0)
-		step.x *= -1;
-	else if (ray.facing_right && step.x < 0)
-		step.x *= -1;
-	return (step);
+		horz->step[Y] *= -1;
+	horz->step[X] = TILE_SIZE / tan(ray.angle);
+	if (ray.facing_left && horz->step[X] > 0)
+		horz->step[X] *= -1;
+	else if (ray.facing_right && horz->step[X] < 0)
+		horz->step[X] *= -1;
 }
 
-t_point	increment_horz(t_map *map, t_rays ray, t_point intercept, t_point step)
+void	increment_horz(t_map *map, t_rays ray, t_hit *horz)
 {
-	t_point	check;
-	t_point	horz;
+	float	check[2];
 
-	horz = intercept;
-	while (horz.x >= 0 && horz.x <= map->x_len && horz.y >= 0
-		&& horz.y <= map->y_len)
+	horz->hitted = FALSE;
+	horz->hit[X] = horz->intercept[X];
+	horz->hit[Y] = horz->intercept[Y];
+	while (horz->hit[X] >= 0 && horz->hit[X] <= map->x_len && horz->hit[Y] >= 0
+		&& horz->hit[Y] <= map->y_len)
 	{
-		check.x = horz.x;
-		check.y = horz.y;
+		check[X] = horz->hit[X];
+		check[Y] = horz->hit[Y];
 		if (ray.facing_up)
-			check.y -= 1;
-		if (map_wall(map, check.x, check.y))
-			return (horz);
+			check[Y] -= 1;
+		if (map_wall(map, check[X], check[Y]))
+		{
+			horz->hitted = TRUE;
+			return ;
+		}
 		else
 		{
-			horz.x += step.x;
-			horz.y += step.y;
+			horz->hit[X] += horz->step[X];
+			horz->hit[Y] += horz->step[Y];
 		}
 	}
-	horz.x = 0;
-	horz.y = 0;
-	return (horz);
+	horz->hit[X] = 0;
+	horz->hit[Y] = 0;
 }
 
-t_point	get_horz_hit(t_vars *vars, t_rays ray)
+t_hit	get_horz_hit(t_cub *cub, t_rays ray)
 {
-	t_point	intercept;
-	t_point	step;
-	t_point	horz;
+	t_hit	horz;
 
-	intercept = h_intercept(vars->player, ray);
-	step = h_steped(ray);
-	horz = increment_horz(vars->fullmap, ray, intercept, step);
+	h_intercept(cub->player, ray, &horz);
+	h_steped(ray, &horz);
+	increment_horz(cub->fullmap, ray, &horz);
+	horz.distance = get_dist(cub->player->pos, horz.hit);
 	return (horz);
 }

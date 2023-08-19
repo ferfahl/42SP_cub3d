@@ -6,75 +6,73 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 13:17:57 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 14:30:13 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_point	v_intercept(t_vars *vars, t_rays ray)
+void	v_intercept(t_player *player, t_rays ray, t_hit *vert)
 {
-	t_point	intercept;
+	float	x_diff;
 
-	intercept.x = floor(vars->player->x / TILE_SIZE) * TILE_SIZE;
+	vert->intercept[X] = floor(player->pos[X] / TILE_SIZE) * TILE_SIZE;
 	if (ray.facing_right)
-		intercept.x += TILE_SIZE;
+		vert->intercept[X] += TILE_SIZE;
 	if (ray.facing_left)
-		intercept.x -= 0.0001;
-	intercept.y = vars->player->y + (intercept.x
-			- vars->player->x) * tan(ray.angle);
-	return (intercept);
+		vert->intercept[X] -= 0.0001;
+	x_diff = vert->intercept[X] - player->pos[X];
+	vert->intercept[Y] = player->pos[Y] + (x_diff) * tan(ray.angle);
 }
 
-t_point	v_steped(t_rays ray)
+void	v_steped(t_rays ray, t_hit *vert)
 {
-	t_point	step;
-
-	step.x = TILE_SIZE;
+	vert->step[X] = TILE_SIZE;
 	if (ray.facing_left)
-		step.x *= -1;
-	step.y = TILE_SIZE * tan(ray.angle);
-	if (ray.facing_up && step.y > 0)
-		step.y *= -1;
-	else if (ray.facing_down && step.y < 0)
-		step.y *= -1;
-	return (step);
+		vert->step[X] *= -1;
+	vert->step[Y] = TILE_SIZE * tan(ray.angle);
+	if (ray.facing_up && vert->step[Y] > 0)
+		vert->step[Y] *= -1;
+	else if (ray.facing_down && vert->step[Y] < 0)
+		vert->step[Y] *= -1;
 }
 
-t_point	increment_vert(t_map *map, t_rays ray, t_point intercept, t_point step)
+void	increment_vert(t_map *map, t_rays ray, t_hit *vert)
 {
-	t_point	check;
-	t_point	vert;
+	float	check[2];
 
-	vert = intercept;
-	while (vert.x >= 0 && vert.x <= map->x_len && vert.y >= 0
-		&& vert.y <= map->y_len)
+	vert->hitted = FALSE;
+	vert->hit[X] = vert->intercept[X];
+	vert->hit[Y] = vert->intercept[Y];
+	while (vert->hit[X] >= 0 && vert->hit[X] <= map->x_len && vert->hit[Y] >= 0
+		&& vert->hit[Y] <= map->y_len)
 	{
-		check.x = vert.x;
-		check.y = vert.y;
+		check[X] = vert->hit[X];
+		check[Y] = vert->hit[Y];
 		if (ray.facing_left)
-			check.y -= 1;
-		if (map_wall(map, check.x, check.y))
-			return (vert);
+			check[Y] -= 1;
+		if (map_wall(map, check[X], check[Y]))
+		{
+			vert->hitted = TRUE;
+			return ;
+		}
 		else
 		{
-			vert.x += step.x;
-			vert.y += step.y;
+			vert->hit[X] += vert->step[X];
+			vert->hit[Y] += vert->step[Y];
 		}
 	}
-	vert.x = 0;
-	vert.y = 0;
-	return (vert);
+	vert->hit[X] = 0;
+	vert->hit[Y] = 0;
 }
 
-t_point	get_vert_hit(t_vars *vars, t_rays ray)
+t_hit	get_vert_hit(t_cub *cub, t_rays ray)
 {
-	t_point	intercept;
-	t_point	step;
-	t_point	vert;
+	t_hit	vert;
 
-	intercept = v_intercept(vars, ray);
-	step = v_steped(ray);
-	vert = increment_vert(vars->fullmap, ray, intercept, step);
+	v_intercept(cub->player, ray, &vert);
+	v_steped(ray, &vert);
+	increment_vert(cub->fullmap, ray, &vert);
+	vert.distance = get_dist(cub->player->pos, vert.hit);
 	return (vert);
 }

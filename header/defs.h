@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 13:09:34 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:40:26 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 # define TRUE 1
 # define FALSE 0
+
+# define X 0
+# define Y 1
 
 # define TILE_SIZE 64
 # define FOV 1.047198
