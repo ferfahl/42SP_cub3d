@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 20:27:35 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:13:45 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_point	h_intercept(t_player *player, t_rays ray)
 	t_point	intercept;
 
 	intercept.y = floor(player->y / TILE_SIZE) * TILE_SIZE;
+	if (ray.facing_up)
+		intercept.y -= 0.0001;
 	if (ray.facing_down)
 		intercept.y += TILE_SIZE;
 	intercept.x = player->x + (intercept.y - player->y) / tan(ray.angle);
@@ -50,10 +52,9 @@ t_point	increment_horz(t_map *map, t_rays ray, t_point intercept, t_point step)
 		&& horz.y <= map->y_len)
 	{
 		check.x = horz.x;
+		check.y = horz.y;
 		if (ray.facing_up)
-			check.y = horz.y - 1;
-		else
-			check.y = horz.y;
+			check.y -= 1;
 		if (map_wall(map, check.x, check.y))
 			return (horz);
 		else
