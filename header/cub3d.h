@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 14:01:02 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 14:32:51 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,21 @@
 # include <fcntl.h>
 # include <errno.h>
 
+typedef struct s_input	t_input;
 
-typedef struct s_input t_input;
+typedef struct s_pos	t_pos;
 
-typedef struct s_pos t_pos;
+typedef struct s_hit	t_hit;
 
-typedef struct s_hit t_hit;
+typedef struct s_player	t_player;
 
-typedef struct s_player t_player;
+typedef struct s_rays	t_rays;
 
-typedef struct s_rays t_rays;
+typedef struct s_image	t_image;
 
-typedef struct s_image t_image;
+typedef struct s_map	t_map;
 
-typedef struct s_map t_map;
-
-typedef struct s_cub t_cub;
+typedef struct s_cub	t_cub;
 
 //exit.c
 void	if_error(char *str);
