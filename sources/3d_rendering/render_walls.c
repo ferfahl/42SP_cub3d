@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:30:47 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 16:15:59 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 19:00:40 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ void	generate_projection(t_cub *cub)
 		{
 			// int	distFromTop = (y + (wall_strip_height / 2) - (W_HEIGHT / 2));
 			// int offsetY = distFromTop * wall_strip_height;
-
-			my_mlx_pixel_put(&cub->img, i, y, 0xFF0000);
+			if (cub->rays[i].was_hit_vert)
+				my_mlx_pixel_put(&cub->img, i, y, 0xFF0000);
+			else
+				my_mlx_pixel_put(&cub->img, i, y, 0x00FF00);
         }
 	}
 }

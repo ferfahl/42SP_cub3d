@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 16:20:45 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 18:59:54 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_rays(t_cub *cub, t_rays *rays)
 	int		col;
 
 	col = 0;
-	while (col < W_WIDTH)
+	while (col < cub->nbr_rays)
 	{
 		test.x = floor(rays[col].init[X] * MAP_SCALE);
 		test.y = floor(rays[col].init[Y] * MAP_SCALE);
