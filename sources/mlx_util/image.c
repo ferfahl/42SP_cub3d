@@ -6,17 +6,17 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:57:01 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 13:21:19 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:44:56 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	render(t_vars *vars)
+int	render(t_cub *cub)
 {
-	draw_background(vars);
-	creating_img(vars);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.ptr, 0, 0);
+	draw_background(cub);
+	creating_img(cub);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.ptr, 0, 0);
 	return (0);
 }
 

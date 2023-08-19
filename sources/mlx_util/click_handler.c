@@ -6,15 +6,15 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 17:24:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/08 17:24:24 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:44:54 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	click_hook(t_vars *vars)
+int	click_hook(t_cub *cub)
 {
 	ft_printf("end click\n");
-	ft_exit(0, vars);
+	ft_exit(0, cub);
 	return (0);
 }

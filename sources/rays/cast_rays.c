@@ -6,53 +6,65 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 15:04:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 20:27:52 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 14:29:19 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	find_hit(t_vars *vars, t_player *player, t_rays *ray)
+void	find_closest_wall(t_hit *h, t_hit *v, t_player *p, float angle)
 {
-	t_point	horz;
-	t_point	vert;
-	float	dist_horz;
-	float	dist_vert;
+	float	fish_eye;
 
-	horz = get_horz_hit(vars, *ray);
-	vert = get_vert_hit(vars, *ray);
-	dist_horz = get_dist(player, horz);
-	dist_vert = get_dist(player, vert);
-	if (dist_horz > dist_vert)
+	fish_eye = cos(p->angle - angle);
+	if (h->hitted)
+		h->distance = h->distance * fish_eye;
+	else
+		h->distance = MAX_FLT;
+	if (v->hitted)
+		v->distance = v->distance * fish_eye;
+	else
+		v->distance = MAX_FLT;
+}
+
+void	find_hit(t_cub *cub, t_player *player, t_rays *ray)
+{
+	t_hit	horz;
+	t_hit	vert;
+
+	horz = get_horz_hit(cub, *ray);
+	vert = get_vert_hit(cub, *ray);
+	find_closest_wall(&horz, &vert, player, ray->angle);
+	if (horz.distance > vert.distance)
 	{
-		ray->dist = dist_vert;
-		ray->wall_hit.x = vert.x;
-		ray->wall_hit.y = vert.y;
+		ray->dist = vert.distance;
+		ray->wall_hit[X] = vert.hit[X];
+		ray->wall_hit[Y] = vert.hit[Y];
 		ray->was_hit_vert = TRUE;
 	}
 	else
 	{
-		ray->dist = dist_horz;
-		ray->wall_hit.x = horz.x;
-		ray->wall_hit.y = horz.y;
+		ray->dist = horz.distance;
+		ray->wall_hit[X] = horz.hit[X];
+		ray->wall_hit[Y] = horz.hit[Y];
 		ray->was_hit_vert = FALSE;
 	}
 }
 
-void	cast_all_rays(t_vars *vars)
+void	cast_all_rays(t_cub *cub)
 {
 	int		pixel_col;
 	float	angle;
 	float	step;
 
 	pixel_col = 0;
-	step = FOV / vars->nbr_rays;
-	angle = vars->player->angle - HALF_FOV;
-	while (pixel_col < vars->nbr_rays)
+	step = FOV / cub->nbr_rays;
+	angle = cub->player->angle - HALF_FOV;
+	while (pixel_col < cub->nbr_rays)
 	{
 		angle = normalize_angle(angle);
-		start_ray(&vars->rays[pixel_col], vars->player, angle);
-		find_hit(vars, vars->player, &vars->rays[pixel_col]);
+		start_ray(&cub->rays[pixel_col], cub->player, angle);
+		find_hit(cub, cub->player, &cub->rays[pixel_col]);
 		angle += step;
 		pixel_col++;
 	}
