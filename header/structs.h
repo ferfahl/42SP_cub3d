@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:35:23 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 14:12:30 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 16:15:58 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_rays
 	float	angle;
 	float	dist;
 	float	init[2];
-	float	wall_hit[2];
+	float	hit[2];
 }				t_rays;
 
 typedef struct s_image

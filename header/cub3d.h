@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 14:32:51 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 16:06:10 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,12 @@
 # include <errno.h>
 
 typedef struct s_input	t_input;
-
 typedef struct s_pos	t_pos;
-
 typedef struct s_hit	t_hit;
-
 typedef struct s_player	t_player;
-
 typedef struct s_rays	t_rays;
-
 typedef struct s_image	t_image;
-
 typedef struct s_map	t_map;
-
 typedef struct s_cub	t_cub;
 
 //exit.c
@@ -113,7 +106,7 @@ t_hit	get_vert_hit(t_cub *cub, t_rays ray);
 
 //sources/ray/ray_utils.c
 void	start_ray(t_rays *ray, t_player *player, float angle);
-float	get_dist(float pos[2], float hit[2]);
+float	get_dist(t_player *player, t_hit hit);
 
 //sources/checks/02_check_textures.c
 int		check_no(char *line, t_input *input);
@@ -126,5 +119,7 @@ int		check_c(char *line, t_input *input);
 int		check_f(char *line, t_input *input);
 
 void	check_all(char *line, t_input *input);
+
+void	generate_projection(t_cub *cub);
 
 #endif

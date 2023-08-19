@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 14:23:16 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 16:20:45 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	draw_rays(t_cub *cub, t_rays *rays)
 	{
 		test.x = floor(rays[col].init[X] * MAP_SCALE);
 		test.y = floor(rays[col].init[Y] * MAP_SCALE);
-		hit_test.x = floor(rays[col].wall_hit[X] * MAP_SCALE);
-		hit_test.y = floor(rays[col].wall_hit[Y] * MAP_SCALE);
+		hit_test.x = floor(rays[col].hit[X] * MAP_SCALE);
+		hit_test.y = floor(rays[col].hit[Y] * MAP_SCALE);
 		draw_line(&cub->img, test, hit_test, 0x0000FF);
 		col++;
 	}
@@ -46,7 +46,7 @@ void	draw_player(t_cub *cub)
 	b.x = floor(next_x);
 	b.y = floor(next_y);
 	draw_circle(&cub->img, a.x, a.y, P_SIZE);
-	draw_line(&cub->img, a, b, 0xFF0000);
+	// draw_line(&cub->img, a, b, 0xFF0000);
 	draw_rays(cub, cub->rays);
 }
 

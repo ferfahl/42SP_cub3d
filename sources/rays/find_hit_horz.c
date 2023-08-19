@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 14:28:11 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 16:24:49 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ t_hit	get_horz_hit(t_cub *cub, t_rays ray)
 	h_intercept(cub->player, ray, &horz);
 	h_steped(ray, &horz);
 	increment_horz(cub->fullmap, ray, &horz);
-	horz.distance = get_dist(cub->player->pos, horz.hit);
+	horz.distance = get_dist(cub->player, horz);
 	return (horz);
 }
