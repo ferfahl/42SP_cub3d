@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:01:40 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 14:25:08 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 14:31:52 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,5 @@ void	start_ray(t_rays *ray, t_player *player, float angle)
 
 float	get_dist(float player[2], float ref[2])
 {
-	if (ref[X] == 0 && ref[Y] == 0)
-		return (MAX_FLT);
-	else
-		return (dist_points(player[X], player[Y], ref[X], ref[Y]));
+	return (dist_points(player[X], player[Y], ref[X], ref[Y]));
 }
