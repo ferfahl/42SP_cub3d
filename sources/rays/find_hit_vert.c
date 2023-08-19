@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 20:14:44 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:17:57 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_point	v_intercept(t_vars *vars, t_rays ray)
 	intercept.x = floor(vars->player->x / TILE_SIZE) * TILE_SIZE;
 	if (ray.facing_right)
 		intercept.x += TILE_SIZE;
+	if (ray.facing_left)
+		intercept.x -= 0.0001;
 	intercept.y = vars->player->y + (intercept.x
 			- vars->player->x) * tan(ray.angle);
 	return (intercept);
@@ -50,7 +52,7 @@ t_point	increment_vert(t_map *map, t_rays ray, t_point intercept, t_point step)
 	{
 		check.x = vert.x;
 		check.y = vert.y;
-		if (ray.facing_up)
+		if (ray.facing_left)
 			check.y -= 1;
 		if (map_wall(map, check.x, check.y))
 			return (vert);

@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 18:01:22 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:09:34 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@
 # define RED_RGB 65536
 # define GREEN_RGB 256
 # define BLUE_RGB 1
+
+# define MAX_FLT 3.402823466e+38F
 
 #endif
