@@ -53,9 +53,11 @@ EXIT =			exit
 PLAYER =		player_handle
 MAP =			map_handle
 RAY =			rays
+3D =			3d_rendering
 
 #src functions
-MANDATORY_FILES =	${CHECKS}/00_errors.c				\
+MANDATORY_FILES =	$(3D)/render_walls.c				\
+					${CHECKS}/00_errors.c				\
 					${CHECKS}/01_check_args.c			\
 					${CHECKS}/02_check_textures.c		\
 					${CHECKS}/03_check_colors.c			\
@@ -85,17 +87,19 @@ MANDATORY_FILES =	${CHECKS}/00_errors.c				\
 HEADER =			header/cub3d.h						\
 					header/defs.h						\
 					header/buttons.h					\
+					header/structs.h					\
 
 #directories
 OBJPATH =			temps
 VPATH =				sources
 LIBFT_PATH =		./libft
 LIBFT =				$(LIBFT_PATH)/libft.a
-MLX_PATH =		./minilibx-linux
-MLX	 = $(MLX_PATH)/libmlx.a
+MLX_PATH =			./minilibx-linux
+MLX	 =				$(MLX_PATH)/libmlx.a
 
 #header to libft.h
 INCLUDE =	-I ./header -I $(LIBFT_PATH)
+
 ################################################################################
 ##                                    RULES                                   ##
 ################################################################################
@@ -117,7 +121,8 @@ $(LIBFT):
 
 #make mlx
 $(MLX):
-		make -C $(MLX_PATH)
+		@make -C $(MLX_PATH)
+		@$(LOG) "Compiling MLX"
 
 ##rule name - make cub3D
 $(NAME): $(LIBFT) $(MLX) $(OBJ_MANDATORY)
@@ -130,10 +135,6 @@ $(OBJPATH)/%.o: $(VPATH)/%.c $(HEADER)
 		@cc $(FLAGS) -c $< -o $@ $(INCLUDE)
 		@echo -n "$(YELLOW)Compiling ${NAME} $(WHITE)$$(( $(PROGRESS) * 100 / $(NUMBER_OF_FILES)))%\r"
 		$(eval PROGRESS=$(shell echo $$(($(PROGRESS)+1))))
-
-#make val -> mcheck
-val:
-		$(VAL) ./$(NAME)
 
 #make clean -> remove objects
 clean:
@@ -169,3 +170,7 @@ norm:
 
 norm_CI:
 		norminette ${addprefix ${VPATH}/, ${MANDATORY_FILES}}
+
+#make val -> mcheck
+val:
+		$(VAL) ./$(NAME)

@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 15:04:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 14:29:19 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 16:24:02 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void	find_hit(t_cub *cub, t_player *player, t_rays *ray)
 	if (horz.distance > vert.distance)
 	{
 		ray->dist = vert.distance;
-		ray->wall_hit[X] = vert.hit[X];
-		ray->wall_hit[Y] = vert.hit[Y];
+		ray->hit[X] = vert.hit[X];
+		ray->hit[Y] = vert.hit[Y];
 		ray->was_hit_vert = TRUE;
 	}
 	else
 	{
 		ray->dist = horz.distance;
-		ray->wall_hit[X] = horz.hit[X];
-		ray->wall_hit[Y] = horz.hit[Y];
+		ray->hit[X] = horz.hit[X];
+		ray->hit[Y] = horz.hit[Y];
 		ray->was_hit_vert = FALSE;
 	}
 }
