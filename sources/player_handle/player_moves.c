@@ -6,14 +6,14 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:58:52 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 20:24:39 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:44:59 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "buttons.h"
 
-void	move_player(t_vars *vars, int walk, int control)
+void	move_player(t_cub *cub, int walk, int control)
 {
 	float	move_step;
 	float	new_x;
@@ -22,42 +22,42 @@ void	move_player(t_vars *vars, int walk, int control)
 	move_step = walk * WALK_SPEED;
 	if (!control)
 	{
-		new_x = vars->player->x + cos(vars->player->angle)
+		new_x = cub->player->pos[X] + cos(cub->player->angle)
 			* move_step;
-		new_y = vars->player->y + sin(vars->player->angle)
+		new_y = cub->player->pos[Y] + sin(cub->player->angle)
 			* move_step;
 	}
 	else
 	{
-		new_x = vars->player->x + cos(vars->player->angle - PI / 2)
+		new_x = cub->player->pos[X] + cos(cub->player->angle - PI / 2)
 			* move_step;
-		new_y = vars->player->y + sin(vars->player->angle - PI / 2)
+		new_y = cub->player->pos[Y] + sin(cub->player->angle - PI / 2)
 			* move_step;
 	}
-	if (!map_wall(vars->fullmap, new_x, new_y))
+	if (!map_wall(cub->fullmap, new_x, new_y))
 	{
-		vars->player->x = new_x;
-		vars->player->y = new_y;
+		cub->player->pos[X] = new_x;
+		cub->player->pos[Y] = new_y;
 	}
 }
 
-void	change_player_pos(int keycode, t_vars *vars)
+void	change_player_pos(int keycode, t_cub *cub)
 {
 	if (keycode == W_KEY || keycode == UP)
-		move_player(vars, 1, 0);
+		move_player(cub, 1, 0);
 	if (keycode == S_KEY || keycode == DOWN)
-		move_player(vars, -1, 0);
+		move_player(cub, -1, 0);
 	if (keycode == D_KEY)
-		move_player(vars, -1, 1);
+		move_player(cub, -1, 1);
 	if (keycode == A_KEY)
-		move_player(vars, 1, 1);
+		move_player(cub, 1, 1);
 }
 
-void	turn_player(int keycode, t_vars *vars)
+void	turn_player(int keycode, t_cub *cub)
 {
 	if (keycode == RIGHT || keycode == Q_KEY)
-		vars->player->angle += TURN_SPEED;
+		cub->player->angle += TURN_SPEED;
 	if (keycode == LEFT || keycode == E_KEY)
-		vars->player->angle += -1 * TURN_SPEED;
-	vars->player->angle = normalize_angle(vars->player->angle);
+		cub->player->angle += -1 * TURN_SPEED;
+	cub->player->angle = normalize_angle(cub->player->angle);
 }

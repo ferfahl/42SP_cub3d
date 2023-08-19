@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/15 16:51:26 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:44:51 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	start_game(t_map *map, t_player *p1)
 {
-	t_vars	*vars;
+	t_cub	*cub;
 	t_rays	ray[W_WIDTH];
 
-	vars = (t_vars *)ft_calloc(1, sizeof(t_vars));
-	if (vars == NULL)
+	cub = (t_cub *)ft_calloc(1, sizeof(t_cub));
+	if (cub == NULL)
 		if_error("Calloc error");
-	open_window(vars);
-	vars->fullmap = map;
-	vars->player = p1;
-	vars->nbr_rays = W_WIDTH;
-	vars->rays = ray;
-	mlx_hooks(vars);
+	open_window(cub);
+	cub->fullmap = map;
+	cub->player = p1;
+	cub->nbr_rays = W_WIDTH;
+	cub->rays = ray;
+	mlx_hooks(cub);
 }
