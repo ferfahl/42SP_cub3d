@@ -57,6 +57,7 @@ RAY =			rays
 
 #src functions
 MANDATORY_FILES =	$(3D)/render_walls.c				\
+					$(3D)/nbr_adjustments.c				\
 					${CHECKS}/00_errors.c				\
 					${CHECKS}/01_check_args.c			\
 					${CHECKS}/02_check_textures.c		\
@@ -67,6 +68,7 @@ MANDATORY_FILES =	$(3D)/render_walls.c				\
 					${RAY}/find_hit_vert.c				\
 					${RAY}/ray_check.c					\
 					${RAY}/ray_utils.c					\
+					${MAP}/background.c					\
 					${MAP}/draw_minimap.c				\
 					${MAP}/map_limit.c					\
 					${WIND}/click_handler.c				\

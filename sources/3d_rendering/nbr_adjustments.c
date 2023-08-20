@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   temp.c                                             :+:      :+:    :+:   */
+/*   nbr_adjustments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/12 11:02:14 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 15:16:40 by feralves         ###   ########.fr       */
+/*   Created: 2023/08/20 15:22:57 by feralves          #+#    #+#             */
+/*   Updated: 2023/08/20 15:42:47 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	creating_img(t_cub *cub)
+int	wall_strip(t_cub *cub, int x)
 {
-	cast_all_rays(cub);
-	generate_projection(cub);
-	draw_mini_map(cub, cub->fullmap);
+	float	proj_height;
+
+	proj_height = (TILE_SIZE / cub->rays[x].dist) * cub->fullmap->proj_plane;
+	return (floor(proj_height));
 }
