@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mainfer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 16:24:34 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:13:08 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ void	print_map(t_map *mapped)
 	int	i;
 
 	i = 0;
-	while (i < (int)mapped->y_len)
+	while (i < (int)mapped->y_len / TILE_SIZE)
 	{
-		for (int j = 0; j < (int)mapped->x_len; j++)
+		for (int j = 0; j < (int)mapped->x_len / TILE_SIZE; j++)
 		{
-			ft_printf("%d ", mapped->map[i][j]);
+			ft_printf("%d", mapped->map[i][j]);
 		}
 		ft_printf("\n");
 		i++;
@@ -92,10 +92,11 @@ t_map	*map_reader(int fd, t_input *input)
 	map->west = input->we_fd;
 	map->north = input->no_fd;
 	map->south = input->so_fd;
+	map->map = read_map(fd, &input);
 	map->y_len = input->map_height * TILE_SIZE;
 	map->x_len = input->map_width * TILE_SIZE;
-	map->map = read_map(fd, input);
 	map->proj_plane = (map->x_len / 2) / tan(FOV / 2);
+	free(input);
 	return (map);
 }
 
@@ -121,3 +122,4 @@ int	main(void)
 	p1 = start_player(map);
 	start_game(map, p1);
 }
+

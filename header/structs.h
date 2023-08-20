@@ -6,12 +6,20 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:35:23 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 15:32:35 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:40:37 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+# include <stdlib.h>
+
+typedef struct s_map_line
+{
+	char				*line;
+	struct s_map_line	*next;
+}				t_map_line;
 
 typedef struct s_input
 {
@@ -27,7 +35,8 @@ typedef struct s_input
 	int		ea_fd;
 	int		f;
 	int		c;
-	int		**map;
+	size_t	map_height;
+	size_t	map_width;
 }				t_input;
 
 typedef struct s_pos

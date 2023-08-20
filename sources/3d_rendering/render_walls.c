@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:30:47 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 15:42:14 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:55:21 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	render_walls(t_cub *cub, int x, int y)
 	if (cub->rays[x].was_hit_vert)
 	{
 		if (cub->rays[x].facing_left)
-			my_mlx_pixel_put(&cub->img, x, y, cub->fullmap->east);
+			my_mlx_pixel_put(&cub->img, x, y, 0xFF0000);
 		else
-			my_mlx_pixel_put(&cub->img, x, y, cub->fullmap->west);
+			my_mlx_pixel_put(&cub->img, x, y, 0xFFFF00);
 	}
 	else
 	{
 		if (cub->rays[x].facing_up)
-			my_mlx_pixel_put(&cub->img, x, y, cub->fullmap->south);
+			my_mlx_pixel_put(&cub->img, x, y, 0x00FF00);
 		else
-			my_mlx_pixel_put(&cub->img, x, y, cub->fullmap->north);
+			my_mlx_pixel_put(&cub->img, x, y, 0xFF00FF);
 	}
 }
 

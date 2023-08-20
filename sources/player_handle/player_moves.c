@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:58:52 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 16:18:35 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:18:27 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	move_player(t_cub *cub, int walk, int control)
 	float	new_x;
 	float	new_y;
 
-	move_step = (walk * WALK_SPEED) + 1;
+	move_step = (walk * WALK_SPEED) + P_SIZE;
 	if (!control)
 	{
 		new_x = cub->player->pos[X] + cos(cub->player->angle)
