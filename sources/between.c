@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:22:57 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/20 17:15:19 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:41:16 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ int	**get_map(t_map_line *start, t_input *input)
 		while (iterator < input->map_width)
 		{
 			if (iterator + 1 >= ft_strlen(start->line))
-				map[counter][iterator] = get_tile('0');
+				map[counter][iterator] = get_tile(' ');
 			else
 				map[counter][iterator] = get_tile(start->line[iterator]);
 			if (map[counter][iterator] == -1)

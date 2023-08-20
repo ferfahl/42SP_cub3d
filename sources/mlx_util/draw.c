@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:53:38 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 15:55:17 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:37:04 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	draw_square(t_image *image, t_pos id, int size, int color)
 	int	j;
 
 	i = id.x;
-	while (i < size + id.x)
+	while (i <= size + id.x)
 	{
 		j = id.y;
-		while (j < size + id.y)
+		while (j <= size + id.y)
 		{
 			my_mlx_pixel_put(image, i, j, color);
 			j++;

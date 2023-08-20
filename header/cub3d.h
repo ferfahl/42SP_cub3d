@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 17:12:01 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:38:15 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,6 @@ t_map	*map_reader(int fd, t_input *input);
 
 void	generate_projection(t_cub *cub);
 int		wall_strip(t_cub *cub, int x);
+int		map_floor(t_map *mapped, float x, float y);
 
 #endif
