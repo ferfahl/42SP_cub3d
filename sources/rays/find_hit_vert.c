@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 16:30:40 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 21:44:08 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	increment_vert(t_map *map, t_rays ray, t_hit *vert)
 	{
 		check[X] = vert->hit[X];
 		check[Y] = vert->hit[Y];
-		if (ray.facing_left)
-			check[Y] -= 1;
+		if (ray.facing_left && ray.facing_down)
+			check[Y] += 0.001;
 		if (map_wall(map, check[X], check[Y]))
 		{
 			vert->hitted = TRUE;
