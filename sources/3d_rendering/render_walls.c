@@ -6,54 +6,94 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:30:47 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 17:45:31 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:21:52 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	render_walls(t_cub *cub, int x, int y)
+int	texture_offset_x(t_rays ray)
+{
+	int	offset_x;
+
+	if (ray.was_hit_vert)
+		offset_x = (int)ray.hit[Y] % TEXTURE_SIZE;
+	else
+		offset_x = (int)ray.hit[X] % TEXTURE_SIZE;
+	return (offset_x);
+}
+
+// int	get_texture(t_cub *cub, t_image texture, int y, int wall_top_pixel)
+// {
+// 	int			offset[2];
+// 	int			dist_to_top;
+
+// 	offset[X] = texture;
+// 	dist_to_top = y + wall_top_pixel;
+// 	offset[Y] = dist_to_top * ((float)TEXTURE_SIZE / cub->game.wall_height);
+// 	return (*(unsigned int *)(texture.img.data
+// 		+ (offset[Y] * texture.img.line_length + offset[X]
+// 			* (texture.img.bits_per_pixel / 8))));
+// }
+
+int	which_wall(t_cub *cub, int x)
 {
 	if (cub->rays[x].was_hit_vert)
 	{
 		if (cub->rays[x].facing_left)
-			my_mlx_pixel_put(&cub->img, x, y, 0xFF00FF); //west
+			return (0); //west
 		else
-			my_mlx_pixel_put(&cub->img, x, y, 0xFF0000); //east
+			return (1); //east
 	}
 	else
 	{
 		if (cub->rays[x].facing_up)
-			my_mlx_pixel_put(&cub->img, x, y, 0xFF0000); //north
+			return (2); //north
 		else
-			my_mlx_pixel_put(&cub->img, x, y, 0xFF0000); //south
+			return (3); //south
+	}
+}
+
+void	draw_wall(t_cub *cub, int x, int top_pixel, int bot_pixel)
+{
+	int		y;
+	// int		color;
+	// t_image	texture;
+	int	side;
+
+	y = top_pixel;
+	while (y < bot_pixel)
+	{
+		if (y >= 0 && y <= W_HEIGHT)
+		{
+			side = which_wall(cub, x);
+			// texture = which_wall(cub, x);
+			// color = get_te
+			if (side == 0)
+				my_mlx_pixel_put(&cub->img, x, y, 0x0000FF);
+			else if (side == 1)
+				my_mlx_pixel_put(&cub->img, x, y, 0x00FF00);
+			else if (side == 2)
+				my_mlx_pixel_put(&cub->img, x, y, 0xFFF000);
+			else if (side == 3)
+				my_mlx_pixel_put(&cub->img, x, y, 0x0F0F0F);
+		}
+		y++;
 	}
 }
 
 void	generate_projection(t_cub *cub)
 {
 	int	x;
-	int	y;
-	int	wall_strip_height;
 	int	wall_top_pixel;
 	int	wall_bot_pixel;
 
 	x = 0;
 	while (x < cub->nbr_rays)
 	{
-		wall_strip_height = wall_strip(cub, x);
-		wall_top_pixel = (W_HEIGHT / 2) - (wall_strip_height / 2);
-		if (wall_top_pixel < 0)
-			wall_top_pixel = 0;
-		wall_bot_pixel = (W_HEIGHT / 2) + (wall_strip_height / 2);
-		if (wall_bot_pixel > W_HEIGHT)
-			wall_bot_pixel = W_HEIGHT;
-		y = wall_top_pixel;
-		while (y < wall_bot_pixel)
-		{
-			render_walls(cub, x, y);
-			y++;
-		}
+		wall_top_pixel = top_bot_pixel(cub, x, 1);
+		wall_bot_pixel = top_bot_pixel(cub, x, 0);
+		draw_wall(cub, x, wall_top_pixel, wall_bot_pixel);
 		x++;
 	}
 }

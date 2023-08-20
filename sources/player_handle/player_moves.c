@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:58:52 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 17:18:27 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:20:05 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	move_player(t_cub *cub, int walk, int control)
 		new_y = cub->player->pos[Y] + sin(cub->player->angle - PI / 2)
 			* move_step;
 	}
-	if (!map_wall(cub->fullmap, new_x, new_y))
+	if (!map_wall(cub->map, new_x, new_y))
 	{
 		cub->player->pos[X] = new_x;
 		cub->player->pos[Y] = new_y;

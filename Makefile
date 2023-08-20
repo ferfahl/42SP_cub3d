@@ -76,6 +76,7 @@ MANDATORY_FILES =	$(3D)/render_walls.c				\
 					${WIND}/draw_line.c					\
 					${WIND}/image.c						\
 					${WIND}/key_handler.c				\
+					${WIND}/load_textures.c				\
 					${WIND}/temp.c						\
 					${WIND}/window.c					\
 					${EXIT}/exit.c						\

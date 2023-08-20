@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 21:31:28 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 18:37:46 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define TURN_SPEED 0.196349541
 
 # define P_SIZE 3
+# define TEXTURE_SIZE 64
 # define MAP_SCALE 0.2
 
 # define RED_RGB 65536

@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 17:13:08 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:19:39 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,16 @@ int    *temp_map[13] = {
 // 	(int [6]){1, 1, 1, 1, 1, 1}
 // };
 
-void	print_map(t_map *mapped)
+void	print_map(t_map *map)
 {
 	int	i;
 
 	i = 0;
-	while (i < (int)mapped->y_len / TILE_SIZE)
+	while (i < (int)map->y_len / TILE_SIZE)
 	{
-		for (int j = 0; j < (int)mapped->x_len / TILE_SIZE; j++)
+		for (int j = 0; j < (int)map->x_len / TILE_SIZE; j++)
 		{
-			ft_printf("%d", mapped->map[i][j]);
+			ft_printf("%d", map->map[i][j]);
 		}
 		ft_printf("\n");
 		i++;
@@ -88,10 +88,10 @@ t_map	*map_reader(int fd, t_input *input)
 	map = malloc(sizeof(t_map));
 	map->ceiling = input->c;
 	map->floor = input->f;
-	map->east = input->ea_fd;
-	map->west = input->we_fd;
-	map->north = input->no_fd;
-	map->south = input->so_fd;
+	map->east = input->ea_path;
+	map->west = input->we_path;
+	map->north = input->no_path;
+	map->south = input->so_path;
 	map->map = read_map(fd, &input);
 	map->y_len = input->map_height * TILE_SIZE;
 	map->x_len = input->map_width * TILE_SIZE;

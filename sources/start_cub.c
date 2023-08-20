@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 13:44:51 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:19:56 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	start_game(t_map *map, t_player *p1)
 	if (cub == NULL)
 		if_error("Calloc error");
 	open_window(cub);
-	cub->fullmap = map;
+	cub->map = map;
 	cub->player = p1;
 	cub->nbr_rays = W_WIDTH;
 	cub->rays = ray;
