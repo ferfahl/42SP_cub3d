@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 21:32:03 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:38:45 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	draw_mini_map(t_cub *cub, t_map *map)
 			scale.y = id.y * MAP_SCALE;
 			if (map_wall(cub->fullmap, id.x, id.y))
 				draw_square(&cub->img, scale, map_tile, 0xFFFFFF);
-			else
+			else if (map_floor(cub->fullmap, id.x, id.y))
 				draw_square(&cub->img, scale, map_tile, 0x000000);
 			id.x += TILE_SIZE;
 		}
