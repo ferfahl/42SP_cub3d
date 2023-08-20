@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:22:57 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/17 18:02:29 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:08:45 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,16 +195,33 @@ int	**read_map(int fd, t_input *input)
 	return (map);
 }
 
+t_map	*map_reader(int fd, t_input *input)
+{
+	t_map	*map;
+	map = malloc(sizeof(t_map));
+	map->ceiling = input->c;
+	map->floor = input->f;
+	map->east = input->ea_fd;
+	map->west = input->we_fd;
+	map->north = input->no_fd;
+	map->south = input->so_fd;
+	map->y_len = input->map_height;
+	map->x_len = input->map_width;
+	map->map = read_map(fd, input);
+	return (map);
+}
+
 int	main(void)
 {
 	int			fd;
 	t_input		*input;
-	int			**final_map;
 	char		**map;
 	char		*line;
 	char		*trimmed;
 	size_t		i;
 	size_t		j;
+	t_map		*full_map;
+
 
 	input = start_input();
 	map = malloc(sizeof(char *) * 3);
@@ -225,7 +242,7 @@ int	main(void)
 		line = get_next_line(fd);
 	}
 	free(line);
-	final_map = read_map(fd, input);
+	full_map = map_reader(fd, input);
 	close(fd);
 	i = 0;
 	while (i < 16)
@@ -233,18 +250,19 @@ int	main(void)
 		j = 0;
 		while (j < 33)
 		{
-			printf("%d", final_map[i][j]);
+			printf("%d", full_map->map[i][j]);
 			j++;
 		}
 		printf("\n");
-		free(final_map[i]);
+		free(full_map->map[i]);
 		i++;
 	}
-	free(final_map);
+	free(full_map->map);
 	free(map[0]);
 	free(map[1]);
 	free(map[2]);
 	free(map);
+	free(full_map);
 	i = 0;
 	// free(final_map, )
 	// return (input);

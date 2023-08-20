@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 16:23:31 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:23:42 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,7 @@ int		check_f(char *line, t_input *input);
 
 void	check_all(char *line, t_input *input);
 char	*gnl(int fd);
+t_map	*map_reader(int fd, t_input *input);
 
 void	generate_projection(t_cub *cub);
 int		wall_strip(t_cub *cub, int x);
