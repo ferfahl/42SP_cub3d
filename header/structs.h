@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:35:23 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 21:57:59 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:32:35 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_map
 	int		x_len;
 	int		y_len;
 	int		**map;
-	int		depth;
+	float	proj_plane;
 }				t_map;
 
 typedef struct s_cub

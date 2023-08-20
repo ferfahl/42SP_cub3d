@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 16:06:10 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:42:35 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,6 @@ int		check_f(char *line, t_input *input);
 void	check_all(char *line, t_input *input);
 
 void	generate_projection(t_cub *cub);
+int		wall_strip(t_cub *cub, int x);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 21:32:36 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:33:29 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ t_map	*map_maker(void)
 	mapped->y_len = 13 * TILE_SIZE;
 	mapped->x_len = 20 * TILE_SIZE;
 	mapped->map = temp_map;
-	mapped->depth = (W_WIDTH /2) / tan(HALF_FOV);
+	mapped->proj_plane = (mapped->x_len / 2) / tan(FOV / 2);
 	return (mapped);
 }
 
