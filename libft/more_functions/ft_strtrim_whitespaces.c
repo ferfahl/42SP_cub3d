@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim_whitespaces.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:34:26 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/19 13:37:23 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:13:23 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*ft_strtrim_whitespaces(const char *str)
 {
 	char	*whitespaces;
+	char	*trimmed;
 
 	whitespaces = malloc(sizeof(char) * 8);
 	whitespaces[0] = 9;
@@ -25,5 +26,7 @@ char	*ft_strtrim_whitespaces(const char *str)
 	whitespaces[5] = 32;
 	whitespaces[6] = '\n';
 	whitespaces[7] = 0;
-	return (ft_strtrim(str, whitespaces));
+	trimmed = ft_strtrim(str, whitespaces);
+	free(whitespaces);
+	return (trimmed);
 }

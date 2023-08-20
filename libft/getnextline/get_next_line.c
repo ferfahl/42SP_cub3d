@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 06:49:03 by feralves          #+#    #+#             */
-/*   Updated: 2023/06/27 16:39:43 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:02:13 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*reading(int fd)
 		return (NULL);
 	reader[0] = '\0';
 	size = read(fd, reader, BUFFER_SIZE);
-	if (size == 0)
+	if (size <= 0)
 	{
 		free(reader);
 		return (NULL);
@@ -90,6 +90,7 @@ char	*ft_return_line(int fd)
 		remains = NULL;
 	reader = reading(fd);
 	full_line = ft_strjoin_free(remains, reader);
+	free(reader);
 	if (ft_strlen(full_line) == 0)
 	{
 		free(full_line);

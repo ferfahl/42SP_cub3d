@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mainfer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 15:33:29 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:24:34 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,21 +82,21 @@ void	print_map(t_map *mapped)
 	}
 }
 
-t_map	*map_maker(void)
+t_map	*map_reader(int fd, t_input *input)
 {
-	t_map	*mapped;
-	mapped = malloc(sizeof(t_map));
-	mapped->ceiling = 0xFF444444;
-	mapped->floor = 0xFF000000;
-	mapped->east = 0xFFFF0000;
-	mapped->west = 0xFF00FF00;
-	mapped->north = 0xFF0000FF;
-	mapped->south = 0xFFFFFFFF;
-	mapped->y_len = 13 * TILE_SIZE;
-	mapped->x_len = 20 * TILE_SIZE;
-	mapped->map = temp_map;
-	mapped->proj_plane = (mapped->x_len / 2) / tan(FOV / 2);
-	return (mapped);
+	t_map	*map;
+	map = malloc(sizeof(t_map));
+	map->ceiling = input->c;
+	map->floor = input->f;
+	map->east = input->ea_fd;
+	map->west = input->we_fd;
+	map->north = input->no_fd;
+	map->south = input->so_fd;
+	map->y_len = input->map_height * TILE_SIZE;
+	map->x_len = input->map_width * TILE_SIZE;
+	map->map = read_map(fd, input);
+	map->proj_plane = (map->x_len / 2) / tan(FOV / 2);
+	return (map);
 }
 
 t_player	*start_player(t_map *map)
