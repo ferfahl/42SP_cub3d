@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:44:31 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:39:11 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:42:50 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	check_args(int argc, char *argv[])
 
 	if (argc != 2)
 		return (ft_error("Wrong number of arguments\n"));
-	if (check_extension(argv[1], ".cub"))
-		return (ft_error("Wrong map file extension\n"));
+
 	fd = open_file(argv[1]);
 	if (fd < 0)
 		return (ft_error(strerror(errno)));

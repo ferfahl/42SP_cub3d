@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:27:59 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/20 20:41:40 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:48:35 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_no(char *line, t_input *input)
 			return (ft_error("More than one NO texture"));
 		input->has_no = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
-		if (check_extension(argv[1], ".cub"))
+		if (check_extension(trimmed, ".xpm"))
 		{
 			free(trimmed);
 			return (ft_error("Wrong NO texture file extension\n"));
@@ -49,7 +49,7 @@ int	check_so(char *line, t_input *input)
 			return (ft_error("More than one SO texture"));
 		input->has_so = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
-		if (check_extension(argv[1], ".cub"))
+		if (check_extension(trimmed, ".xpm"))
 		{
 			free(trimmed);
 			return (ft_error("Wrong SO texture file extension\n"));
@@ -75,7 +75,7 @@ int	check_we(char *line, t_input *input)
 			return (ft_error("More than one WE texture"));
 		input->has_we = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
-		if (check_extension(argv[1], ".cub"))
+		if (check_extension(trimmed, ".xpm"))
 		{
 			free(trimmed);
 			return (ft_error("Wrong WE texture file extension\n"));
@@ -101,7 +101,7 @@ int	check_ea(char *line, t_input *input)
 			return (ft_error("More than one EA texture"));
 		input->has_ea = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
-		if (check_extension(argv[1], ".cub"))
+		if (check_extension(trimmed, ".xpm"))
 		{
 			free(trimmed);
 			return (ft_error("Wrong EA texture file extension\n"));
