@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:23:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 18:59:54 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 21:32:03 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	draw_player(t_cub *cub)
 	b.x = floor(next_x);
 	b.y = floor(next_y);
 	draw_circle(&cub->img, a.x, a.y, P_SIZE);
-	// draw_line(&cub->img, a, b, 0xFF0000);
+	draw_line(&cub->img, a, b, 0xFF0000);
 	draw_rays(cub, cub->rays);
 }
 

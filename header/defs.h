@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 16:22:01 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/19 21:31:28 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define Y 1
 
 # define TILE_SIZE 64
+# define HALF_TILE 32
 # define FOV 1.047198
 # define HALF_FOV 0.523599
 
