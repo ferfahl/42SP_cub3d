@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:27:59 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/20 20:48:35 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:59:17 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	check_so(char *line, t_input *input)
 			return (ft_error("Wrong SO texture file extension\n"));
 		}
 		fd = open_file(trimmed);
-		input->no_path = ft_strdup(trimmed);
+		input->so_path = ft_strdup(trimmed);
 		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid SO texture"));
@@ -81,7 +81,7 @@ int	check_we(char *line, t_input *input)
 			return (ft_error("Wrong WE texture file extension\n"));
 		}
 		fd = open_file(trimmed);
-		input->no_path = ft_strdup(trimmed);
+		input->we_path = ft_strdup(trimmed);
 		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid WE texture"));
@@ -107,7 +107,7 @@ int	check_ea(char *line, t_input *input)
 			return (ft_error("Wrong EA texture file extension\n"));
 		}
 		fd = open_file(trimmed);
-		input->no_path = ft_strdup(trimmed);
+		input->ea_path = ft_strdup(trimmed);
 		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid EA texture"));
