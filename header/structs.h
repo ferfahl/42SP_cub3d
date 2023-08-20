@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:35:23 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:19:55 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:38:36 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_rays
 typedef struct s_image
 {
 	void	*ptr;
-	void	*texture;
+	char	*texture;
 	int		*data;
 	int		bpp;
 	int		line_len;

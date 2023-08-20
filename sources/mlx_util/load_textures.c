@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:54:27 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:20:03 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:37:53 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	load_xpm(t_cub *cub, t_image *img, char *path)
 	int		width;
 	int		height;
 
-	img->texture = mlx_xpm_file_to_image(cub->mlx, path, &width, &height);
-	img->ptr = mlx_get_data_addr(img->texture, &img->bpp, &img->line_len, &img->endian);
+	img->ptr = mlx_xpm_file_to_image(cub->mlx, path, &width, &height);
+	img->texture = mlx_get_data_addr(img->ptr, &img->bpp, &img->line_len, &img->endian);
 	// if (width != height)
 		//error texture must be square
 }
