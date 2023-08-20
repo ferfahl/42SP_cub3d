@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:30:47 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:42:12 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:51:36 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_texture(t_cub *cub, t_image texture, int x, int y)
 	wall_height = wall_strip(cub, x);
 	offset[X] = texture_offset_x(cub->rays[x]);
 	dist_to_top = y + (wall_height / 2) - (W_HEIGHT / 2);
-	offset[Y] = dist_to_top * (TEXTURE_SIZE / wall_height);
+	offset[Y] = dist_to_top * (64.0 / wall_height);
 	return (*(unsigned int *)(texture.texture
 		+ (offset[Y] * texture.line_len + offset[X]
 			* (texture.bpp / 8))));
