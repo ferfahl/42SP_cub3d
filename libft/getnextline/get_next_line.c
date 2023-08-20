@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 06:49:03 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/17 18:26:47 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:02:13 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ char	*ft_return_line(int fd)
 		return (NULL);
 	}
 	was_read = get_till_break(full_line);
-	if (remains)
-		free(remains);
 	remains = get_rest(full_line);
 	free(full_line);
 	return (was_read);
