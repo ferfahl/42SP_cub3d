@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:59:02 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 17:08:43 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:43:06 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	flood_fill(int **dupe, int x, int y, t_map *map)
 {
-	if (y <= 1 || x <= 1 || y >= map->y_len - 1 || x >= map->x_len - 1)
+	if (y < 0 || x < 0 || y > map->y_len / TILE_SIZE - 1 || x > map->x_len / TILE_SIZE - 1)
 		return ;
 	if (dupe[y][x] == 1 || dupe[y][x] == 3 || dupe[y][x] == 2)
 		return ;
@@ -63,30 +63,35 @@ int	valid_dupe_check(int c)
 
 int	check_dupe(t_map *map, int **dupe)
 {
-	int	coord[2];
+	int	x;
+	int	y;
 
-	coord[Y] = 0;
-	while (coord[Y] < map->y_len / TILE_SIZE)
+	y = 0;
+	while (y < map->y_len / TILE_SIZE)
 	{
-		coord[X] = 0;
-		while (coord[X] < map->x_len / TILE_SIZE)
+		x = 0;
+		while (x < map->x_len / TILE_SIZE)
 		{
-			if (!valid_dupe_check(dupe[coord[Y]][coord[X]]))
+			if (!valid_dupe_check(dupe[y][x]))
 				return (FALSE);
-			coord[X]++;
+			x++;
 		}
-		coord[Y]++;
+		y++;
 	}
 	return (TRUE);
 }
 
-void	verify_path(t_map *map, int coord[2])
+int	verify_path(t_map *map, int x, int y)
 {
 	int	**dupe;
 
 	dupe = duplicate_map(map);
-	flood_fill(dupe, coord[X], coord[Y], map);
+	flood_fill(dupe, x, y, map);
 	if (!check_dupe(map, dupe))
-		ft_error("Invalid path");
-	ft_free_int_array(dupe);
+	{
+		ft_free_map_array(dupe, map->y_len / TILE_SIZE);
+		return (ft_error("Invalid path"));
+	}
+	ft_free_map_array(dupe, map->y_len / TILE_SIZE);
+	return (0);
 }

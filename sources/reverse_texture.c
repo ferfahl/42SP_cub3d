@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_texture.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:14:08 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/21 14:54:27 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:46:56 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	copy_textures(char *next_line, char *current_line, int *fd, int chec
 		if (!ft_strncmp(next_line, "};", 2))
 			check = TRUE;
 	}
-	len = ft_strlen(current_line) - 1;
+		len = ft_strlen(current_line) - 1;
 	while (len-- > 0)
 		write(fd[1], &current_line[len], 1);
 	write(fd[1], "\n};", 3);

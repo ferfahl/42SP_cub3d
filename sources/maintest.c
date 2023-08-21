@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   maintest.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 18:28:35 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:44:45 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_map(t_map *map)
+void	print_map(t_map *map, int **print)
 {
 	int	i;
 
@@ -21,11 +21,12 @@ void	print_map(t_map *map)
 	{
 		for (int j = 0; j < (int)map->x_len / TILE_SIZE; j++)
 		{
-			ft_printf("%d", map->map[i][j]);
+			ft_printf("%d", print[i][j]);
 		}
 		ft_printf("\n");
 		i++;
 	}
+	ft_printf("\n");
 }
 
 t_map	*map_reader(int fd, t_input **input)
@@ -96,6 +97,8 @@ int	main(int argc, char *argv[])
 
 	input = start_input();
 	map = get_map(argc, argv, &input);
+	if (verify_path(map, input->player_y, input->player_x) == -1)
+		exit (-1);
 	p1 = start_player(input->player_y, input->player_x, input->player_dir);
 	start_game(map, p1);
 }

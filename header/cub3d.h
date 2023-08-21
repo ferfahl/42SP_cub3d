@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 18:27:29 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:40:05 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,14 @@ void		if_error(char *str);
 //exit/free_all.c
 void		free_stuff(t_map_line *map_line);
 void		free_all(t_map_line *map_line, t_input *input, int **map);
+void		ft_free_map_array(int **array, int y);
 
 //map_handle/check_map.c
 int			get_tile(char c, t_input **input, int x, int y);
 int			verify_map(t_map_line *map, t_input **input, int inside_map);
 
 //map_handle/check_path.c
-void		verify_path(t_map *map, int coord[2]);
+int			verify_path(t_map *map, int x, int y);
 
 //map_handle/draw_minimap.c
 void		draw_mini_map(t_cub *cub, t_map *map);
