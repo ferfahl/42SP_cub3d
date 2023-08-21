@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/08/21 00:44:07 by feralves         ###   ########.fr       */
-=======
-/*   Updated: 2023/08/21 14:15:35 by rarobert         ###   ########.fr       */
->>>>>>> bcde1de (corrected defines of directions)
+/*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
+/*   Updated: 2023/08/21 17:04:55 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +77,9 @@ void		free_all(t_map_line *map_line, t_input *input, int **map);
 //map_handle/check_map.c
 int			get_tile(char c);
 int			verify_map(t_map_line *map, t_input **input, int inside_map);
+
+//map_handle/check_path.c
+void		verify_path(t_map *map, int coord[2]);
 
 //map_handle/draw_minimap.c
 void		draw_mini_map(t_cub *cub, t_map *map);

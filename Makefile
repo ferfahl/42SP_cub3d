@@ -66,6 +66,7 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${EXIT}/exit.c						\
 					${EXIT}/free_all.c					\
 					${MAP}/check_map.c					\
+					${MAP}/check_path.c					\
 					${MAP}/draw_minimap.c				\
 					${MAP}/map_limit.c					\
 					${MAP}/read_map.c					\
