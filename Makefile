@@ -84,7 +84,6 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${RAY}/find_hit_vert.c				\
 					${RAY}/ray_check.c					\
 					${RAY}/ray_utils.c					\
-					between.c							\
 					calculate.c							\
 					maintest.c							\
 					reverse_texture.c					\

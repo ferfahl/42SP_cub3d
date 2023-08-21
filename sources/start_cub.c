@@ -6,16 +6,20 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 18:26:17 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:49:46 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_input	*start_input(void)
+t_input	*start_input(int argc, char *argv[])
 {
 	t_input	*input;
+	int		fd;
 
+	fd = check_args(argc, argv);
+	if (fd < 0)
+		return (NULL);
 	input = (t_input *)malloc(sizeof(t_input));
 	input->has_no = FALSE;
 	input->has_so = FALSE;
@@ -28,6 +32,7 @@ t_input	*start_input(void)
 	input->f = 0;
 	input->map_width = 0;
 	input->map_height = 0;
+	input->fd = fd;
 	return (input);
 }
 

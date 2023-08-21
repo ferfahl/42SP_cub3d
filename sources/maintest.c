@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 20:35:53 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:50:26 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,13 @@ t_map	*map_reader(int fd, t_input **input)
 	return (map);
 }
 
-t_map	*get_map(int argc, char *argv[], t_input **input)
+t_map	*get_map(t_input **input)
 {
-	int			fd;
 	char		*line;
 	char		*trimmed;
 	t_map		*full_map;
 
-	fd = check_args(argc, argv);
-	line = get_next_line(fd);
+	line = get_next_line((*input)->fd);
 	while (line)
 	{
 		trimmed = ft_strtrim_whitespaces(line);
@@ -65,11 +63,11 @@ t_map	*get_map(int argc, char *argv[], t_input **input)
 			&& (*input)->has_we && (*input)->has_c && (*input)->has_f)
 			break ;
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line((*input)->fd);
 	}
 	free(line);
-	full_map = map_reader(fd, input);
-	close(fd);
+	full_map = map_reader((*input)->fd, input);
+	close((*input)->fd);
 	return (full_map);
 }
 
@@ -92,8 +90,10 @@ int	main(int argc, char *argv[])
 	t_map		*map;
 	t_player	*p1;
 
-	input = start_input();
-	map = get_map(argc, argv, &input);
+	input = start_input(argc, argv);
+	if (input == NULL)
+		return (-1);
+	map = get_map(&input);
 	if (verify_path(map, input->player_y, input->player_x) == -1)
 		exit (-1);
 	p1 = start_player(input->player_y, input->player_x, input->player_dir);
