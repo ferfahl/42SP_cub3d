@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   02_check_textures.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:27:59 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/17 17:04:31 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/20 19:09:17 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ int	check_no(char *line, t_input *input)
 		input->has_no = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
 		fd = open_file(trimmed);
+		input->no_path = ft_strdup(trimmed);
 		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid NO texture"));
-		input->no_fd = fd;
+		close(fd);
 	}
 	return (0);
 }
@@ -44,10 +45,11 @@ int	check_so(char *line, t_input *input)
 		input->has_so = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
 		fd = open_file(trimmed);
+		input->so_path = ft_strdup(trimmed);
 		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid SO texture"));
-		input->so_fd = fd;
+		close(fd);
 	}
 	return (0);
 }
@@ -64,10 +66,11 @@ int	check_we(char *line, t_input *input)
 		input->has_we = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
 		fd = open_file(trimmed);
+		input->we_path = ft_strdup(trimmed);
 		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid WE texture"));
-		input->we_fd = fd;
+		close(fd);
 	}
 	return (0);
 }
@@ -84,10 +87,11 @@ int	check_ea(char *line, t_input *input)
 		input->has_ea = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
 		fd = open_file(trimmed);
+		input->ea_path = ft_strdup(trimmed);
 		free(trimmed);
 		if (fd < 0)
 			return (ft_error("Invalid EA texture"));
-		input->ea_fd = fd;
+		close(fd);
 	}
 	return (0);
 }

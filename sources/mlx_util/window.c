@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:30:10 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 13:44:59 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 19:04:24 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	mlx_hooks(t_cub *cub)
 {
+	load_textures(cub);
 	mlx_loop_hook(cub->mlx, &render, cub);
 	mlx_hook(cub->win, KEY_PRESS_EVENT, (1L << 0), key_hook, cub);
 	mlx_hook(cub->win, CLICK_EVENT, (1L << 2), click_hook, cub);

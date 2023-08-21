@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 15:15:59 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 15:16:22 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:20:00 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	draw_background(t_cub *cub)
 	int	floor;
 
 	y = 0;
-	floor = cub->fullmap->floor;
-	ceiling = cub->fullmap->ceiling;
+	floor = cub->map->floor;
+	ceiling = cub->map->ceiling;
 	while (y < W_HEIGHT / 2)
 	{
 		x = 0;

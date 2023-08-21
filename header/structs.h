@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:35:23 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 16:40:37 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:38:36 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ typedef struct s_input
 	int		has_ea;
 	int		has_f;
 	int		has_c;
-	int		no_fd;
-	int		so_fd;
-	int		we_fd;
-	int		ea_fd;
+	char*	no_path;
+	char*	so_path;
+	char*	we_path;
+	char*	ea_path;
 	int		f;
 	int		c;
 	size_t	map_height;
@@ -79,6 +79,7 @@ typedef struct s_rays
 typedef struct s_image
 {
 	void	*ptr;
+	char	*texture;
 	int		*data;
 	int		bpp;
 	int		line_len;
@@ -87,10 +88,10 @@ typedef struct s_image
 
 typedef struct s_map
 {
-	int		north;
-	int		south;
-	int		east;
-	int		west;
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
 	int		floor;
 	int		ceiling;
 	int		x_len;
@@ -104,9 +105,13 @@ typedef struct s_cub
 	int			nbr_rays;
 	void		*mlx;
 	void		*win;
-	t_map		*fullmap;
+	t_map		*map;
 	t_rays		*rays;
 	t_image		img;
+	t_image		north;
+	t_image		south;
+	t_image		west;
+	t_image		east;
 	t_player	*player;
 }				t_cub;
 
