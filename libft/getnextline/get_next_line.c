@@ -3,111 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 06:49:03 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 15:02:13 by feralves         ###   ########.fr       */
+/*   Created: 2022/05/04 19:40:25 by rarobert          #+#    #+#             */
+/*   Updated: 2023/08/21 14:49:03 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*reading(int fd)
+char	*get_string(t_gnl *lst, size_t len)
 {
-	char	*reader;
-	int		size;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	reader = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!reader)
-		return (NULL);
-	reader[0] = '\0';
-	size = read(fd, reader, BUFFER_SIZE);
-	if (size <= 0)
-	{
-		free(reader);
-		return (NULL);
-	}
-	else
-		reader[size] = '\0';
-	return (reader);
-}
-
-char	*get_till_break(char *str)
-{
-	int		i;
-	int		size;
-	char	*was_read;
-
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	i = 0;
-	size = size_till_break(str);
-	was_read = malloc((size + 1) * sizeof(char));
-	if (!was_read)
-		return (NULL);
-	while (str[i] != '\n' && str[i] != '\0')
+	while (lst)
 	{
-		was_read[i] = str[i];
-		i++;
+		j = 0;
+		while (lst->str[j])
+		{
+			str[i + j] = lst->str[j];
+			j++;
+		}
+		i += j;
+		lst = lst->next;
 	}
-	if (str[i] == '\n')
-	{
-		was_read[i] = '\n';
-		i++;
-	}
-	was_read[i] = '\0';
-	return (was_read);
-}
-
-char	*get_rest(char *str)
-{
-	int		i;
-	int		read_size;
-	int		final_size;
-	char	*remains;
-
-	i = 0;
-	read_size = size_till_break(str);
-	final_size = ft_strlen(str) - read_size;
-	remains = malloc((final_size + 1) * sizeof(char));
-	if (!remains)
-		return (NULL);
-	while (str[read_size + i])
-	{
-		remains[i] = str[read_size + i];
-		i++;
-	}
-	remains[i] = '\0';
-	return (remains);
-}
-
-char	*ft_return_line(int fd)
-{
-	char		*was_read;
-	char		*reader;
-	char		*full_line;
-	static char	*remains;
-
-	if (!remains)
-		remains = NULL;
-	reader = reading(fd);
-	full_line = ft_strjoin_free(remains, reader);
-	free(reader);
-	if (ft_strlen(full_line) == 0)
-	{
-		free(full_line);
-		return (NULL);
-	}
-	was_read = get_till_break(full_line);
-	remains = get_rest(full_line);
-	free(full_line);
-	return (was_read);
+	str[i] = '\0';
+	return (str);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*was_read;
+	t_gnl	*line;
+	t_gnl	*start;
+	char	*next_line;
+	size_t	i;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 999)
+	line = ft_listnew();
+	start = line;
+	fill_list(fd, line);
+	while (line->next)
+		line = line->next;
+	i = ft_strlen(line->str) + (BUFFER_SIZE * (ft_dec_lst_size(start)));
+	next_line = get_string(start, i);
+	ft_lstclear(start);
+	if (!next_line[0])
+	{
+		free (next_line);
 		return (NULL);
-	was_read = ft_return_line(fd);
-	return (was_read);
+	}
+	return (next_line);
+}
+
+void	fill_list(int fd, t_gnl *to_fill)
+{
+	char	c;
+	size_t	i;
+
+	i = 0;
+	c = 1;
+	while (c)
+	{
+		to_fill->str = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		while (c && i < BUFFER_SIZE)
+		{
+			c = get_next_char(fd);
+			to_fill->str[i++] = c;
+			if (c == '\n')
+				break ;
+		}
+		to_fill->str[i] = '\0';
+		if (c == '\n')
+			break ;
+		if (c)
+		{
+			i = 0;
+			to_fill->next = ft_listnew();
+			to_fill = to_fill->next;
+		}
+	}
+}
+
+char	get_next_char(int fd)
+{
+	size_t	x;
+	char	c;
+
+	c = 0;
+	x = read(fd, &c, 1);
+	if (x > 0)
+		return (c);
+	return (0);
 }

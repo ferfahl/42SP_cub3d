@@ -83,6 +83,18 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${RAY}/find_hit_vert.c				\
 					${RAY}/ray_check.c					\
 					${RAY}/ray_utils.c					\
+					${MAP}/background.c					\
+					${MAP}/draw_minimap.c				\
+					${MAP}/map_limit.c					\
+					${WIND}/click_handler.c				\
+					${WIND}/draw.c						\
+					${WIND}/draw_line.c					\
+					${WIND}/image.c						\
+					${WIND}/key_handler.c				\
+					${WIND}/load_textures.c				\
+					${WIND}/temp.c						\
+					${WIND}/window.c					\
+					${EXIT}/exit.c						\
 					between.c							\
 					calculate.c							\
 					maintest.c							\

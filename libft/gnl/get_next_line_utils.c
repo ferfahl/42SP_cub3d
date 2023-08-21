@@ -3,50 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 19:40:27 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/21 14:49:43 by rarobert         ###   ########.fr       */
+/*   Created: 2022/08/06 00:33:14 by feralves          #+#    #+#             */
+/*   Updated: 2023/06/27 16:39:29 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_gnl	*ft_listnew(void)
+int	size_till_break(char *str)
 {
-	t_gnl	*node;
+	int	size;
 
-	node = (t_gnl *)malloc(sizeof(t_gnl));
-	if (!node)
-		return (NULL);
-	node->next = NULL;
-	return (node);
-}
-
-int	ft_dec_lst_size(t_gnl *lst)
-{
-	int	counter;
-
-	counter = 0;
-	while (lst)
-	{
-		counter++;
-		lst = lst->next;
-	}
-	return (counter - 1);
-}
-
-void	ft_lstclear(t_gnl *lst)
-{
-	t_gnl	*aux;
-	t_gnl	*i;
-
-	i = lst;
-	while (i)
-	{
-		free(i->str);
-		aux = i;
-		i = i->next;
-		free(aux);
-	}
+	size = 0;
+	while (str[size] != '\n' && str[size] != '\0')
+		size++;
+	if (str[size] == '\n')
+		size++;
+	return (size);
 }
