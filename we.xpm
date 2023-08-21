@@ -1,7 +1,7 @@
-/ *XPM */
-sattic char *_8039af5267d49b892dd376d597a39bfThhxEo2OLjDHFHFJ[] = {
-/ *columns rows colors chars-per-pixel */
-"46 64 191 2 ",
+/* XPM */
+static char *_8039af5267d49b892dd376d597a39bfThhxEo2OLjDHFHFJ[] = {
+/* columns rows colors chars-per-pixel */
+"64 64 191 2 ",
 "   c #1F361C",
 " . c #202020",
 " X c #2C2C2C",
@@ -257,5 +257,5 @@ sattic char *_8039af5267d49b892dd376d597a39bfThhxEo2OLjDHFHFJ[] = {
 " . . . . . . . . . . . . . . . . . + + 0 + . . . . . . . . . . . . . . . . . . . . . . . . 7 0 . + 7 0 y y y y y y y y y y.(.T 0",
 " 0 + + + + + + + + + + + + + + + + + 0 0 + . . . . . . . . . . . . . . . . . . . . . . . . 7 0 . X + + + + + + + + 7 7 7 7 i 0 0",
 " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 + X X X X X X X X X X X X X X X X X X X X X + 7 0 0 . . . . . . . . . . . . . . . . 0",
- + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +",
+" + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
 };

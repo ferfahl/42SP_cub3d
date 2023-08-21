@@ -6,7 +6,11 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/08/21 00:44:07 by feralves         ###   ########.fr       */
+=======
+/*   Updated: 2023/08/21 14:15:35 by rarobert         ###   ########.fr       */
+>>>>>>> bcde1de (corrected defines of directions)
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 18:37:46 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:23:19 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,10 @@
 # define BLUE_RGB 1
 
 # define MAX_FLT 3.402823466e+38F
+
+# define SOUTH 5
+# define WEST 6
+# define NORTH 7
+# define EAST 8
 
 #endif

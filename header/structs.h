@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:35:23 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 00:04:49 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:36:27 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct s_input
 	char	*ea_path;
 	int		f;
 	int		c;
+	int		player_x;
+	int		player_y;
+	int		player_dir;
 	size_t	map_height;
 	size_t	map_width;
 }				t_input;
