@@ -3,28 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   maintest.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 00:40:01 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:33:18 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	generate_reverse_xpm(char *old, char *new);
+
 void	print_map(t_map *map)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (i < (int)map->y_len / TILE_SIZE)
 	{
-		j = 0;
-		while (j < (int)map->x_len / TILE_SIZE)
+		for (int j = 0; j < (int)map->x_len / TILE_SIZE; j++)
 		{
 			ft_printf("%d", map->map[i][j]);
-			j++;
 		}
 		ft_printf("\n");
 		i++;
