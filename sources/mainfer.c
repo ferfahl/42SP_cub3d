@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mainfer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:19:39 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:57:45 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ t_map	*map_reader(int fd, t_input *input)
 	map->y_len = input->map_height * TILE_SIZE;
 	map->x_len = input->map_width * TILE_SIZE;
 	map->proj_plane = (map->x_len / 2) / tan(FOV / 2);
+	printf("NO:[%s]\nSO:[%s]\nEA:[%s]\nWE:[%s]\n", map->north, map->south, map->east, map->west);
 	free(input);
 	return (map);
 }

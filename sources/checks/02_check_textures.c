@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   02_check_textures.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:27:59 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/20 19:09:17 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:59:17 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	check_no(char *line, t_input *input)
 			return (ft_error("More than one NO texture"));
 		input->has_no = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
+		if (check_extension(trimmed, ".xpm"))
+		{
+			free(trimmed);
+			return (ft_error("Wrong NO texture file extension\n"));
+		}
 		fd = open_file(trimmed);
 		input->no_path = ft_strdup(trimmed);
 		free(trimmed);
@@ -44,6 +49,11 @@ int	check_so(char *line, t_input *input)
 			return (ft_error("More than one SO texture"));
 		input->has_so = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
+		if (check_extension(trimmed, ".xpm"))
+		{
+			free(trimmed);
+			return (ft_error("Wrong SO texture file extension\n"));
+		}
 		fd = open_file(trimmed);
 		input->so_path = ft_strdup(trimmed);
 		free(trimmed);
@@ -65,6 +75,11 @@ int	check_we(char *line, t_input *input)
 			return (ft_error("More than one WE texture"));
 		input->has_we = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
+		if (check_extension(trimmed, ".xpm"))
+		{
+			free(trimmed);
+			return (ft_error("Wrong WE texture file extension\n"));
+		}
 		fd = open_file(trimmed);
 		input->we_path = ft_strdup(trimmed);
 		free(trimmed);
@@ -86,6 +101,11 @@ int	check_ea(char *line, t_input *input)
 			return (ft_error("More than one EA texture"));
 		input->has_ea = TRUE;
 		trimmed = ft_strtrim_whitespaces(line + 2);
+		if (check_extension(trimmed, ".xpm"))
+		{
+			free(trimmed);
+			return (ft_error("Wrong EA texture file extension\n"));
+		}
 		fd = open_file(trimmed);
 		input->ea_path = ft_strdup(trimmed);
 		free(trimmed);

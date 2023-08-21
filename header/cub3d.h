@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:19:39 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:47:14 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	start_game(t_map *map, t_player *p1);
 int		ft_error(char *str);
 
 //sources/01_check_args.c
+int		check_extension(char *path, char *extension);
 int		check_args(int argc, char *argv[]);
 int		open_file(char *file_name);
 
