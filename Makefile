@@ -68,7 +68,6 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${MAP}/check_map.c					\
 					${MAP}/draw_minimap.c				\
 					${MAP}/map_limit.c					\
-					${MAP}/read_env.c					\
 					${MAP}/read_map.c					\
 					${WIND}/click_handler.c				\
 					${WIND}/draw_line.c					\

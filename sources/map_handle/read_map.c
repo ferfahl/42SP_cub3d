@@ -6,11 +6,32 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:18 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 23:57:44 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 00:27:17 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_map_line	*skip_empty_lines(t_map_line *start)
+{
+	t_map_line	*temp;
+	char		*line;
+
+	temp = start;
+	while (start)
+	{
+		line = ft_strtrim_whitespaces(start->line);
+		if (line[0] != 0)
+			break ;
+		temp = start->next;
+		free(start->line);
+		free(start);
+		start = temp;
+		free(line);
+	}
+	free(line);
+	return (start);
+}
 
 int	**get_map(t_map_line *start, t_input *input)
 {

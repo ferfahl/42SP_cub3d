@@ -6,11 +6,24 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 00:00:39 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 00:41:43 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_player	*start_player(t_map *map)
+{
+	t_player	*p1;
+
+	p1 = malloc(sizeof(t_player));
+	p1->pos[X] = map->x_len / 2;
+	p1->pos[Y] = map->y_len / 2;
+	p1->turn_direction = 0;
+	p1->walk_direction = 0;
+	p1->angle = PI / 2;
+	return (p1);
+}
 
 t_input	*start_input(void)
 {
@@ -56,7 +69,7 @@ void	start_game(t_map *map, t_player *p1)
 
 	cub = (t_cub *)ft_calloc(1, sizeof(t_cub));
 	if (cub == NULL)
-		if_error("Calloc error");
+		ft_error("Calloc error");
 	open_window(cub);
 	cub->map = map;
 	cub->player = p1;
