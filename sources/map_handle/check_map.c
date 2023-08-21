@@ -3,29 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:56:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 23:57:49 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:12:58 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	get_tile(char c)
+int	get_tile(char c, t_input **input, int x, int y)
 {
-	if (c == '0')
-		return (0);
 	if (c == '1')
 		return (1);
-	if (c == 'N')
-		return (2);
-	if (c == 'S')
-		return (3);
-	if (c == 'W')
-		return (4);
-	if (c == 'E')
-		return (5);
+	if (c == 'S' || c == 'N' || c == 'W' || c == 'E' || c == '0')
+	{
+		if (c != '0')
+		{
+			(*input)->has_player++;
+			(*input)->player_x = x;
+			(*input)->player_y = y;
+		}
+		if (c == 'S')
+			(*input)->player_dir = SOUTH;
+		if (c == 'W')
+			(*input)->player_dir = WEST;
+		if (c == 'N')
+			(*input)->player_dir = NORTH;
+		if (c == 'E')
+			(*input)->player_dir = EAST;
+		return (0);
+	}
 	if (c == ' ')
 		return (9);
 	ft_error("Invalid character inside map");
