@@ -181,4 +181,4 @@ norm_CI:
 
 #make val -> mcheck
 val:
-		$(VAL) ./$(NAME)
+		$(VAL) ./$(NAME) map.cub
