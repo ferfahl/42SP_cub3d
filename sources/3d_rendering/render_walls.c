@@ -6,27 +6,27 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:30:47 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 23:10:28 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 00:03:57 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	get_texture(t_cub *cub, t_image texture, int x, int y, int invert)
+int	get_texture(t_cub *cub, t_image texture, int coord[2], int invert)
 {
 	int			offset[2];
 	int			dist_to_top;
 	int			wall_height;
 
-	wall_height = wall_strip(cub, x);
+	wall_height = wall_strip(cub, coord[X]);
 	if (invert)
-		offset[X] = invert - texture_offset_x(cub->rays[x]);
+		offset[X] = invert - texture_offset_x(cub->rays[coord[X]]);
 	else
-		offset[X] = texture_offset_x(cub->rays[x]);
-	dist_to_top = y + (wall_height / 2) - (W_HEIGHT / 2);
+		offset[X] = texture_offset_x(cub->rays[coord[X]]);
+	dist_to_top = coord[Y] + (wall_height / 2) - (W_HEIGHT / 2);
 	offset[Y] = dist_to_top * ((float)TEXTURE_SIZE / wall_height);
-	return (*(unsigned int *)(texture.texture + (offset[Y] * texture.line_len +
-		offset[X] * (texture.bpp / 8))));
+	return (*(unsigned int *)(texture.texture + (offset[Y] * texture.line_len
+			+ offset[X] * (texture.bpp / 8))));
 }
 
 t_image	which_wall(t_cub *cub, int x, int *invert)
@@ -55,22 +55,23 @@ t_image	which_wall(t_cub *cub, int x, int *invert)
 
 void	draw_wall(t_cub *cub, int x, int top_pixel, int bot_pixel)
 {
-	int		y;
+	int		coord[2];
 	int		color;
 	int		invert;
 	t_image	texture;
 
-	y = top_pixel;
-	while (y < bot_pixel)
+	coord[X] = x;
+	coord[Y] = top_pixel;
+	while (coord[Y] < bot_pixel)
 	{
-		if (y >= 0 && y <= W_HEIGHT)
+		if (coord[Y] >= 0 && coord[Y] <= W_HEIGHT)
 		{
 			invert = 0;
 			texture = which_wall(cub, x, &invert);
-			color = get_texture(cub, texture, x, y, invert);
-			my_mlx_pixel_put(&cub->img, x, y, color);
+			color = get_texture(cub, texture, coord, invert);
+			my_mlx_pixel_put(&cub->img, x, coord[Y], color);
 		}
-		y++;
+		coord[Y]++;
 	}
 }
 

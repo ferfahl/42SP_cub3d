@@ -56,35 +56,38 @@ RAY =			rays
 3D =			3d_rendering
 
 #src functions
-MANDATORY_FILES =	$(3D)/render_walls.c				\
+MANDATORY_FILES =	${3D}/background.c					\
 					$(3D)/nbr_adjustments.c				\
-					${CHECKS}/00_errors.c				\
+					$(3D)/render_walls.c				\
 					${CHECKS}/01_check_args.c			\
 					${CHECKS}/02_check_textures.c		\
 					${CHECKS}/03_check_colors.c			\
+					${EXIT}/errors.c					\
+					${EXIT}/exit.c						\
+					${EXIT}/free_all.c					\
+					${MAP}/check_map.c					\
+					${MAP}/draw_minimap.c				\
+					${MAP}/map_limit.c					\
+					${MAP}/read_env.c					\
+					${MAP}/read_map.c					\
+					${WIND}/click_handler.c				\
+					${WIND}/draw_line.c					\
+					${WIND}/draw.c						\
+					${WIND}/image.c						\
+					${WIND}/key_handler.c				\
+					${WIND}/load_textures.c				\
+					${WIND}/render.c					\
+					${WIND}/window.c					\
 					${PLAYER}/player_moves.c			\
 					${RAY}/cast_rays.c					\
 					${RAY}/find_hit_horz.c				\
 					${RAY}/find_hit_vert.c				\
 					${RAY}/ray_check.c					\
 					${RAY}/ray_utils.c					\
-					${MAP}/background.c					\
-					${MAP}/draw_minimap.c				\
-					${MAP}/map_limit.c					\
-					${WIND}/click_handler.c				\
-					${WIND}/draw.c						\
-					${WIND}/draw_line.c					\
-					${WIND}/image.c						\
-					${WIND}/key_handler.c				\
-					${WIND}/load_textures.c				\
-					${WIND}/temp.c						\
-					${WIND}/window.c					\
-					${EXIT}/exit.c						\
-					calculate.c							\
-					start_cub.c							\
-					mainfer.c							\
 					between.c							\
-					# mainrap.c							\
+					calculate.c							\
+					maintest.c							\
+					start_cub.c							\
 					# main.c								\
 
 #headers

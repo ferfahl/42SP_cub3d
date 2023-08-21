@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:35:23 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:38:36 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 00:04:49 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ typedef struct s_input
 	int		has_ea;
 	int		has_f;
 	int		has_c;
-	char*	no_path;
-	char*	so_path;
-	char*	we_path;
-	char*	ea_path;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
 	int		f;
 	int		c;
 	size_t	map_height;
