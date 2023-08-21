@@ -98,6 +98,7 @@ MANDATORY_FILES =	${3D}/background.c					\
 					between.c							\
 					calculate.c							\
 					maintest.c							\
+					mainfer.c							\
 					start_cub.c							\
 					# main.c								\
 
