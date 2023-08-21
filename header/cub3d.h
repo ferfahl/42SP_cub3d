@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:47:14 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 00:15:45 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,6 @@ int		wall_strip(t_cub *cub, int x);
 int		map_floor(t_map *map, float x, float y);
 int		top_bot_pixel(t_cub *cub, int x, int control);
 void	load_textures(t_cub *cub);
+int		texture_offset_x(t_rays ray);
 
 #endif
