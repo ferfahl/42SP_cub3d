@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 17:12:43 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:26:17 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_input	*start_input(void)
 	input->has_ea = FALSE;
 	input->has_f = FALSE;
 	input->has_c = FALSE;
+	input->has_player = FALSE;
 	input->c = 0;
 	input->f = 0;
 	input->map_width = 0;

@@ -3,10 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
 /*   Updated: 2023/08/21 17:11:32 by feralves         ###   ########.fr       */
+=======
+/*   Created: 2023/06/20 16:33:44 by feralves          #+#    #+#             */
+/*   Updated: 2023/08/21 18:16:24 by rarobert         ###   ########.fr       */
+>>>>>>> 77cd285 (pain and suffering)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +80,7 @@ void		free_stuff(t_map_line *map_line);
 void		free_all(t_map_line *map_line, t_input *input, int **map);
 
 //map_handle/check_map.c
-int			get_tile(char c);
+int			get_tile(char c, t_input **input, int x, int y);
 int			verify_map(t_map_line *map, t_input **input, int inside_map);
 
 //map_handle/check_path.c
@@ -90,7 +95,7 @@ int			map_floor(t_map *map, float x, float y);
 
 //map_handle/read_map.c
 t_map_line	*skip_empty_lines(t_map_line *start);
-int			**get_map(t_map_line *start, t_input *input);
+int			**create_map(t_map_line *start, t_input **input, size_t counter);
 t_map_line	*new_map_node(void);
 int			**read_map(int fd, t_input **input);
 
@@ -150,7 +155,9 @@ void		start_ray(t_rays *ray, t_player *player, float angle);
 float		get_dist(t_player *p, t_hit h);
 
 //between.c
-t_map		*map_maker(void);
+t_map		*get_map(int argc, char *argv[], t_input **input);
+void	generate_reverse_xpm(char *old, char *new);
+
 
 //calculate.c
 float		normalize_angle(float angle);
@@ -160,7 +167,7 @@ double		radians(double degree);
 //start_cub.c
 t_player	*start_player(int x, int y, int dir);
 t_input		*start_input(void);
-t_map		*map_reader(int fd, t_input *input);
+t_map		*map_reader(int fd, t_input **input);
 void		start_game(t_map *map, t_player *p1);
 
 //reverse_texture.c

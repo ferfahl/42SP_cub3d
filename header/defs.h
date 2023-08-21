@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:58:05 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 16:23:19 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:35:14 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define W_WIDTH 1280
 # define W_HEIGHT 720
 
-# define TRUE 1
 # define FALSE 0
+# define TRUE 1
 
 # define X 0
 # define Y 1

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:18 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 00:27:17 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:16:15 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,29 @@ t_map_line	*skip_empty_lines(t_map_line *start)
 	return (start);
 }
 
-int	**get_map(t_map_line *start, t_input *input)
+int	**create_map(t_map_line *start, t_input **input, size_t counter)
 {
 	int		**map;
-	size_t	counter;
 	size_t	iterator;
 
-	counter = 0;
-	map = (int **)malloc(sizeof(int *) * input->map_height);
-	while (counter < input->map_height)
+	map = (int **)malloc(sizeof(int *) * (*input)->map_height);
+	while (counter < (*input)->map_height)
 	{
-		iterator = 0;
-		map[counter] = (int *)malloc(sizeof(int) * input->map_width);
-		while (iterator < input->map_width)
+		map[counter] = (int *)malloc(sizeof(int) * (*input)->map_width);
+		iterator = -1;
+		while (++iterator < (*input)->map_width)
 		{
 			if (iterator + 1 >= ft_strlen(start->line))
-				map[counter][iterator] = get_tile(' ');
+				map[counter][iterator] = get_tile(' ', input, counter, iterator);
 			else
-				map[counter][iterator] = get_tile(start->line[iterator]);
+				map[counter][iterator] = get_tile(start->line[iterator], input, counter, iterator);
 			if (map[counter][iterator] == -1)
-				free_all(start, input, map);
-			iterator++;
+				free_all(start, *input, map);
+			if ((*input)->has_player > 1)
+			{
+				ft_error("More than one player on the map");
+				free_all(start, *input, map);
+			}
 		}
 		start = start->next;
 		counter++;
@@ -92,7 +94,7 @@ int	**read_map(int fd, t_input **input)
 	start = skip_empty_lines(start);
 	if (verify_map(start, input, TRUE) == -1)
 		ft_error("Invalid map");
-	map = get_map(start, *input);
+	map = create_map(start, input, 0);
 	free_stuff(start);
 	return (map);
 }

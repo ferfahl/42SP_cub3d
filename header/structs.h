@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:35:23 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 16:36:27 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:44:18 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_input
 	int		has_ea;
 	int		has_f;
 	int		has_c;
+	int		has_player;
+	int		fd;
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;
