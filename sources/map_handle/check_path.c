@@ -6,18 +6,17 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:59:02 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 17:00:56 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:08:43 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
 void	flood_fill(int **dupe, int x, int y, t_map *map)
 {
 	if (y <= 1 || x <= 1 || y >= map->y_len - 1 || x >= map->x_len - 1)
 		return ;
-	if (dupe[y][x] == 1 || dupe[y][x] == 8 || dupe[y][x] == 2)
+	if (dupe[y][x] == 1 || dupe[y][x] == 3 || dupe[y][x] == 2)
 		return ;
 	if (dupe[y][x] == 9)
 		dupe[y][x] = 2;
@@ -55,9 +54,9 @@ int	valid_dupe_check(int c)
 {
 	if (c == 1 || c == 0 || c == 9)
 		return (TRUE);
-	else if (c == 2 || c == 3 || c == 4 || c == 5)
+	else if (c == 5 || c == 6 || c == 7 || c == 8)
 		return (TRUE);
-	else if (c == 8)
+	else if (c == 3)
 		return (TRUE);
 	return (FALSE);
 }
@@ -89,6 +88,5 @@ void	verify_path(t_map *map, int coord[2])
 	flood_fill(dupe, coord[X], coord[Y], map);
 	if (!check_dupe(map, dupe))
 		ft_error("Invalid path");
-	print_map(map, dupe);
-	ft_free_array(dupe);
+	ft_free_int_array(dupe);
 }

@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 17:04:55 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:11:32 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,9 +158,12 @@ float		dist_points(float x1, float y1, float x2, float y2);
 double		radians(double degree);
 
 //start_cub.c
-t_player	*start_player(t_map *map);
+t_player	*start_player(int x, int y, int dir);
 t_input		*start_input(void);
 t_map		*map_reader(int fd, t_input *input);
 void		start_game(t_map *map, t_player *p1);
+
+//reverse_texture.c
+void		generate_reverse_xpm(char *old, char *new);
 
 #endif

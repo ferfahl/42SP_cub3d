@@ -1,46 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mainfer.c                                          :+:      :+:    :+:   */
+/*   ft_free_int_array.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 12:42:06 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 17:00:42 by feralves         ###   ########.fr       */
+/*   Created: 2022/10/16 21:04:40 by feralves          #+#    #+#             */
+/*   Updated: 2023/08/21 17:07:51 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	print_map(t_map *map, int **draw)
+/**
+*@brief Frees the items and the array passed.
+*@param array The array to be freed.
+*@return none
+*/
+void	ft_free_int_array(int **array)
 {
-	int	i;
-	int	j;
+	int	index;
 
-	i = 0;
-	while (i < (int)map->y_len / TILE_SIZE)
+	index = 0;
+	while (array[index])
 	{
-		j = 0;
-		while (j < (int)map->x_len / TILE_SIZE)
-		{
-			ft_printf("%d", draw[i][j]);
-			j++;
-		}
-		ft_printf("\n");
-		i++;
+		free(array[index]);
+		index++;
 	}
+	free(array);
 }
-
-
-int	main(void)
-{
-	t_map		*map;
-	int			coord[2];
-
-	coord[X] = 26;
-	coord[Y] = 11;
-	map = map_maker();
-	verify_path(map, coord);
-	free(map);
-}
-
