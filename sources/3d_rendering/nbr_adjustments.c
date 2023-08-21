@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 15:22:57 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:19:57 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/20 21:06:35 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,15 @@ int	top_bot_pixel(t_cub *cub, int x, int control)
 			value = W_HEIGHT;
 	}
 	return (value);
+}
+
+int	texture_offset_x(t_rays ray)
+{
+	int	offset_x;
+
+	if (ray.was_hit_vert)
+		offset_x = (int)ray.hit[Y] % TEXTURE_SIZE;
+	else
+		offset_x = (int)ray.hit[X] % TEXTURE_SIZE;
+	return (offset_x);
 }
