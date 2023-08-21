@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 18:26:14 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:28:35 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ t_map	*map_reader(int fd, t_input **input)
 	map->y_len = (*input)->map_height * TILE_SIZE;
 	map->x_len = (*input)->map_width * TILE_SIZE;
 	map->proj_plane = (map->x_len / 2) / tan(FOV / 2);
-	printf("\n");
-	print_map(map);
 	return (map);
 }
 
@@ -98,11 +96,6 @@ int	main(int argc, char *argv[])
 
 	input = start_input();
 	map = get_map(argc, argv, &input);
-	// exit(0);
-	printf("%s\n", map->north);
-	printf("%s\n", map->south);
-	printf("%s\n", map->west);
-	printf("%s\n", map->east);
 	p1 = start_player(input->player_y, input->player_x, input->player_dir);
 	start_game(map, p1);
 }
