@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 19:40:05 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:31:46 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,7 @@ float		get_dist(t_player *p, t_hit h);
 
 //between.c
 t_map		*get_map(int argc, char *argv[], t_input **input);
-void	generate_reverse_xpm(char *old, char *new);
-
+void		generate_reverse_xpm(char *old, char *new);
 
 //calculate.c
 float		normalize_angle(float angle);

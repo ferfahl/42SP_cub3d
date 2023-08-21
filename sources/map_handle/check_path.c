@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:59:02 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 19:51:26 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:32:09 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	flood_fill(int **dupe, int x, int y, t_map *map)
 {
-	if (y < 0 || x < 0 || y > map->y_len / TILE_SIZE - 1 || x > map->x_len / TILE_SIZE - 1)
+	if (y < 0 || x < 0 || y > map->y_len / TILE_SIZE - 1
+		|| x > map->x_len / TILE_SIZE - 1)
 		return ;
 	if (dupe[y][x] == 1 || dupe[y][x] == 3 || dupe[y][x] == 2)
 		return ;

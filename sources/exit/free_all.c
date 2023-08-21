@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:56 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 19:39:30 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:28:47 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,7 @@ void	free_stuff(t_map_line *map_line)
 
 void	free_all(t_map_line *map_line, t_input *input, int **map)
 {
-	size_t	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free (map[i]);
-		i++;
-	}
-	free(map);
+	ft_free_map_array(map, input->map_height);
 	free_stuff(map_line);
 	free(input);
 }

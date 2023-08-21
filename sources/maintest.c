@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maintest.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 19:44:45 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:35:53 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,22 @@
 void	print_map(t_map *map, int **print)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	while (i < (int)map->y_len / TILE_SIZE)
 	{
-		for (int j = 0; j < (int)map->x_len / TILE_SIZE; j++)
-		{
-			ft_printf("%d", print[i][j]);
-		}
+		j = 0;
+		while (j < (int)map->x_len / TILE_SIZE)
+			ft_printf("%d", print[i++][j++]);
 		ft_printf("\n");
-		i++;
 	}
-	ft_printf("\n");
 }
 
 t_map	*map_reader(int fd, t_input **input)
 {
 	t_map	*map;
+
 	map = malloc(sizeof(t_map));
 	map->ceiling = (*input)->c;
 	map->floor = (*input)->f;
@@ -62,8 +61,8 @@ t_map	*get_map(int argc, char *argv[], t_input **input)
 		trimmed = ft_strtrim_whitespaces(line);
 		check_all(trimmed, *input);
 		free(trimmed);
-		if ((*input)->has_no && (*input)->has_so && (*input)->has_ea && (*input)->has_we
-			&& (*input)->has_c && (*input)->has_f)
+		if ((*input)->has_no && (*input)->has_so && (*input)->has_ea
+			&& (*input)->has_we && (*input)->has_c && (*input)->has_f)
 			break ;
 		free(line);
 		line = get_next_line(fd);
@@ -86,8 +85,6 @@ t_player	*start_player(int x, int y, int dir)
 	p1->angle = dir * PI / 2;
 	return (p1);
 }
-
-
 
 int	main(int argc, char *argv[])
 {

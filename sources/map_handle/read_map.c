@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:18 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 18:16:15 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:31:09 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,47 @@ t_map_line	*skip_empty_lines(t_map_line *start)
 	return (start);
 }
 
+int	check_player(t_map_line *start, t_input *input, int **map)
+{
+	if (input->has_player > 1)
+	{
+		ft_error("More than one player on the map");
+		free_all(start, input, map);
+		return (FALSE);
+	}
+	if (input->has_player == 0)
+	{
+		ft_error("No player on the map");
+		free_all(start, input, map);
+		return (FALSE);
+	}
+	return (TRUE);
+}
+
 int	**create_map(t_map_line *start, t_input **input, size_t counter)
 {
 	int		**map;
-	size_t	iterator;
+	size_t	i;
 
 	map = (int **)malloc(sizeof(int *) * (*input)->map_height);
 	while (counter < (*input)->map_height)
 	{
 		map[counter] = (int *)malloc(sizeof(int) * (*input)->map_width);
-		iterator = -1;
-		while (++iterator < (*input)->map_width)
+		i = -1;
+		while (++i < (*input)->map_width)
 		{
-			if (iterator + 1 >= ft_strlen(start->line))
-				map[counter][iterator] = get_tile(' ', input, counter, iterator);
+			if (i + 1 >= ft_strlen(start->line))
+				map[counter][i] = get_tile(' ', input, counter, i);
 			else
-				map[counter][iterator] = get_tile(start->line[iterator], input, counter, iterator);
-			if (map[counter][iterator] == -1)
+				map[counter][i] = get_tile(start->line[i], input, counter, i);
+			if (map[counter][i] == -1)
 				free_all(start, *input, map);
-			if ((*input)->has_player > 1)
-			{
-				ft_error("More than one player on the map");
-				free_all(start, *input, map);
-			}
 		}
 		start = start->next;
 		counter++;
 	}
+	if (!check_player(start, *input, map))
+		return (NULL);
 	return (map);
 }
 
@@ -95,6 +109,8 @@ int	**read_map(int fd, t_input **input)
 	if (verify_map(start, input, TRUE) == -1)
 		ft_error("Invalid map");
 	map = create_map(start, input, 0);
+	if (map == NULL)
+		return (NULL);
 	free_stuff(start);
 	return (map);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_texture.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:14:08 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/21 19:46:56 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:32:59 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,25 @@ static void	ft_strrev(char *line, int fd)
 	write(fd, ",\n", 2);
 }
 
-static void	copy_textures(char *next_line, char *current_line, int *fd, int check)
+static void	copy_textures(char *next_line, char *cur_line, int *fd, int check)
 {
 	size_t	len;
 
-	while (check == FALSE && current_line != NULL)
+	while (check == FALSE && cur_line != NULL)
 	{
-		ft_strrev(current_line, fd[1]);
-		free(current_line);
-		current_line = ft_strdup(next_line);
+		ft_strrev(cur_line, fd[1]);
+		free(cur_line);
+		cur_line = ft_strdup(next_line);
 		free (next_line);
 		next_line = get_next_line(fd[0]);
 		if (!ft_strncmp(next_line, "};", 2))
 			check = TRUE;
 	}
-		len = ft_strlen(current_line) - 1;
+	len = ft_strlen(cur_line) - 1;
 	while (len-- > 0)
-		write(fd[1], &current_line[len], 1);
+		write(fd[1], &cur_line[len], 1);
 	write(fd[1], "\n};", 3);
-	free(current_line);
+	free(cur_line);
 	free(next_line);
 }
 
