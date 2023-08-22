@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:53:52 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 16:10:13 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 18:34:48 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ t_map_line	*skip_empty_lines(t_map_line *start)
 	while (start)
 	{
 		line = ft_strtrim_whitespaces(start->line);
+		if (!line)
+		{
+			free(start);
+			ft_error("No map in file");
+			return (NULL);
+		}
 		if (line[0] != 0)
 			break ;
 		temp = start->next;
@@ -94,11 +100,5 @@ t_map	*get_map(t_input **input)
 		return (NULL);
 	}
 	full_map = generate_map((*input)->fd, input);
-	if (verify_path(full_map, (*input)->player_y, (*input)->player_x) == -1)
-	{
-		free_map(full_map);
-		free_input(*input);
-		return (NULL);
-	}
 	return (full_map);
 }
