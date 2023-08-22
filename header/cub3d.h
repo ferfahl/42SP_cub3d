@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 09:22:52 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:46:58 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int			map_wall(t_map *map, float x, float y);
 int			map_floor(t_map *map, float x, float y);
 
 //map_handle/read_map.c
-int			**create_map(t_map_line *start, t_input **input, 
+int			**create_map(t_map_line *start, t_input **input,
 				size_t counter, size_t i);
 int			**read_map(int fd, t_input **input, t_map_line *node);
 t_map_line	*new_map_node(void);

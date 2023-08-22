@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:53:52 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 09:45:02 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:46:22 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_map_line	*skip_empty_lines(t_map_line *start)
 	free(line);
 	return (start);
 }
+
 int	read_cub(t_input **input)
 {
 	char		*trimmed;

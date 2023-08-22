@@ -6,12 +6,11 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:18 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 09:19:56 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:46:06 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 int	check_player(t_input *input)
 {
