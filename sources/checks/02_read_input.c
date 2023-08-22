@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:53:52 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 09:32:03 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:45:02 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,47 @@ t_map_line	*skip_empty_lines(t_map_line *start)
 	free(line);
 	return (start);
 }
-
-t_map	*get_map(t_input **input)
+int	read_cub(t_input **input)
 {
-	char		*line;
 	char		*trimmed;
-	t_map		*full_map;
+	char		*line;
 
 	line = get_next_line((*input)->fd);
 	if (line == NULL)
 	{
-		free(input);
 		ft_error("Empty map file");
-		return (NULL);
+		return (FALSE);
 	}
 	while (line)
 	{
 		trimmed = ft_strtrim_whitespaces(line);
+		free(line);
 		if (!check_all(trimmed, *input))
 		{
 			free(trimmed);
-			free(line);
-			free_input(*input);
-			return (NULL);
+			return (FALSE);
 		}
 		free(trimmed);
 		if ((*input)->has_no && (*input)->has_so && (*input)->has_ea
 			&& (*input)->has_we && (*input)->has_c && (*input)->has_f)
 			break ;
-		free(line);
 		line = get_next_line((*input)->fd);
 	}
-	free(line);
+	return (TRUE);
+}
+
+t_map	*get_map(t_input **input)
+{
+	t_map		*full_map;
+
+	if (!read_cub(input))
+	{
+		if ((*input)->has_no)
+			free_input(*input);
+		else
+			free(*input);
+		return (NULL);
+	}
 	full_map = generate_map((*input)->fd, input);
 	return (full_map);
 }
