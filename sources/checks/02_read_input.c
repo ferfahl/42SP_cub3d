@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:53:52 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 09:51:14 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 10:16:37 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,23 @@ int	read_cub(t_input **input)
 	return (TRUE);
 }
 
+int	check_if_textures(t_input *input)
+{
+	if (!input->has_we)
+		return (ft_error("No WE texture found"));
+	if (!input->has_ea)
+		return (ft_error("No EA texture found"));
+	if (!input->has_no)
+		return (ft_error("No NO texture found"));
+	if (!input->has_so)
+		return (ft_error("No SO texture found"));
+	if (!input->has_c)
+		return (ft_error("No Ceiling color found"));
+	if (!input->has_f)
+		return (ft_error("No Floor color found"));
+	return (0);
+}
+
 t_map	*get_map(t_input **input)
 {
 	t_map		*full_map;
@@ -72,6 +89,11 @@ t_map	*get_map(t_input **input)
 			free_input(*input);
 		else
 			free(*input);
+		return (NULL);
+	}
+	if (check_if_textures(*input) == -1)
+	{
+		free_input(*input);
 		return (NULL);
 	}
 	full_map = generate_map((*input)->fd, input);
