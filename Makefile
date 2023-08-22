@@ -60,9 +60,9 @@ MANDATORY_FILES =	${3D}/background.c					\
 					$(3D)/nbr_adjustments.c				\
 					$(3D)/render_walls.c				\
 					${CHECKS}/01_check_args.c			\
-					${CHECKS}/02_check_textures.c		\
+					${CHECKS}/02_read_input.c			\
 					${CHECKS}/03_check_colors.c			\
-					${CHECKS}/04_read_input.c			\
+					${CHECKS}/04_check_textures.c		\
 					${EXIT}/errors.c					\
 					${EXIT}/exit.c						\
 					${EXIT}/free_all.c					\
@@ -181,7 +181,7 @@ norm_CI:
 
 #make val -> mcheck
 val:
-		$(VAL) ./$(NAME) map.cub
+		$(VAL) ./$(NAME) ./assets/maps/simple.cub
 
 run:
 	./$(NAME) ./assets/maps/simple.cub

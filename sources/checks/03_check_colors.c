@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   03_check_colors.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:31:10 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/16 21:02:02 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:21:57 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,19 @@ int	check_c(char *line, t_input *input)
 	return (0);
 }
 
-void	check_all(char *line, t_input *input)
+int	check_all(char *line, t_input *input)
 {
 	if (check_no(line, input))
-		return ;
+		return (FALSE);
 	if (check_so(line, input))
-		return ;
+		return (FALSE);
 	if (check_ea(line, input))
-		return ;
+		return (FALSE);
 	if (check_we(line, input))
-		return ;
+		return (FALSE);
 	if (check_f(line, input))
-		return ;
+		return (FALSE);
 	if (check_c(line, input))
-		return ;
+		return (FALSE);
+	return (TRUE);
 }

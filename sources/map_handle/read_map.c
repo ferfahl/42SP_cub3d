@@ -3,37 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:18 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 22:05:28 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:19:56 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_map	*get_map(t_input **input)
-{
-	char		*line;
-	char		*trimmed;
-	t_map		*full_map;
-
-	line = get_next_line((*input)->fd);
-	while (line)
-	{
-		trimmed = ft_strtrim_whitespaces(line);
-		check_all(trimmed, *input);
-		free(trimmed);
-		if ((*input)->has_no && (*input)->has_so && (*input)->has_ea
-			&& (*input)->has_we && (*input)->has_c && (*input)->has_f)
-			break ;
-		free(line);
-		line = get_next_line((*input)->fd);
-	}
-	free(line);
-	full_map = generate_map((*input)->fd, input);
-	return (full_map);
-}
 
 int	check_player(t_input *input)
 {
