@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:59:02 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 20:32:09 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/22 10:03:49 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 void	flood_fill(int **dupe, int x, int y, t_map *map)
 {
-	if (y < 0 || x < 0 || y > map->y_len / TILE_SIZE - 1
-		|| x > map->x_len / TILE_SIZE - 1)
+	int	max_x;
+	int	max_y;
+
+	max_x = map->x_len / TILE_SIZE;
+	max_y = map->y_len / TILE_SIZE;
+	if (y < 0 || x < 0 || y >= max_y || x >= max_x)
 		return ;
 	if (dupe[y][x] == 1 || dupe[y][x] == 3 || dupe[y][x] == 2)
 		return ;
-	if (dupe[y][x] == 9 || y == 0 || x == 0)
+	if (dupe[y][x] == 9 || y == 0 || x == 0 || x == max_x - 1 || y == max_y - 1)
 		dupe[y][x] = 2;
 	else
 		dupe[y][x] = 3;

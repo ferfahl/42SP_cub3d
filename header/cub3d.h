@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 23:51:55 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:46:58 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,21 @@ int			check_extension(char *path, char *extension);
 int			check_args(int argc, char *argv[]);
 int			open_file(char *file_name);
 
-//checks/02_check_textures.c
-int			check_ea(char *line, t_input *input);
-int			check_we(char *line, t_input *input);
-int			check_so(char *line, t_input *input);
-int			check_no(char *line, t_input *input);
+//checks/02_read_input.c
+t_map_line	*skip_empty_lines(t_map_line *start);
+t_map		*get_map(t_input **input);
 
 //checks/03_check_colors.c
-void		check_all(char *line, t_input *input);
+int			check_all(char *line, t_input *input);
 int			check_c(char *line, t_input *input);
 int			check_f(char *line, t_input *input);
 char		**trim_color(char **color);
 
-//checks/04_read_input.c
-t_map_line	*skip_empty_lines(t_map_line *start);
+//checks/04_check_textures.c
+int			check_ea(char *line, t_input *input);
+int			check_we(char *line, t_input *input);
+int			check_so(char *line, t_input *input);
+int			check_no(char *line, t_input *input);
 
 //exit/errors.c
 int			ft_error(char *str);
@@ -99,10 +100,9 @@ int			map_wall(t_map *map, float x, float y);
 int			map_floor(t_map *map, float x, float y);
 
 //map_handle/read_map.c
-int			**create_map(t_map_line *start, t_input **input, 
+int			**create_map(t_map_line *start, t_input **input,
 				size_t counter, size_t i);
 int			**read_map(int fd, t_input **input, t_map_line *node);
-t_map		*get_map(t_input **input);
 t_map_line	*new_map_node(void);
 
 //mlx_util/click_handler.c
