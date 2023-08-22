@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:56 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 09:30:13 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 10:13:50 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@ void	free_input(t_input *input)
 {
 	if (input)
 	{
-		free(input->no_path);
-		free(input->ea_path);
-		free(input->so_path);
-		free(input->we_path);
+		if (input->has_we)
+			free(input->we_path);
+		if (input->has_ea)
+			free(input->ea_path);
+		if (input->has_no)
+			free(input->no_path);
+		if (input->has_so)
+			free(input->so_path);
 		close(input->fd);
 		free(input);
 	}
