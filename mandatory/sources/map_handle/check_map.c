@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:56:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 18:12:58 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:01:53 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,21 @@ int	verify_map(t_map_line *map, t_input **input, int inside_map)
 		map = map->next;
 	}
 	return (0);
+}
+
+int	check_env(char *str)
+{
+	if (!ft_strncmp(str, "NO", 2))
+		return (TRUE);
+	if (!ft_strncmp(str, "SO", 2))
+		return (TRUE);
+	if (!ft_strncmp(str, "WE", 2))
+		return (TRUE);
+	if (!ft_strncmp(str, "EA", 2))
+		return (TRUE);
+	if (!ft_strncmp(str, "F ", 2))
+		return (TRUE);
+	if (!ft_strncmp(str, "C ", 2))
+		return (TRUE);
+	return (FALSE);
 }

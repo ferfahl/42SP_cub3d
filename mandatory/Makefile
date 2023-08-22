@@ -115,7 +115,9 @@ INCLUDE =	-I ./header -I $(LIBFT_PATH)
 all: $(OBJPATH) $(NAME)
 
 #make bonus
-bonus: $(OBJPATH) $(B_NAME)
+bonus:
+		@make -C ../bonus --no-print-directory
+		@$(LOG) "Compiling bonus"
 
 ##folder for temporary objects
 $(OBJPATH):
@@ -146,14 +148,17 @@ $(OBJPATH)/%.o: $(VPATH)/%.c $(HEADER)
 #make clean -> remove objects
 clean:
 		@make clean -C $(LIBFT_PATH) --no-print-directory
+		@make clean -C ../bonus --no-print-directory
 		@$(LOG) "Removing objects..."
 		@$(RM) $(OBJ_MANDATORY)
 
 #make fclean -> remove all
 fclean: clean
 		@make fclean -C $(LIBFT_PATH) --no-print-directory
+		@make fclean -C ../bonus --no-print-directory
 		@$(LOG) "Removing executable..."
-		@$(RM) $(NAME) $(B_NAME)
+		@$(RM) $(NAME)
+		@$(RM) $(NAME)_bonus
 		@$(RM_DIR) $(OBJPATH)
 		@$(LOG_SUC) "Cleaned project!"
 		@$(RM) 

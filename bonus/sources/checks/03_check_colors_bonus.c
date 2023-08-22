@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:31:10 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 10:48:10 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:04:28 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 static int	get_color(char **color)
 {
 	int	colour;
+	int	red;
+	int	green;
+	int	blue;
 
-	colour = RED_RGB * ft_atoi(color[0]);
-	colour += GREEN_RGB * ft_atoi(color[1]);
-	colour += BLUE_RGB * ft_atoi(color[2]);
+	red = ft_atoi(color[0]);
+	green = ft_atoi(color[1]);
+	blue = ft_atoi(color[2]);
+	if ((red < 0 || red >= 255) || (blue < 0 || blue >= 255)
+		|| (green < 0 || green >= 255))
+		return (ft_error("Invalid RGB color"));
+	colour = RED_RGB * red;
+	colour += GREEN_RGB * green;
+	colour += BLUE_RGB * blue;
 	return (colour);
 }
 
@@ -54,6 +63,8 @@ int	check_f(char *line, t_input *input)
 			return (ft_error("Invalid floor RGB"));
 		input->f = get_color(color);
 		ft_free_array(color);
+		if (input->f == -1)
+			return (-1);
 	}
 	return (0);
 }
@@ -74,12 +85,19 @@ int	check_c(char *line, t_input *input)
 			return (ft_error("Invalid ceiling RGB"));
 		input->c = get_color(color);
 		ft_free_array(color);
+		if (input->c == -1)
+			return (-1);
 	}
 	return (0);
 }
 
 int	check_all(char *line, t_input *input)
 {
+	if (line[0] && !check_env(line))
+	{
+		ft_error("Invalid elements order or elements missing");
+		return (FALSE);
+	}
 	if (check_no(line, input))
 		return (FALSE);
 	if (check_so(line, input))
