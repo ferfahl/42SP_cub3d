@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:55:34 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 21:58:15 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:16:53 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	main(int argc, char *argv[])
 		return (-1);
 	}
 	if (verify_path(map, input->player_y, input->player_x) == -1)
-		exit (-1);
-	exit(0);
+	{
+		free_map(map);
+		free_input(input);
+		return (-1);
+	}
 	p1 = start_player(input->player_y, input->player_x, input->player_dir);
 	free_input(input);
 	start_game(map, p1);
