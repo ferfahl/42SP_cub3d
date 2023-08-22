@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 10:33:59 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:49:56 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "defs.h"
 # include "structs.h"
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 # include "../../minilibx-linux/mlx.h"
 # include "../../minilibx-linux/mlx_int.h"
 # include <X11/keysym.h>

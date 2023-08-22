@@ -99,7 +99,7 @@ HEADER =			header/cub3d_bonus.h						\
 #directories
 OBJPATH =			temps
 VPATH =				sources
-LIBFT_PATH =		./libft
+LIBFT_PATH =		./../libft
 LIBFT =				$(LIBFT_PATH)/libft.a
 MLX_PATH =			./../minilibx-linux
 MLX	 =				$(MLX_PATH)/libmlx.a
