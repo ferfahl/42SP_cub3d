@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 09:46:58 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 10:19:45 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,9 @@ void		draw_mini_map(t_cub *cub, t_map *map);
 //map_handle/map_limit.c
 int			map_wall(t_map *map, float x, float y);
 int			map_floor(t_map *map, float x, float y);
+
+//map_handle/print_map.c
+void		print_map(t_map *map, int **print);
 
 //map_handle/read_map.c
 int			**create_map(t_map_line *start, t_input **input,
