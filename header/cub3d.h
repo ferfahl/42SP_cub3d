@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 20:31:46 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:05:04 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,14 @@ int			check_we(char *line, t_input *input);
 int			check_so(char *line, t_input *input);
 int			check_no(char *line, t_input *input);
 
-//checks/02_check_colors.c
+//checks/03_check_colors.c
 void		check_all(char *line, t_input *input);
 int			check_c(char *line, t_input *input);
 int			check_f(char *line, t_input *input);
 char		**trim_color(char **color);
+
+//checks/04_read_input.c
+t_map_line	*skip_empty_lines(t_map_line *start);
 
 //exit/errors.c
 int			ft_error(char *str);
@@ -71,8 +74,10 @@ void		ft_exit(int status, t_cub *cub);
 void		if_error(char *str);
 
 //exit/free_all.c
-void		free_stuff(t_map_line *map_line);
 void		free_all(t_map_line *map_line, t_input *input, int **map);
+void		free_input(t_input *input);
+void		free_map(t_map *map);
+void		free_map_lines(t_map_line *map_line);
 void		ft_free_map_array(int **array, int y);
 
 //map_handle/check_map.c
@@ -90,10 +95,11 @@ int			map_wall(t_map *map, float x, float y);
 int			map_floor(t_map *map, float x, float y);
 
 //map_handle/read_map.c
-t_map_line	*skip_empty_lines(t_map_line *start);
-int			**create_map(t_map_line *start, t_input **input, size_t counter);
+int			**create_map(t_map_line *start, t_input **input, 
+				size_t counter, size_t i);
+int			**read_map(int fd, t_input **input, t_map_line *node);
+t_map		*get_map(t_input **input);
 t_map_line	*new_map_node(void);
-int			**read_map(int fd, t_input **input);
 
 //mlx_util/click_handler.c
 int			click_hook(t_cub *cub);
@@ -150,10 +156,6 @@ int			is_facing_left(float angle);
 void		start_ray(t_rays *ray, t_player *player, float angle);
 float		get_dist(t_player *p, t_hit h);
 
-//between.c
-t_map		*get_map(int argc, char *argv[], t_input **input);
-void		generate_reverse_xpm(char *old, char *new);
-
 //calculate.c
 float		normalize_angle(float angle);
 float		dist_points(float x1, float y1, float x2, float y2);
@@ -161,8 +163,8 @@ double		radians(double degree);
 
 //start_cub.c
 t_player	*start_player(int x, int y, int dir);
-t_input		*start_input(void);
-t_map		*map_reader(int fd, t_input **input);
+t_input		*start_input(int argc, char *argv[]);
+t_map		*generate_map(int fd, t_input **input);
 void		start_game(t_map *map, t_player *p1);
 
 //reverse_texture.c

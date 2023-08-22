@@ -62,6 +62,7 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${CHECKS}/01_check_args.c			\
 					${CHECKS}/02_check_textures.c		\
 					${CHECKS}/03_check_colors.c			\
+					${CHECKS}/04_read_input.c			\
 					${EXIT}/errors.c					\
 					${EXIT}/exit.c						\
 					${EXIT}/free_all.c					\
@@ -84,7 +85,6 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${RAY}/find_hit_vert.c				\
 					${RAY}/ray_check.c					\
 					${RAY}/ray_utils.c					\
-					between.c							\
 					calculate.c							\
 					maintest.c							\
 					reverse_texture.c					\

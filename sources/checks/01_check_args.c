@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:44:31 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 00:43:59 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:51:12 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_args(int argc, char *argv[])
 	int	fd;
 
 	if (argc != 2)
-		return (ft_error("Wrong number of arguments\n"));
+		return (ft_error("Wrong number of arguments"));
 	fd = open_file(argv[1]);
 	if (fd < 0)
 		return (ft_error(strerror(errno)));
