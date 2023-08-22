@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:53:52 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 09:46:22 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:51:14 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,11 @@ t_map	*get_map(t_input **input)
 		return (NULL);
 	}
 	full_map = generate_map((*input)->fd, input);
+	if (verify_path(full_map, (*input)->player_y, (*input)->player_x) == -1)
+	{
+		free_map(full_map);
+		free_input(*input);
+		return (NULL);
+	}
 	return (full_map);
 }
