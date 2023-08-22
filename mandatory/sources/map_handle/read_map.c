@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:18 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 09:46:06 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 18:15:29 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	check_player(t_input *input)
 {
+	if (!input->map_width)
+		return (FALSE);
 	if (input->has_player > 1)
 	{
 		ft_error("More than one player on the map");
@@ -31,7 +33,8 @@ int	**create_map(t_map_line *start, t_input **input, size_t counter, size_t i)
 {
 	int		**map;
 
-	map = (int **)malloc(sizeof(int *) * (*input)->map_height);
+	if ((*input)->map_height > 0)
+		map = (int **)malloc(sizeof(int *) * (*input)->map_height);
 	while (++counter < (*input)->map_height)
 	{
 		map[counter] = (int *)malloc(sizeof(int) * (*input)->map_width);
@@ -86,10 +89,7 @@ int	**read_map(int fd, t_input **input, t_map_line *node)
 		ft_error("Invalid map");
 	map = create_map(start, input, -1, -1);
 	if (map == NULL)
-	{
-		free_all(start, *input, NULL);
-		return (NULL);
-	}
+		free_input((*input));
 	free_map_lines(start);
 	return (map);
 }
