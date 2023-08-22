@@ -88,7 +88,7 @@ void		ft_free_int_array(int **array);
 char		*ft_strtrim_mod(char *s1, char const *set);
 void		ft_free_int(int **array);
 long int	ft_atoi_mod(char *nptr);
-int			ft_strisdigit(const char *string);
+int			strisnum(const char *string);
 char		*ft_strjoin_free(char *s1, char *s2);
 char		*ft_strtrim_whitespaces(const char *str);
 

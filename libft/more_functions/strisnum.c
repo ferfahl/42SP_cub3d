@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strisdigit.c                                    :+:      :+:    :+:   */
+/*   strisnum.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@
 *@param c String as a void
 *@return returns non-zero value if c is a digit, else it returns 0
 */
-int	ft_strisdigit(const char *str)
+int	strisnum(const char *str)
 {
 	if (*str == '+' || *str == '-')
 		str++;
