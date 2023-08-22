@@ -71,6 +71,7 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${MAP}/check_path.c					\
 					${MAP}/draw_minimap.c				\
 					${MAP}/map_limit.c					\
+					${MAP}/print_map.c					\
 					${MAP}/read_map.c					\
 					${WIND}/click_handler.c				\
 					${WIND}/draw_line.c					\
@@ -86,9 +87,8 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${RAY}/ray_check.c					\
 					${RAY}/ray_utils.c					\
 					calculate.c							\
-					maintest.c							\
 					start_cub.c							\
-					# main.c								\
+					main.c								\
 
 #headers
 HEADER =			header/cub3d.h						\
