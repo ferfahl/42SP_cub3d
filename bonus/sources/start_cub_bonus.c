@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 10:50:04 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 18:39:16 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_map	*generate_map(int fd, t_input **input)
 	map->west = ft_strdup((*input)->we_path);
 	map->south = ft_strdup((*input)->so_path);
 	map->map = read_map(fd, input, new_map_node());
-	if (!map->map)
+	if (!map || !map->map)
 		return (map);
 	map->y_len = (*input)->map_height * TILE_SIZE;
 	map->x_len = (*input)->map_width * TILE_SIZE;
@@ -52,6 +52,8 @@ t_input	*start_input(int argc, char *argv[])
 	input->f = 0;
 	input->map_width = 0;
 	input->map_height = 0;
+	input->player_x = 0;
+	input->player_y = 0;
 	input->fd = fd;
 	return (input);
 }

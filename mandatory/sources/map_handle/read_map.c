@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:18 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 18:15:29 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/22 19:02:12 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_player(t_input *input)
+int	check_player(t_input *input, int **map)
 {
 	if (!input->map_width)
 		return (FALSE);
 	if (input->has_player > 1)
 	{
 		ft_error("More than one player on the map");
+		ft_free_map_array(map, input->map_height);
 		return (FALSE);
 	}
 	if (input->has_player == 0)
 	{
 		ft_error("No player on the map");
+		ft_free_map_array(map, input->map_height);
 		return (FALSE);
 	}
 	return (TRUE);
@@ -53,7 +55,7 @@ int	**create_map(t_map_line *start, t_input **input, size_t counter, size_t i)
 		}
 		start = start->next;
 	}
-	if (!check_player(*input))
+	if (!check_player(*input, map))
 		return (NULL);
 	return (map);
 }

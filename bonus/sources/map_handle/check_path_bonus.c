@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:59:02 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 10:48:34 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 18:38:30 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	verify_path(t_map *map, int x, int y)
 {
 	int	**dupe;
 
+	if (!map->map)
+		return (0);
 	dupe = duplicate_map(map);
 	flood_fill(dupe, x, y, map);
 	if (!check_dupe(map, dupe))

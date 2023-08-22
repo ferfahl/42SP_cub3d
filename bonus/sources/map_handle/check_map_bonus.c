@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:56:12 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 15:02:47 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 18:37:59 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	verify_map(t_map_line *map, t_input **input, int inside_map)
 {
 	char		*trimmed;
 
-	while (map->next)
+	while (map && map->next)
 	{
 		trimmed = ft_strtrim_whitespaces(map->line);
 		if (trimmed == NULL || trimmed[0] == 0)

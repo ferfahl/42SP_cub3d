@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   03_check_colors.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:31:10 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 16:19:00 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/22 19:22:24 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int	get_color(char **color)
 	red = ft_atoi(color[0]);
 	green = ft_atoi(color[1]);
 	blue = ft_atoi(color[2]);
-	if ((red < 0 || red >= 255) || (blue < 0 || blue >= 255)
-		|| (green < 0 || green >= 255))
+	if ((red < 0 || red > 255) || (blue < 0 || blue > 255)
+		|| (green < 0 || green > 255))
 		return (ft_error("Invalid RGB color"));
 	colour = RED_RGB * red;
 	colour += GREEN_RGB * green;
