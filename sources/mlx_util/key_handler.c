@@ -6,14 +6,13 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 17:24:27 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 13:44:57 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:42:31 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "buttons.h"
 
-// ft_printf("keycode: %d\n", key);
 int	key_hook(int key, t_cub *cub)
 {
 	if (key == W_KEY || key == S_KEY || key == DOWN || key == UP)

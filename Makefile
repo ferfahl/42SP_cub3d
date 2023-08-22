@@ -66,6 +66,7 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${EXIT}/errors.c					\
 					${EXIT}/exit.c						\
 					${EXIT}/free_all.c					\
+					${EXIT}/free_cub.c					\
 					${MAP}/check_map.c					\
 					${MAP}/check_path.c					\
 					${MAP}/draw_minimap.c				\
@@ -74,7 +75,6 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${WIND}/click_handler.c				\
 					${WIND}/draw_line.c					\
 					${WIND}/draw.c						\
-					${WIND}/image.c						\
 					${WIND}/key_handler.c				\
 					${WIND}/load_textures.c				\
 					${WIND}/render.c					\
@@ -157,6 +157,7 @@ fclean: clean
 		@$(RM) $(NAME) $(B_NAME)
 		@$(RM_DIR) $(OBJPATH)
 		@$(LOG_SUC) "Cleaned project!"
+		@$(RM) 
 
 #make re -> clear all and recompliles
 re:		fclean all
@@ -182,3 +183,6 @@ norm_CI:
 #make val -> mcheck
 val:
 		$(VAL) ./$(NAME) map.cub
+
+run:
+	./$(NAME) ./assets/maps/minimalist.cub

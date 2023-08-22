@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:20:09 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:49:56 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	increment_vert(t_map *map, t_rays ray, t_hit *vert)
 	vert->hitted = FALSE;
 	vert->hit[X] = vert->intercept[X];
 	vert->hit[Y] = vert->intercept[Y];
-	while (vert->hit[X] >= 0 && vert->hit[X] <= map->x_len && vert->hit[Y] >= 0
-		&& vert->hit[Y] <= map->y_len)
+	while (vert->hit[X] >= 0 && vert->hit[X] < map->x_len && vert->hit[Y] >= 0
+		&& vert->hit[Y] < map->y_len)
 	{
 		check[X] = vert->hit[X];
 		check[Y] = vert->hit[Y];

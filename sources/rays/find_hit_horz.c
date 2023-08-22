@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:20:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/20 20:20:07 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:51:49 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	increment_horz(t_map *map, t_rays ray, t_hit *horz)
 	horz->hitted = FALSE;
 	horz->hit[X] = horz->intercept[X];
 	horz->hit[Y] = horz->intercept[Y];
-	while (horz->hit[X] >= 0 && horz->hit[X] <= map->x_len && horz->hit[Y] >= 0
-		&& horz->hit[Y] <= map->y_len)
+	while (horz->hit[X] >= 0 && horz->hit[X] <= map->x_len && horz->hit[Y] > 0
+		&& horz->hit[Y] < map->y_len)
 	{
 		check[X] = horz->hit[X];
 		check[Y] = horz->hit[Y];

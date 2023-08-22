@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 22:05:04 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:46:25 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_map_line	*skip_empty_lines(t_map_line *start);
 
 //exit/errors.c
 int			ft_error(char *str);
+void		ft_exit_error(char *str, t_cub *cub);
 
 //exit/exit.c
 void		ft_exit(int status, t_cub *cub);
@@ -79,6 +80,9 @@ void		free_input(t_input *input);
 void		free_map(t_map *map);
 void		free_map_lines(t_map_line *map_line);
 void		ft_free_map_array(int **array, int y);
+
+//exit/free_cub.c
+void		free_cub(t_cub *cub);
 
 //map_handle/check_map.c
 int			get_tile(char c, t_input **input, int x, int y);
@@ -113,18 +117,16 @@ void		draw_square(t_image *image, t_pos id, int size, int color);
 void		print_tile(t_image *image, size_t x, size_t y, int color);
 void		draw_circle(t_image *image, int xc, int yc, int r);
 
-//mlx_util/image.c
+//mlx_util/render.c
 int			render(t_cub *cub);
 t_image		create_var_image(void *addr);
+void		creating_img(t_cub *cub);
 
 //mlx_util/click_handler.c
 int			key_hook(int key, t_cub *cub);
 
 //mlx_util/load_textures.c
 void		load_textures(t_cub *cub);
-
-//mlx_util/render.c
-void		creating_img(t_cub *cub);
 
 //mlx_util/window.c
 void		mlx_hooks(t_cub *cub);
