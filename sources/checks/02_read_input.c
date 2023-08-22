@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:53:52 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 10:14:02 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 10:16:37 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	read_cub(t_input **input)
 	}
 	return (TRUE);
 }
+
 int	check_if_textures(t_input *input)
 {
 	if (!input->has_we)
@@ -71,6 +72,10 @@ int	check_if_textures(t_input *input)
 		return (ft_error("No NO texture found"));
 	if (!input->has_so)
 		return (ft_error("No SO texture found"));
+	if (!input->has_c)
+		return (ft_error("No Ceiling color found"));
+	if (!input->has_f)
+		return (ft_error("No Floor color found"));
 	return (0);
 }
 
