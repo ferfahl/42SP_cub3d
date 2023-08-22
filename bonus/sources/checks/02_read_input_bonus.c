@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:53:52 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 10:48:06 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:10:13 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,7 @@ t_map	*get_map(t_input **input)
 
 	if (!read_cub(input))
 	{
-		if ((*input)->has_no)
-			free_input(*input);
-		else
-			free(*input);
+		free_input(*input);
 		return (NULL);
 	}
 	if (check_if_textures(*input) == -1)
