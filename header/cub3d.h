@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 22:46:25 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 23:51:55 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,5 @@ t_player	*start_player(int x, int y, int dir);
 t_input		*start_input(int argc, char *argv[]);
 t_map		*generate_map(int fd, t_input **input);
 void		start_game(t_map *map, t_player *p1);
-
-//reverse_texture.c
-void		generate_reverse_xpm(char *old, char *new);
 
 #endif

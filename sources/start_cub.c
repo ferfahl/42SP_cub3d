@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 22:34:43 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 23:52:20 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ t_map	*generate_map(int fd, t_input **input)
 	map->floor = (*input)->f;
 	map->east = ft_strdup((*input)->ea_path);
 	map->north = ft_strdup((*input)->no_path);
-	map->west = ft_strdup("./assets/textures/we.xpm");
-	generate_reverse_xpm((*input)->we_path, map->west);
-	map->south = ft_strdup("./assets/textures/so.xpm");
-	generate_reverse_xpm((*input)->so_path, map->south);
+	map->west = ft_strdup((*input)->we_path);
+	map->south = ft_strdup((*input)->so_path);
 	map->map = read_map(fd, input, new_map_node());
 	if (!map->map)
 		return (map);

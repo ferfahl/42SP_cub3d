@@ -87,7 +87,6 @@ MANDATORY_FILES =	${3D}/background.c					\
 					${RAY}/ray_utils.c					\
 					calculate.c							\
 					maintest.c							\
-					reverse_texture.c					\
 					start_cub.c							\
 					# main.c								\
 
@@ -185,4 +184,4 @@ val:
 		$(VAL) ./$(NAME) map.cub
 
 run:
-	./$(NAME) ./assets/maps/minimalist.cub
+	./$(NAME) ./assets/maps/simple.cub
