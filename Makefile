@@ -184,4 +184,4 @@ val:
 		$(VAL) ./$(NAME) map.cub
 
 run:
-	./$(NAME) ./assets/maps/minimalist.cub
+	./$(NAME) ./assets/maps/simple.cub
