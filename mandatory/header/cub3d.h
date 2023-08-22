@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:04:51 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/22 12:49:56 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:02:18 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void		free_cub(t_cub *cub);
 //map_handle/check_map.c
 int			get_tile(char c, t_input **input, int x, int y);
 int			verify_map(t_map_line *map, t_input **input, int inside_map);
+int			check_env(char *str);
 
 //map_handle/check_path.c
 int			verify_path(t_map *map, int x, int y);

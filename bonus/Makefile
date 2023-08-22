@@ -3,7 +3,7 @@
 ################################################################################
 
 #static library's name
-NAME =		cub3D_bonus
+NAME =		../mandatory/cub3D_bonus
 
 ARGS = 		./assets/maps/minimalist.cub
 
@@ -35,7 +35,7 @@ RM_DIR =	rm -rf
 OBJ_MANDATORY = $(MANDATORY_FILES:%.c=$(OBJPATH)/%.o)
 
 #printing
-LOG   			:= printf "[$(GREEN)PROJECT_INFO$(RESET)] %s\n"
+LOG   			:= printf "[$(YELLOW)BONUS_INFO$(RESET)] %s\n"
 LOG_SUC			:= printf "[$(CYAN)COMPILING_INFO$(RESET)] %s\n"
 
 #compiling bar
@@ -114,9 +114,6 @@ INCLUDE =	-I ./header -I $(LIBFT_PATH)
 #make
 all: $(OBJPATH) $(NAME)
 
-#make bonus
-bonus: $(OBJPATH) $(B_NAME)
-
 ##folder for temporary objects
 $(OBJPATH):
 		@$(LOG) "Creating objects directory..."
@@ -153,10 +150,9 @@ clean:
 fclean: clean
 		@make fclean -C $(LIBFT_PATH) --no-print-directory
 		@$(LOG) "Removing executable..."
-		@$(RM) $(NAME) $(B_NAME)
+		@$(RM) $(NAME)
 		@$(RM_DIR) $(OBJPATH)
 		@$(LOG_SUC) "Cleaned project!"
-		@$(RM) 
 
 #make re -> clear all and recompliles
 re:		fclean all

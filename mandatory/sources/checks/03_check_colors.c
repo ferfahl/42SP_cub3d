@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:31:10 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 13:49:44 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:03:14 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	get_color(char **color)
 	green = ft_atoi(color[1]);
 	blue = ft_atoi(color[2]);
 	if ((red < 0 || red >= 255) || (blue < 0 || blue >= 255)
-			|| (green < 0 || green >= 255))
+		|| (green < 0 || green >= 255))
 		return (ft_error("Invalid RGB color"));
 	colour = RED_RGB * red;
 	colour += GREEN_RGB * green;
@@ -51,7 +51,7 @@ int	check_f(char *line, t_input *input)
 {
 	char	**color;
 
-	if (!ft_strncmp(line, "F", 1))
+	if (!ft_strncmp(line, "F ", 2))
 	{
 		if (input->has_f)
 			return (ft_error("More than one floor"));
@@ -73,7 +73,7 @@ int	check_c(char *line, t_input *input)
 {
 	char	**color;
 
-	if (!ft_strncmp(line, "C", 1))
+	if (!ft_strncmp(line, "C ", 2))
 	{
 		if (input->has_c)
 			return (ft_error("More than one ceiling"));
@@ -93,6 +93,11 @@ int	check_c(char *line, t_input *input)
 
 int	check_all(char *line, t_input *input)
 {
+	if (line[0] && !check_env(line))
+	{
+		ft_error("Invalid elements order or elements missing");
+		return (FALSE);
+	}
 	if (check_no(line, input))
 		return (FALSE);
 	if (check_so(line, input))
