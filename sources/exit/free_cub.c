@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   free_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 17:57:01 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/19 13:44:56 by feralves         ###   ########.fr       */
+/*   Created: 2023/08/21 22:38:52 by feralves          #+#    #+#             */
+/*   Updated: 2023/08/21 22:48:07 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	render(t_cub *cub)
+void	free_cub(t_cub *cub)
 {
-	draw_background(cub);
-	creating_img(cub);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.ptr, 0, 0);
-	return (0);
-}
-
-t_image	create_var_image(void *addr)
-{
-	t_image	image;
-
-	image.ptr = mlx_new_image(addr, W_WIDTH, W_HEIGHT);
-	image.data = (int *)mlx_get_data_addr(image.ptr, &image.bpp,
-			&image.line_len, &image.endian);
-	return (image);
+	free_map(cub->map);
+	free(cub->player);
+	if (cub->mlx)
+	{
+		mlx_destroy_window(cub->mlx, cub->win);
+		mlx_destroy_image(cub->mlx, cub->img.ptr);
+		mlx_destroy_image(cub->mlx, cub->north.ptr);
+		mlx_destroy_image(cub->mlx, cub->south.ptr);
+		mlx_destroy_image(cub->mlx, cub->west.ptr);
+		mlx_destroy_image(cub->mlx, cub->east.ptr);
+		mlx_destroy_display(cub->mlx);
+		free(cub->mlx);
+	}
+	free(cub);
 }

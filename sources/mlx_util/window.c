@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:30:10 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 00:42:02 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:40:17 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	open_window(t_cub	*cub)
 {
 	cub->mlx = mlx_init();
 	if (cub->mlx == NULL)
-		ft_error("Mlx init error");
+		return (ft_exit_error("Mlx init error", cub));
 	cub->win = mlx_new_window(cub->mlx, W_WIDTH, W_HEIGHT, "cub3D");
 	if (cub->win == NULL)
-		ft_error("Mlx cub->window error");
+		return (ft_exit_error("Mlx cub->window error", cub));
 	cub->img = create_var_image(cub->mlx);
 }

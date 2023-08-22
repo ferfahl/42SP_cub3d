@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:59:21 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 21:59:53 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:34:43 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,16 @@ void	start_game(t_map *map, t_player *p1)
 
 	cub = (t_cub *)ft_calloc(1, sizeof(t_cub));
 	if (cub == NULL)
-		ft_error("Calloc error");
-	open_window(cub);
+	{
+		free_map(map);
+		free(p1);
+		free(cub);
+		return (ft_exit_error("Calloc error", NULL));
+	}
 	cub->map = map;
 	cub->player = p1;
 	cub->nbr_rays = W_WIDTH;
 	cub->rays = ray;
+	open_window(cub);
 	mlx_hooks(cub);
 }

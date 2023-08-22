@@ -6,7 +6,7 @@
 /*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:54:27 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 00:01:19 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:42:21 by feralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	load_xpm(t_cub *cub, t_image *img, char *path)
 	img->texture = mlx_get_data_addr(img->ptr, &img->bpp, &img->line_len,
 			&img->endian);
 }
-	// if (width != height)
-		//error texture must be square
 
 void	load_textures(t_cub *cub)
 {
