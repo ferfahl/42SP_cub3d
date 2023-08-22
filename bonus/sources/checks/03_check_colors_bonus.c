@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   03_check_colors_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feralves <feralves@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 20:31:10 by rarobert          #+#    #+#             */
-/*   Updated: 2023/08/22 15:04:28 by feralves         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:21:06 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,23 @@ int	check_f(char *line, t_input *input)
 {
 	char	**color;
 
-	if (!ft_strncmp(line, "F", 1))
+	if (!ft_strncmp(line, "F ", 2))
 	{
 		if (input->has_f)
 			return (ft_error("More than one floor"));
 		input->has_f = TRUE;
 		color = ft_split(line + 1, ',');
+		if (!(color[0]) || !(color[1]) || !(color[2]))
+		{
+			ft_free_array(color);
+			return (ft_error("Invalid ceiling RGB"));
+		}
 		color = trim_color(color);
-		if (!ft_strisdigit(color[0]) || !ft_strisdigit(color[1])
-			|| !ft_strisdigit(color[2]))
-			return (ft_error("Invalid floor RGB"));
+		if (!strisnum(color[0]) || !strisnum(color[1]) || !strisnum(color[2]))
+		{
+			ft_free_array(color);
+			return (ft_error("Invalid ceiling RGB"));
+		}
 		input->f = get_color(color);
 		ft_free_array(color);
 		if (input->f == -1)
@@ -73,16 +80,23 @@ int	check_c(char *line, t_input *input)
 {
 	char	**color;
 
-	if (!ft_strncmp(line, "C", 1))
+	if (!ft_strncmp(line, "C ", 2))
 	{
 		if (input->has_c)
 			return (ft_error("More than one ceiling"));
 		input->has_c = TRUE;
 		color = ft_split(line + 1, ',');
-		color = trim_color(color);
-		if (!ft_strisdigit(color[0]) || !ft_strisdigit(color[1])
-			|| !ft_strisdigit(color[2]))
+		if (!(color[0]) || !(color[1]) || !(color[2]))
+		{
+			ft_free_array(color);
 			return (ft_error("Invalid ceiling RGB"));
+		}
+		color = trim_color(color);
+		if (!strisnum(color[0]) || !strisnum(color[1]) || !strisnum(color[2]))
+		{
+			ft_free_array(color);
+			return (ft_error("Invalid ceiling RGB"));
+		}
 		input->c = get_color(color);
 		ft_free_array(color);
 		if (input->c == -1)

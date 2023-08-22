@@ -3,12 +3,12 @@ NO ./assets/textures/1_no.xpm
 SO ./assets/textures/1_so.xpm
 WE ./assets/textures/1_we.xpm
 EA ./assets/textures/1_ea.xpm
+C 50,0,0
+F ,,
 
 1111111111
 1000000011
 
-C 50,0,0
-F 0,122,222
 1000011001
 10N0000001
 1000001011
