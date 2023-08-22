@@ -6,57 +6,56 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 23:53:18 by feralves          #+#    #+#             */
-/*   Updated: 2023/08/21 20:31:09 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/08/21 22:05:28 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_map_line	*skip_empty_lines(t_map_line *start)
+t_map	*get_map(t_input **input)
 {
-	t_map_line	*temp;
 	char		*line;
+	char		*trimmed;
+	t_map		*full_map;
 
-	temp = start;
-	while (start)
+	line = get_next_line((*input)->fd);
+	while (line)
 	{
-		line = ft_strtrim_whitespaces(start->line);
-		if (line[0] != 0)
+		trimmed = ft_strtrim_whitespaces(line);
+		check_all(trimmed, *input);
+		free(trimmed);
+		if ((*input)->has_no && (*input)->has_so && (*input)->has_ea
+			&& (*input)->has_we && (*input)->has_c && (*input)->has_f)
 			break ;
-		temp = start->next;
-		free(start->line);
-		free(start);
-		start = temp;
 		free(line);
+		line = get_next_line((*input)->fd);
 	}
 	free(line);
-	return (start);
+	full_map = generate_map((*input)->fd, input);
+	return (full_map);
 }
 
-int	check_player(t_map_line *start, t_input *input, int **map)
+int	check_player(t_input *input)
 {
 	if (input->has_player > 1)
 	{
 		ft_error("More than one player on the map");
-		free_all(start, input, map);
 		return (FALSE);
 	}
 	if (input->has_player == 0)
 	{
 		ft_error("No player on the map");
-		free_all(start, input, map);
 		return (FALSE);
 	}
 	return (TRUE);
 }
 
-int	**create_map(t_map_line *start, t_input **input, size_t counter)
+int	**create_map(t_map_line *start, t_input **input, size_t counter, size_t i)
 {
 	int		**map;
-	size_t	i;
 
 	map = (int **)malloc(sizeof(int *) * (*input)->map_height);
-	while (counter < (*input)->map_height)
+	while (++counter < (*input)->map_height)
 	{
 		map[counter] = (int *)malloc(sizeof(int) * (*input)->map_width);
 		i = -1;
@@ -67,12 +66,14 @@ int	**create_map(t_map_line *start, t_input **input, size_t counter)
 			else
 				map[counter][i] = get_tile(start->line[i], input, counter, i);
 			if (map[counter][i] == -1)
-				free_all(start, *input, map);
+			{
+				ft_free_map_array(map, counter + 1);
+				return (NULL);
+			}
 		}
 		start = start->next;
-		counter++;
 	}
-	if (!check_player(start, *input, map))
+	if (!check_player(*input))
 		return (NULL);
 	return (map);
 }
@@ -87,15 +88,13 @@ t_map_line	*new_map_node(void)
 	return (new);
 }
 
-int	**read_map(int fd, t_input **input)
+int	**read_map(int fd, t_input **input, t_map_line *node)
 {
 	char		*line;
 	t_map_line	*start;
-	t_map_line	*node;
 	int			**map;
 
-	start = new_map_node();
-	node = start;
+	start = node;
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -108,9 +107,12 @@ int	**read_map(int fd, t_input **input)
 	start = skip_empty_lines(start);
 	if (verify_map(start, input, TRUE) == -1)
 		ft_error("Invalid map");
-	map = create_map(start, input, 0);
+	map = create_map(start, input, -1, -1);
 	if (map == NULL)
+	{
+		free_all(start, *input, NULL);
 		return (NULL);
-	free_stuff(start);
+	}
+	free_map_lines(start);
 	return (map);
 }
